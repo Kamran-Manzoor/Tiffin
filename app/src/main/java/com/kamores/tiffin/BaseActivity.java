@@ -61,22 +61,22 @@ public class BaseActivity extends AppCompatActivity
 
 
 
-        progressDialog = new ProgressDialog(BaseActivity.this);
-        progressDialog.setMessage("Loading..."); // Setting Message
-        progressDialog.setTitle("ProgressDialog"); // Setting Title
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
-        progressDialog.show(); // Display Progress Dialog
-        progressDialog.setCancelable(false);
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    Thread.sleep(10000);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }).start();
+//        progressDialog = new ProgressDialog(BaseActivity.this);
+//        progressDialog.setMessage("Loading..."); // Setting Message
+//        progressDialog.setTitle("ProgressDialog"); // Setting Title
+//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+//        progressDialog.show(); // Display Progress Dialog
+//        progressDialog.setCancelable(false);
+//        new Thread(new Runnable() {
+//            public void run() {
+//                try {
+//                    Thread.sleep(10000);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        }).start();
 
         refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -176,6 +176,9 @@ public class BaseActivity extends AppCompatActivity
         Retrofit retrofit = new Retrofit.Builder().baseUrl( Constants.BASE_URL )
                 .addConverterFactory( GsonConverterFactory.create() ).build();
 
+//        ServerRequest request = new ServerRequest();
+//        request.setOperation( Constants.RETRIEVE_ALL );
+
         RequestInterface requestInterface = retrofit.create( RequestInterface.class );
         Call<ServerResponce> response = requestInterface.operation();
 
@@ -188,7 +191,7 @@ public class BaseActivity extends AppCompatActivity
                     sup_name = user.getSup_name();
                     service_name = user.getService_name();
                     location = user.getLocation();
-                    progressDialog.dismiss();
+//                    progressDialog.dismiss();
 
                     modelClasses = new ArrayList<>();
                     for (int i = 0; i < location.size(); i++) {
@@ -208,12 +211,18 @@ public class BaseActivity extends AppCompatActivity
         } );
     }
     private void setUpRecyclerView(){
-        recyclerView= findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        adapter= new AdapterClass(modelClasses, getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+
+        if (modelClasses == null){
+            Toast.makeText( this, "Null", Toast.LENGTH_SHORT ).show();
+        }
+        else {
+            adapter= new AdapterClass(modelClasses, getApplicationContext());
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -229,8 +238,12 @@ public class BaseActivity extends AppCompatActivity
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
-                return false;
+                if (adapter == null){
+                    Toast.makeText( BaseActivity.this, "Not Connected", Toast.LENGTH_SHORT ).show();
+                }
+                else
+                    adapter.getFilter().filter( newText );
+                    return false;
             }
         });
         return true;
