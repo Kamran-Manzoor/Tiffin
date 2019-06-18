@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     android:padding="20dp"
     tools:context=".Add_Supplier">
 
@@ -19,7 +20,7 @@
         android:layout_marginBottom="8dp"
         android:orientation="vertical"
         android:padding="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_supplier_address"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +35,8 @@
             <EditText
                 android:id="@+id/et_supplier_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded"
                 android:hint="Name"
                 android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
@@ -46,7 +48,8 @@
             <EditText
                 android:id="@+id/et_supplier_serviceName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded"
                 android:hint="Service/Business"
                 android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
@@ -58,9 +61,10 @@
             <EditText
                 android:id="@+id/et_supplier_contact"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded"
                 android:hint="Contact"
-                android:inputType="textEmailAddress" />
+                android:inputType="phone" />
         </android.support.design.widget.TextInputLayout>
 
 

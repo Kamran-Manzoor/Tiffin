@@ -25,6 +25,7 @@ public class Add_Items extends AppCompatActivity {
     Button btnChooseImage, btnAddItem;
     List<String> listDays;
     String spDays;
+    String name,price,description;
     private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
@@ -44,9 +45,27 @@ public class Add_Items extends AppCompatActivity {
         btnAddItem.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Add_Items.this,BaseActivity.class);
-                startActivity(intent);
-            }
+                name= itemName.getText().toString();
+                price= itemPrice.getText().toString();
+                description= itemDescription.getText().toString();
+                if(name.isEmpty()){
+                    itemName.setError("Enter Name");
+                }
+                else if (price.isEmpty()){
+                    itemPrice.setError("Enter Service");
+                }
+                else if(description.isEmpty()){
+                    itemDescription.setError("Enter Contact");
+
+                }
+//
+                else {
+                    Intent intent = new Intent(Add_Items.this, BaseActivity.class);
+                    startActivity(intent);
+                }
+
+
+                }
         });
 
         showDays();
