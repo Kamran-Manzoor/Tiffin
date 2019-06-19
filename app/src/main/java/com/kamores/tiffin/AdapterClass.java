@@ -1,6 +1,10 @@
 package com.kamores.tiffin;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,25 +12,22 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> implements Filterable {
     private Context mContext;
     private List<ModelClass> modelClasses;
     private List<ModelClass> modelClassList;
 
-
     public AdapterClass(List<ModelClass> modelClasses, Context context) {
         this.mContext = context;
         this.modelClasses = modelClasses;
-        this.modelClassList = new ArrayList<>( modelClasses );
-
+        this.modelClassList = new ArrayList<>(modelClasses);
     }
 
     @Override
@@ -37,29 +38,41 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        final ModelClass currentItem = modelClasses.get(position);
+        final ModelClass modelClass = modelClasses.get(position);
         //holder.img_food.setImageResource(currentItem.getImage_food());
         //holder.imgDetail.setImageResource(currentItem.getImage_detail());
-        holder.tv_ServiceName.setText(currentItem.getService_name());
-        holder.tv_SupplierName.setText(currentItem.getSup_name());
-        holder.tv_Location.setText(currentItem.getLocation());
+        holder.tv_ServiceName.setText(modelClass.getService_name());
+        holder.tv_SupplierName.setText(modelClass.getSup_name());
+        holder.tv_Location.setText(modelClass.getLocation());
+
+        holder.details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( mContext, Activity_Detail.class );
+                mContext.startActivity(intent);
+
+            }
+        });
+
     }
     @Override
     public int getItemCount() {
         return modelClasses.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
-        TextView tv_ServiceName, tv_SupplierName,tv_Location;
-//        CircleImageView imgDetail;
-//        ImageView img_food;
+    class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView details;
+        TextView tv_ServiceName, tv_SupplierName, tv_Location;
+        ConstraintLayout constraintLayout;
+
         public ViewHolder(View itemView) {
+
             super(itemView);
-            //img_food= itemView.findViewById(R.id.img_Food_RecyclerView);
-            //imgDetail= itemView.findViewById(R.id.img_Details_RecyclerView);
             tv_ServiceName= itemView.findViewById(R.id.tv_ServiceName_RecyclerView);
             tv_SupplierName= itemView.findViewById(R.id.tv_SupplierName_RecyclerView);
             tv_Location = itemView.findViewById(R.id.tv_SupplierLocation_RecyclerView);
+            details = itemView.findViewById(R.id.btn_see_details);
+            constraintLayout = itemView.findViewById(R.id.constraint_layout);
         }
     }
 

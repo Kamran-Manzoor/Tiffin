@@ -20,11 +20,12 @@ import java.util.List;
 
 public class Add_Items extends AppCompatActivity {
     ImageView itemImage;
-    EditText itemName, itemPrice,itemDescription;
+    EditText etItemName, etItemPrice,etItemDescription;
     Spinner spinnerDays;
     Button btnChooseImage, btnAddItem;
     List<String> listDays;
     String spDays;
+    String itemName, itemPrice, itemDescription;
     private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
@@ -44,8 +45,22 @@ public class Add_Items extends AppCompatActivity {
         btnAddItem.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Add_Items.this,BaseActivity.class);
-                startActivity(intent);
+                itemName= etItemName.getText().toString();
+                itemPrice= etItemPrice.getText().toString();
+                itemDescription= etItemDescription.getText().toString();
+                if (itemName.isEmpty()){
+                    etItemName.setError("Enter Item Name");
+                }
+                else if (itemPrice.isEmpty()){
+                    etItemPrice.setError("Enter Item Name");
+                }
+                else if (itemDescription.isEmpty()){
+                    etItemDescription.setError("Enter Item Description");
+                }
+                else {
+                    Intent intent = new Intent(Add_Items.this,BaseActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -67,9 +82,9 @@ public class Add_Items extends AppCompatActivity {
 
     public void initViewItems(){
         itemImage= findViewById(R.id.img_New_Items);
-        itemName= findViewById(R.id.et_ItemName);
-        itemPrice= findViewById(R.id.et_ItemPrice);
-        itemDescription= findViewById(R.id.et_ItemDescription);
+        etItemName= findViewById(R.id.et_ItemName);
+        etItemPrice= findViewById(R.id.et_ItemPrice);
+        etItemDescription= findViewById(R.id.et_ItemDescription);
         spinnerDays= findViewById(R.id.spinnerDays);
         btnChooseImage= findViewById(R.id.btn_choose_items);
         btnAddItem=findViewById(R.id.btn_Add_Items);
@@ -91,4 +106,20 @@ public class Add_Items extends AppCompatActivity {
         listDays.add("Saturday");
         listDays.add("Sunday");
     }
+
+//    public void itemValidation() {
+//        name= itemName.getText().toString();
+//        price= itemPrice.getText().toString();
+//        description= itemDescription.getText().toString();
+//        if (name.isEmpty() && price.isEmpty() && description.isEmpty()) {
+//            itemName.setError("Enter Item Name");
+//            itemPrice.setError("Enter Item Price");
+//            itemDescription.setError("Enter Item Description");
+//        }
+//        else {
+//            itemName.setError(null);
+//            itemPrice.setError(null);
+//            itemDescription.setError(null);
+//        }
+//    }
 }

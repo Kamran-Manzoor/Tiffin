@@ -1,7 +1,6 @@
 package com.kamores.tiffin;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -161,7 +160,7 @@ public class BaseActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_Supplier) {
-            Intent intent = new Intent( BaseActivity.this, Add_Supplier.class );
+            Intent intent = new Intent( BaseActivity.this, Item_Schedule_Activity.class );
             startActivity( intent );
         } else if (id == R.id.nav_Save_Location) {
         } else if (id == R.id.nav_show_In_Map) {

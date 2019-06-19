@@ -8,23 +8,38 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Add_Supplier extends AppCompatActivity {
+public class Supplier_Information extends AppCompatActivity {
     EditText etName,etService, etContact;
     TextView address;
     ImageView addSupplier;
+    String supplierName,serviceName,supplierContact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add__supplier);
+        setContentView(R.layout.activity_supplier_information );
 
         initViewSuppliers();
 
         addSupplier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(Add_Supplier.this, Add_Items.class);
-                startActivity(intent);
+                supplierName= etName.getText().toString();
+                serviceName= etService.getText().toString();
+                supplierContact= etContact.getText().toString();
+                if (supplierName.isEmpty()){
+                    etName.setError("Enter Supplier Name");
+                }
+                else if (serviceName.isEmpty()){
+                    etService.setError("Enter Service Name");
+                }
+                else if (supplierContact.isEmpty()){
+                    etContact.setError("Enter Supplier Contact");
+                }
+                else {
+                    Intent intent= new Intent( Supplier_Information.this, Password.class);
+                    startActivity(intent);
+                }
             }
         });
 
