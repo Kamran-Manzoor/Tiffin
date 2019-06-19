@@ -25,7 +25,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
     public AdapterClass(List<ModelClass> modelClasses, Context context) {
         this.mContext = context;
         this.modelClasses = modelClasses;
-        this.modelClassList = new ArrayList<>( modelClasses );
+        this.modelClassList = new ArrayList<>();
 
     }
 
