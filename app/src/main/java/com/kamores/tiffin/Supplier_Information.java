@@ -43,12 +43,13 @@ public class Supplier_Information extends AppCompatActivity {
             }
         });
 
-    }
-    public void initViewSuppliers(){
-        etName =findViewById(R.id.et_supplier_name);
-        etService= findViewById(R.id.et_supplier_serviceName);
-        etContact= findViewById(R.id.et_supplier_contact);
-        address= findViewById(R.id.tv_supplier_address);
-        addSupplier= findViewById(R.id.img_AddSuppliers);
-    }
-}
+            }
+
+            public void initViewSuppliers() {
+                etName = findViewById(R.id.et_supplier_name);
+                etService = findViewById(R.id.et_supplier_serviceName);
+                etContact = findViewById(R.id.et_supplier_contact);
+                address = findViewById(R.id.tv_supplier_address);
+                addSupplier = findViewById(R.id.img_AddSuppliers);
+            }
+        }

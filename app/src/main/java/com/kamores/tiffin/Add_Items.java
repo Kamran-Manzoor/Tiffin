@@ -106,20 +106,4 @@ public class Add_Items extends AppCompatActivity {
         listDays.add("Saturday");
         listDays.add("Sunday");
     }
-
-//    public void itemValidation() {
-//        name= itemName.getText().toString();
-//        price= itemPrice.getText().toString();
-//        description= itemDescription.getText().toString();
-//        if (name.isEmpty() && price.isEmpty() && description.isEmpty()) {
-//            itemName.setError("Enter Item Name");
-//            itemPrice.setError("Enter Item Price");
-//            itemDescription.setError("Enter Item Description");
-//        }
-//        else {
-//            itemName.setError(null);
-//            itemPrice.setError(null);
-//            itemDescription.setError(null);
-//        }
-//    }
 }
