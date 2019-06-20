@@ -15,9 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Item_Schedule_Activity"></activity>
-        <activity android:name=".Activity_Detail" />
-        <activity android:name=".Add_Items" />
+        <activity android:name=".Item_Schedule_Activity"
+            android:label="Item Schedule Activity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity_Detail"
+            android:label="Activity Detail"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Add_Items"
+            android:label="Add Items"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Supplier_Information"
             android:label="Supplier Information"
