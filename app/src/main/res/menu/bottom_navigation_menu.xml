@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_call"
+        android:icon="@drawable/call_icon"
+        android:title="Call" />
+    <item
+        android:id="@+id/action_sms"
+        android:icon="@drawable/sms_icon"
+        android:title="SMS" />
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/share_icon"
+        android:title="Share" />
+
+</menu>
