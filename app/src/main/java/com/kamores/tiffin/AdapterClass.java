@@ -48,6 +48,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         holder.details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Toast.makeText(mContext, "I am Toast", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent( mContext, Activity_Detail.class );
                 mContext.startActivity(intent);
 
