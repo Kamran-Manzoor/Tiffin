@@ -1,6 +1,7 @@
 package com.kamores.tiffin;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +44,15 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         holder.tv_ServiceName.setText(currentItem.getService_name());
         holder.tv_SupplierName.setText(currentItem.getSup_name());
         holder.tv_Location.setText(currentItem.getLocation());
+
+        holder.details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( mContext, Activity_Detail.class );
+                mContext.startActivity(intent);
+
+            }
+        });
     }
     @Override
     public int getItemCount() {
@@ -51,8 +61,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
 
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView tv_ServiceName, tv_SupplierName,tv_Location;
-//        CircleImageView imgDetail;
-//        ImageView img_food;
+        ImageView details;
         public ViewHolder(View itemView) {
             super(itemView);
             //img_food= itemView.findViewById(R.id.img_Food_RecyclerView);
@@ -60,6 +69,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
             tv_ServiceName= itemView.findViewById(R.id.tv_ServiceName_RecyclerView);
             tv_SupplierName= itemView.findViewById(R.id.tv_SupplierName_RecyclerView);
             tv_Location = itemView.findViewById(R.id.tv_SupplierLocation_RecyclerView);
+            details = itemView.findViewById(R.id.btn_see_details);
         }
     }
 
