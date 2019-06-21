@@ -45,6 +45,8 @@ public class Add_Supplier extends AppCompatActivity {
         Sup_service = etService.getText().toString();
         Sup_con = etContact.getText().toString();
         Sup_location = "Khanewal";
+
+
     }
 
     public void initViewSuppliers(){
