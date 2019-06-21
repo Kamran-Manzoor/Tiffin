@@ -73,7 +73,8 @@
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="13dp">
 
             <EditText
                 android:id="@+id/et_email"
@@ -159,8 +160,8 @@
             tools:layout_editor_absoluteX="58dp"
             tools:layout_editor_absoluteY="666dp" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_Google"
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btnGoogleSignin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

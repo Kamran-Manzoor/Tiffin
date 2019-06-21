@@ -165,6 +165,8 @@ public class BaseActivity extends AppCompatActivity
             startActivity( intent );
         } else if (id == R.id.nav_Save_Location) {
         } else if (id == R.id.nav_show_In_Map) {
+            Intent i = new Intent(BaseActivity.this,MapsActivity.class);
+            startActivity(i);
         }
         DrawerLayout drawer = findViewById( R.id.drawer_layout );
         drawer.closeDrawer( GravityCompat.START );
@@ -191,7 +193,7 @@ public class BaseActivity extends AppCompatActivity
                     sup_name = user.getSup_name();
                     service_name = user.getService_name();
                     location = user.getLocation();
-//                    progressDialog.dismiss();
+                    progressDialog.dismiss();
 
                     modelClasses = new ArrayList<>();
                     for (int i = 0; i < location.size(); i++) {

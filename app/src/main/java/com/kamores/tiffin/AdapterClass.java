@@ -82,19 +82,22 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             List<ModelClass> filteredList = new ArrayList<>();
-            if (constraint == null || constraint.length() == 0){
-                filteredList.addAll(modelClassList);
-            }else {
-                String filterPattern = constraint.toString().toLowerCase().trim();
-                for (ModelClass item : modelClassList){
-                    if (item.getService_name().toLowerCase().contains(filterPattern) ||
-                            item.getSup_name().toLowerCase().contains(filterPattern) ||
-                            item.getLocation().toLowerCase().contains(filterPattern)){
-                        filteredList.add(item);
+
+                if (constraint == null || constraint.length() == 0){
+                    filteredList.addAll(modelClassList);
+                }else {
+                    String filterPattern = constraint.toString().toLowerCase().trim();
+                    for (ModelClass item : modelClassList){
+                        if (item.getService_name().toLowerCase().contains(filterPattern) ||
+                                item.getSup_name().toLowerCase().contains(filterPattern) ||
+                                item.getLocation().toLowerCase().contains(filterPattern)){
+                            filteredList.add(item);
+                        }
                     }
                 }
-            }
+
             FilterResults results= new FilterResults();
+
             results.values= filteredList;
             return results;
         }
