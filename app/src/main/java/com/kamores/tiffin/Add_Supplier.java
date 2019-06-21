@@ -27,8 +27,7 @@ public class Add_Supplier extends AppCompatActivity {
         setContentView(R.layout.activity_add__supplier);
 
         initViewSuppliers();
-
-
+        //setDay();
         addSupplier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
