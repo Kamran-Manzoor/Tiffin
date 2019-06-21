@@ -219,7 +219,7 @@ public class BaseActivity extends AppCompatActivity
             Toast.makeText( this, "Null", Toast.LENGTH_SHORT ).show();
         }
         else {
-            adapter= new AdapterClass(modelClasses, getApplicationContext());
+            adapter = new AdapterClass(modelClasses, getApplicationContext());
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setAdapter(adapter);
         }
