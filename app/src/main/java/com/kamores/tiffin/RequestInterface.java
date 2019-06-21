@@ -9,4 +9,5 @@ public interface RequestInterface {
     @POST("/Test.php")
     //@POST("/TiffinApp/Test.php")
     Call<ServerResponce> operation();
+    //Call<ServerResponce> operationone(@Body ServerRequest request);
 }

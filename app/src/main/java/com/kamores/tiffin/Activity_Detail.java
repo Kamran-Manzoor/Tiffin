@@ -65,5 +65,8 @@ public class Activity_Detail extends AppCompatActivity {
 //            }
 //        });
 
+
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setElevation(0);
     }
 }

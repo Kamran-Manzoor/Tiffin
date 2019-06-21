@@ -21,8 +21,9 @@
             android:weightSum="6">
 
             <ImageView
-                android:layout_width="120dp"
+                android:layout_width="0dp"
                 android:layout_height="85dp"
+                android:layout_weight="2.5"
                 android:padding="5dp"
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
@@ -30,54 +31,39 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="85dp"
-                android:weightSum="2"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_weight="3"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_ServiceName_Item"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_ServiceName_RecyclerView"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:text="Service Name"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tv_SupplierName_Item"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Supplier Name"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="85dp"
-                android:weightSum="2"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/tv_price"
-                    android:layout_gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Price"
-                    android:gravity="center"
-                    android:layout_weight="1"
                     android:textSize="15sp" />
-                <ImageView
+
+                <TextView
+                    android:id="@+id/tv_SupplierName_RecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/icon_for_edit"
-                    android:layout_weight="1"
-                    android:layout_gravity="center" />
+                    android:textSize="14sp"
+                    android:text="Supplier Name" />
 
+                <TextView
+                    android:id="@+id/tv_SupplierLocation_RecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="Location" />
             </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow"
+                android:layout_gravity="center" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>

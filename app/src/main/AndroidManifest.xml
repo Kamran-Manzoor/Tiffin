@@ -4,8 +4,8 @@
     package="com.kamores.tiffin">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -25,9 +25,8 @@
             android:label="Add Items"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Supplier_Information"
-            android:label="Supplier Information"
-            android:screenOrientation="portrait" />
+            android:name=".Add_Supplier"
+            android:label="Add_Supplier" />
         <activity
             android:name=".MainActivity"
             android:label="MainActivity"
@@ -38,8 +37,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".BaseActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
