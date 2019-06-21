@@ -1,5 +1,6 @@
 package com.kamores.tiffin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,8 @@ public class Password extends AppCompatActivity {
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent( Password.this,BaseActivity.class );
+                startActivity( intent );
             }
         });
     }

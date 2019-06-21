@@ -17,7 +17,7 @@ public class Supplier_Information extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_supplier_information );
+        setContentView(R.layout.activity_add_supplier);
 
         initViewSuppliers();
 
