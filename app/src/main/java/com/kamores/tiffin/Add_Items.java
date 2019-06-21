@@ -1,11 +1,8 @@
 package com.kamores.tiffin;
 
 import android.content.Intent;
-import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,34 +15,43 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class Add_Items extends AppCompatActivity {
     ImageView itemImage;
     EditText itemName, itemPrice,itemDescription;
     Spinner spinnerDays;
     Button btnChooseImage, btnAddItem;
     List<String> listDays;
-    String spDays;
+    String Item_name,Item_price,Item_days,Item_image,Item_desc;
     private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add__items);
+        setContentView(R.layout.activity_add_items );
 
         initViewItems();
+        getValues();
 
-        btnChooseImage.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openFileChooser();
-            }
-        });
+//        btnChooseImage.setOnClickListener( new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openFileChooser();
+//            }
+//        });
 
         btnAddItem.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Add_Items.this,BaseActivity.class);
-                startActivity(intent);
+                //addSuppliers();
+                addItems();
+//                Intent intent = new Intent(Add_Items.this,BaseActivity.class);
+//                startActivity(intent);
             }
         });
 
@@ -55,7 +61,7 @@ public class Add_Items extends AppCompatActivity {
         spinnerDays.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                spDays = parent.getItemAtPosition(position).toString();
+                Item_days = parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -63,6 +69,56 @@ public class Add_Items extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void addItems() {
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
+
+        RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
+        Items items = new Items();
+        items.setItem_name(Item_name);
+        items.setItem_price(Item_price);
+        items.setItem_image(Item_image);
+        items.setDay(Item_days);
+        items.setDescription(Item_desc);
+        items.setService_id("1");
+        items.setSupllier_id("2");
+
+
+        ServerRequest request = new ServerRequest();
+        request.setOperation(Constants.ADD_ITEMS);
+        request.setItems(items);
+
+        Call<ServerResponce> resp = requestInterfacePart.operationone(request);
+
+        resp.enqueue(new Callback<ServerResponce>() {
+            @Override
+            public void onResponse(Call<ServerResponce> call, Response<ServerResponce> response) {
+                try {
+                    ServerResponce resp = response.body();
+                    Toast.makeText(Add_Items.this, "" + resp.getMessage(), Toast.LENGTH_LONG).show();
+                }
+                catch(Exception e){
+                    Toast.makeText(Add_Items.this, ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponce> call, Throwable t) {
+                Toast.makeText(Add_Items.this, "Connection Failure "+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+
+
+    private void getValues() {
+        Item_name = itemName.getText().toString();
+        Item_price = itemPrice.getText().toString();
+        Item_desc = itemDescription.getText().toString();
+        Item_image = "some.jpg";
     }
 
     public void initViewItems(){

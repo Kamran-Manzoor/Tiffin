@@ -76,12 +76,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void getEmail() {
         email= etEmail.getText().toString();
-        if (email.isEmpty()) {
-            etEmail.setError("Enter Email");
-        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (email.isEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             etEmail.setError("enter a valid email address");
         } else {
-            etEmail.setError(null);
+          //  etEmail.setError(null);
             Intent intent= new Intent(MainActivity.this, Password.class);
             startActivity(intent);
         }
