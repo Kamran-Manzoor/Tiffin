@@ -30,7 +30,9 @@ public class Activity_Detail extends AppCompatActivity {
 //        itemSMS= findViewById(R.id.action_sms);
 //        itemShare= findViewById(R.id.action_share);
 
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        ActionBar actionBar= getSupportActionBar();
+        actionBar.hide();
 
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.pageViewer);
