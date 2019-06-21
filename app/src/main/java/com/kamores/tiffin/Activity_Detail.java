@@ -1,19 +1,18 @@
 package com.kamores.tiffin;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.menu.MenuView;
-import android.view.View;
-import android.widget.ImageView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.kamores.tiffin.Fragment.FragmentDay;
 import com.kamores.tiffin.Fragment.FragmentWeek;
+
+import java.util.ArrayList;
 
 public class Activity_Detail extends AppCompatActivity {
     private TabLayout tabLayout;
@@ -24,11 +23,16 @@ public class Activity_Detail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity__detail );
+        setContentView( R.layout.activity_detail );
+
+//        initDayName();
 
 //        itemCall= findViewById(R.id.action_call);
 //        itemSMS= findViewById(R.id.action_sms);
 //        itemShare= findViewById(R.id.action_share);
+
+        ActionBar actionBar= getSupportActionBar();
+        actionBar.hide();
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -36,7 +40,7 @@ public class Activity_Detail extends AppCompatActivity {
         viewPager = findViewById(R.id.pageViewer);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        adapter.AddFragment(new FragmentDay(),"Day");
+        adapter.AddFragment(new FragmentDay(),"Current");
         adapter.AddFragment(new FragmentWeek(),"Week");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -61,8 +65,5 @@ public class Activity_Detail extends AppCompatActivity {
 //            }
 //        });
 
-
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.setElevation(0);
     }
 }

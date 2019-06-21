@@ -7,6 +7,6 @@ import retrofit2.http.POST;
 
 public interface RequestInterface {
     @POST("/Test.php")
-    //@POST("/TiffinApp/")
+    //@POST("/TiffinApp/Test.php")
     Call<ServerResponce> operation();
 }
