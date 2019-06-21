@@ -42,7 +42,7 @@ public class Add_Supplier extends AppCompatActivity {
         addSupplier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(Add_Supplier.this,BaseActivity.class);
+                Intent intent= new Intent(Add_Supplier.this, Add_Items.class);
                 startActivity(intent);
             }
         });

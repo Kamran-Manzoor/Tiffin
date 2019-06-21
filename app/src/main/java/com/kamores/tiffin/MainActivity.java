@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            startActivity(new Intent(MainActivity.this,ResultActivity.class));
+            startActivity(new Intent(MainActivity.this,Password.class));
 
         }
         catch (Exception e)
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null)
         {
-            startActivity(new Intent(MainActivity.this,ResultActivity.class));
+            startActivity(new Intent(MainActivity.this,Password.class));
         }
         super.onStart();
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parent_layout"
     android:layout_width="match_parent"
@@ -14,10 +15,10 @@
         android:layout_margin="4dp">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:weightSum="6"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="6">
 
             <ImageView
                 android:layout_width="0dp"
@@ -29,9 +30,8 @@
                 android:src="@drawable/logo" />
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:weightSum="3"
                 android:layout_gravity="center"
                 android:layout_weight="3"
                 android:orientation="vertical">
@@ -39,9 +39,7 @@
                 <TextView
                     android:id="@+id/tv_ServiceName_RecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:text="Service Name"
                     android:textSize="15sp" />
@@ -49,122 +47,25 @@
                 <TextView
                     android:id="@+id/tv_SupplierName_RecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
                     android:text="Supplier Name" />
 
                 <TextView
                     android:id="@+id/tv_SupplierLocation_RecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:textSize="10sp"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
                     android:text="Location" />
             </LinearLayout>
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_Details_RecyclerView"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_weight=".5"
-                android:background="@drawable/resource"
-                android:padding="5dp"
-                android:src="@drawable/icon" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow"
+                android:layout_gravity="center" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
-    <!--<android.support.v7.widget.CardView-->
-        <!--android:id="@+id/cardView_one"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:cardElevation="4dp"-->
-        <!--app:cardCornerRadius="5dp"-->
-        <!--android:layout_margin="4dp">-->
-
-        <!--<LinearLayout-->
-            <!--android:orientation="horizontal"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
-            <!--<LinearLayout-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:gravity="center"-->
-                <!--android:padding="10dp"-->
-                <!--android:orientation="vertical">-->
-
-                <!--<ImageView-->
-                    <!--android:layout_width="120dp"-->
-                    <!--android:layout_height="75dp"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:scaleType="fitXY"-->
-                    <!--android:src="@drawable/logo" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:weightSum="3"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:orientation="vertical">-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/textServiceName"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:layout_margin="5dp"-->
-                    <!--android:textStyle="bold"-->
-                    <!--android:text="Service Name"-->
-                    <!--android:textSize="15sp" />-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/textSupplierName"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:textSize="12sp"-->
-                    <!--android:layout_margin="5dp"-->
-                    <!--android:text="Supplier Name" />-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/price"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:layout_margin="5dp"-->
-                    <!--android:textSize="10sp"-->
-                    <!--android:text="Location" />-->
-                <!--<TextView-->
-                    <!--android:id="@+id/name"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:layout_margin="5dp"-->
-                    <!--android:textSize="10sp"-->
-                    <!--android:text="Item name" />-->
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="80dp"-->
-                <!--android:layout_gravity="center|left">-->
-                <!--<de.hdodenhof.circleimageview.CircleImageView-->
-                    <!--android:id="@+id/imageDetails"-->
-                    <!--android:layout_width="30dp"-->
-                    <!--android:layout_height="30dp"-->
-                    <!--android:layout_margin="20dp"-->
-                    <!--android:background="@drawable/farword"-->
-                    <!--/>-->
-
-            <!--</LinearLayout>-->
-
-        <!--</LinearLayout>-->
-    <!--</android.support.v7.widget.CardView>-->
 </RelativeLayout>

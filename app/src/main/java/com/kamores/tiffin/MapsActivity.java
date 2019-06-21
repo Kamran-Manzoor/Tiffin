@@ -36,6 +36,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LocationManager locationManager;
     LocationListener locationListener;
     LatLng userLocation;
+    String localAddress="";
+
     // client id LuUob4MsD1nV3RTvFM0w9o6R
 
 
@@ -58,6 +60,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        //userFineLocation();
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -106,23 +110,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
 
                 double[] supplyerLati,supplyerLongi;
-                supplyerLati = new double[] {30.258663,30.257188};
-                supplyerLongi = new double[] {71.490504,71.490048};
-                String[] title = new String[] {"Akmal Nahari","Seerat Broast"} ;
+                supplyerLati = new double[] {30.258663,30.257188,30.257111};
+                supplyerLongi = new double[] {71.490504,71.490048,71,490200};
+
+                String[] title = new String[] {"Akmal Nahari","Seerat Broast","Mahrul Seri Paya"} ;
 
 
 
-                for (int i =0; i<2;i++) {
+                for (int i =0; i<3;i++) {
                     LatLng supplyersLocations = new LatLng(supplyerLati[i], supplyerLongi[i]);
-
                     supMap.addMarker(new MarkerOptions().position(supplyersLocations).title(title[i])
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
-
-                    //mMap.addMarker(new MarkerOptions().position(supplyersLocations).title("Your Location"));
+        //            mMap.addMarker(new MarkerOptions().position(supplyersLocations).title("Your Location"));
 
                 }
-                float zoomLevel = (float) 16.0;
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, zoomLevel));
+
+                    float zoomLevel = (float) 16.0;
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, zoomLevel));
+
 
             }
 
@@ -179,7 +184,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 });
                 adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        userFineLocation();//finish();
+                        userFineLocation();
                     }
                 });
                 adb.show();
@@ -201,9 +206,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // IF USER OPENS MAP AGAIN NO NEED TO RELOAD MAP, lastknownLocation
             mMap.clear();
             LatLng userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 20));
-            Toast.makeText(this, "Location Manager/else condition", Toast.LENGTH_SHORT).show();
+            if (localAddress.equals("")) {
+                localAddress = userLocation.toString();
+                mMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 20));
+            }
         }
     }
 }
