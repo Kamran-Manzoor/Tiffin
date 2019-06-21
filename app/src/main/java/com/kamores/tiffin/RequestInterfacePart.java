@@ -5,6 +5,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface RequestInterfacePart {
-    @POST("/index.php")
+    @POST("TiffinApp/")
     Call<ServerResponce> operationone(@Body ServerRequest request);
 }

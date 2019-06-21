@@ -3,12 +3,13 @@ package com.kamores.tiffin;
 public class ServerResponce {
     private User user;
     private Suppliers suppliers;
+    private String message;
+    private String result;
+
 
     public Suppliers getSuppliers() {
         return suppliers;
     }
-
-    private String message;
 
     public String getMessage() {
         return message;
@@ -18,4 +19,7 @@ public class ServerResponce {
         return user;
     }
 
+    public String getResult() {
+        return result;
+    }
 }
