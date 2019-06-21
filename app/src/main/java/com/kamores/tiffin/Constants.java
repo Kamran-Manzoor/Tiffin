@@ -4,6 +4,8 @@ public class Constants {
     //public static final String RETRIEVE_ALL = "allCardDataItem";
     public static final String BASE_URL = "https://mytiffinapp.000webhostapp.com";
     //public static final String BASE_URL = "http://192.168.10.8:8080";
+    public static final String REGISTER_SERVICE ="addServices";
+    public static final String ADD_ITEMS ="addItems";
     public static final String SUCCESS ="sucess";
     public static final String FAILURE ="failure";
     public static final String IS_LOGED_IN ="isLoggedIn";

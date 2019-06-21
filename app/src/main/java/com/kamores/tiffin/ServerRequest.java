@@ -4,6 +4,16 @@ public class ServerRequest {
     private String operation;
     private String email;
     private User user;
+    Suppliers suppliers;
+    Items items;
+
+    public void setItems(Items items) {
+        this.items = items;
+    }
+
+    public void setSuppliers(Suppliers suppliers) {
+        this.suppliers = suppliers;
+    }
 
     public void setOperation(String operation) {
         this.operation = operation;

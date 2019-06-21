@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getEmail();
-                Intent intent= new Intent(MainActivity.this, Supplier_Information.class);
-                startActivity(intent);
             }
         });
         facebook.setOnClickListener(new View.OnClickListener() {
