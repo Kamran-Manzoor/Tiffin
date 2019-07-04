@@ -1,26 +1,23 @@
 package com.kamores.tiffin;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.net.Uri;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.tabs.TabLayout;
+
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.menu.MenuView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.view.menu.MenuView;
 
 import com.kamores.tiffin.Fragment.FragmentDay;
 import com.kamores.tiffin.Fragment.FragmentWeek;
-
-import java.util.ArrayList;
 
 public class Activity_Detail extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
+
+
     MenuView itemCall, itemSMS, itemShare;
 
     @Override
@@ -28,6 +25,17 @@ public class Activity_Detail extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_detail );
 
+//        FragmentDay fragmentDay = new FragmentDay();//Get Fragment Instance
+//        Bundle data = new Bundle();//Use bundle to pass data
+//        data.putString("data", "This is Argument Fragment");//put string, int, etc in bundle with a key value
+//        fragmentDay.setArguments(data);//Finally set argument bundle to fragment
+
+
+//            Bundle bundle = getIntent().getExtras();
+//            String id = bundle.getString("Supplier_id");
+//
+//            FragmentDay fragmentDay = new FragmentDay();
+//            fragmentDay.setArguments(bundle);
 //        initDayName();
 
 //        itemCall= findViewById(R.id.action_call);

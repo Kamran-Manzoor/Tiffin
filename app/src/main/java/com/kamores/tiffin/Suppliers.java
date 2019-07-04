@@ -1,5 +1,7 @@
 package com.kamores.tiffin;
 
+import java.util.ArrayList;
+
 public class Suppliers {
     String service_name;
     String day;
@@ -9,6 +11,20 @@ public class Suppliers {
     String supplier_location;
     String user_id;
     String supplier_id;
+    ArrayList<String> item_name;
+    ArrayList<String> item_price;
+
+    public String getSupplier_contact() {
+        return supplier_contact;
+    }
+
+    public ArrayList<String> getItem_name() {
+        return item_name;
+    }
+
+    public ArrayList<String> getItem_price() {
+        return item_price;
+    }
 
     public void setDay(String day) {
         this.day = day;

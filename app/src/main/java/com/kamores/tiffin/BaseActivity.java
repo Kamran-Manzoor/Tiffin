@@ -1,26 +1,25 @@
 package com.kamores.tiffin;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
+import androidx.core.view.MenuItemCompat;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
-import android.support.v4.view.GravityCompat;
-import android.support.v7.app.ActionBarDrawerToggle;
+import androidx.core.view.GravityCompat;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
+import com.google.android.material.navigation.NavigationView;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,9 +46,11 @@ public class BaseActivity extends AppCompatActivity
     ArrayList<String> service_name;
     ArrayList<String> sup_name;
     ArrayList<String> location;
+    ArrayList<String> sup_id;
 
     ProgressDialog progressDialog;
     SwipeRefreshLayout refresh;
+
 
 
     @Override
@@ -165,6 +166,8 @@ public class BaseActivity extends AppCompatActivity
             startActivity( intent );
         } else if (id == R.id.nav_Save_Location) {
         } else if (id == R.id.nav_show_In_Map) {
+            Intent i = new Intent(BaseActivity.this,MapsActivity.class);
+            startActivity(i);
         }
         DrawerLayout drawer = findViewById( R.id.drawer_layout );
         drawer.closeDrawer( GravityCompat.START );
@@ -191,11 +194,12 @@ public class BaseActivity extends AppCompatActivity
                     sup_name = user.getSup_name();
                     service_name = user.getService_name();
                     location = user.getLocation();
-//                    progressDialog.dismiss();
+                    sup_id = user.getSupplier_id();
+                    //progressDialog.dismiss();
 
                     modelClasses = new ArrayList<>();
                     for (int i = 0; i < location.size(); i++) {
-                        modelClasses.add( new ModelClass( sup_name.get( i ),service_name.get( i ) ,location.get( i )));
+                        modelClasses.add( new ModelClass( sup_name.get( i ),service_name.get( i ) ,location.get( i ),sup_id.get( i )));
                     }
                     setUpRecyclerView();
 
