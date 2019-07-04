@@ -1,211 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-    <android.support.design.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity"
-        android:background="#fcfcfc">
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="0dp"
+    tools:context=".MainActivity"
+    android:background="#fcfcfc">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         tools:ignore="MissingConstraints">
+
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingtoolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_scrollFlags="exitUntilCollapsed|scroll"
+            android:background="@drawable/fo1"
             app:contentScrim="?attr/colorPrimary"
-
-            app:expandedTitleMarginStart="48dp"
             app:expandedTitleMarginEnd="64dp"
-            android:background="@drawable/fo1">
+            app:expandedTitleMarginStart="48dp"
+            app:layout_scrollFlags="exitUntilCollapsed|scroll">
 
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbarid"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:layout_collapseMode="pin"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize">
-            </android.support.v7.widget.Toolbar>
-
-
+            <!--<android.support.v7.widget.Toolbar-->
+            <!--android:id="@+id/toolbarid"-->
+            <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+            <!--app:layout_collapseMode="pin"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="?attr/actionBarSize">-->
+            <!--</android.support.v7.widget.Toolbar>-->
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="337dp"
-        >
+        android:layout_height="372dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-
-        <!--<de.hdodenhof.circleimageview.CircleImageView-->
-        <!--android:id="@+id/to_showimage"-->
-        <!--android:layout_width="112dp"-->
-        <!--android:layout_height="57dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:background="@color/colorPrimaryDark"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.496"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="0.120000005" />-->
         <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:orientation="vertical"
+            tools:ignore="RedundantNamespace"
             tools:layout_editor_absoluteY="81dp">
-
 
             <TextView
                 android:id="@+id/to_showname"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="390dp"
+                android:layout_height="33dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="156dp"
                 android:gravity="center"
                 android:hint="Supplier Name"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 tools:ignore="MissingConstraints" />
 
             <TextView
-                android:id="@+id/to_showitem"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:id="@+id/to_servicec"
+                android:layout_width="390dp"
+                android:layout_height="34dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:gravity="center"
                 android:hint="ItemName"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/to_showname"
-                app:layout_constraintVertical_bias="0.13999999" />
+                app:layout_constraintVertical_bias="0.083" />
 
             <TextView
                 android:id="@+id/to_showlocation"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="397dp"
+                android:layout_height="39dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:gravity="center"
                 android:hint="Show Location"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/to_showitem"
-                app:layout_constraintVertical_bias="0.17000002" />
+                app:layout_constraintTop_toTopOf="@+id/to_servicec"
+                app:layout_constraintVertical_bias="0.098" />
 
-            <TextView
-                android:layout_width="163dp"
-                android:layout_height="34dp"
+            <LinearLayout
+                android:id="@+id/linearLayout7"
+                android:layout_width="402dp"
+                android:layout_height="45dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="72dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_weight="1.5"
-                android:orientation="horizontal"
-                android:text="Item"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/listView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.146"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/to_showlocation"
-                app:layout_constraintVertical_bias="0.0"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:layout_width="157dp"
-                android:layout_height="35dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_weight="1.5"
-                android:orientation="horizontal"
-                android:text="Price:"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/to_showlocation"
-                app:layout_constraintHorizontal_bias="0.966"
-                app:layout_constraintStart_toStartOf="@+id/to_showlocation"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.77"
-                tools:ignore="MissingConstraints" />
-
-            <!--<RelativeLayout-->
-            <!--android:layout_width="404dp"-->
-            <!--android:layout_height="56dp"-->
-            <!--android:layout_marginTop="56dp"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:weightSum="3"-->
-            <!--app:layout_constraintTop_toTopOf="@+id/to_showlocation"-->
-            <!--tools:ignore="MissingConstraints,UnknownId"-->
-            <!--tools:layout_editor_absoluteX="3dp">-->
-
-            <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="10dp"-->
-            <!--android:layout_weight="1.5"-->
-            <!--android:text="Item"-->
-            <!--android:textColor="@color/colorPrimaryDark"-->
-            <!--android:textSize="20sp" />-->
-
-            <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1.5"-->
-            <!--android:text="Price:"-->
-            <!--android:textColor="@color/colorPrimaryDark"-->
-            <!--android:textSize="20sp" />-->
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.333"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/to_showlocation">
 
 
-            <!--</RelativeLayout>-->
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="163dp"
+                    android:layout_height="34dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="160dp"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal"
+                    android:text="Item"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/listView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.768"
+                    tools:ignore="MissingConstraints" />
 
+                <TextView
+                    android:layout_width="157dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal"
+                    android:text="Price:"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/to_showlocation"
+                    app:layout_constraintHorizontal_bias="0.935"
+                    app:layout_constraintStart_toStartOf="@+id/to_showlocation"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.363"
+                    tools:ignore="MissingConstraints" />
+            </LinearLayout>
 
             <ListView
                 android:id="@+id/listView"
-                android:layout_width="400dp"
-                android:layout_height="36dp"
+                android:layout_width="412dp"
+                android:layout_height="193dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.8"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
-                tools:ignore="InvalidId"></ListView>
-
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout7"/>
 
         </android.support.constraint.ConstraintLayout>
     </android.support.v4.widget.NestedScrollView>

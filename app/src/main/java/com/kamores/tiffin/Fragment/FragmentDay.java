@@ -27,7 +27,7 @@ public class FragmentDay extends Fragment {
         view = inflater.inflate( R.layout.day_fragment,container,false);
 //        imageView = view.findViewById(R.id.to_showimage);
         to_name = view.findViewById(R.id.to_showname);
-        to_item = view.findViewById(R.id.to_showitem);
+        to_item = view.findViewById(R.id.to_servicec);
         to_Location = view.findViewById(R.id.to_showlocation);
         list_View = view.findViewById(R.id.listView);
 

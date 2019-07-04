@@ -14,19 +14,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> implements Filterable {
     private Context mContext;
     private List<ModelClass> modelClasses;
     private List<ModelClass> modelClassList;
 
-
     public AdapterClass(List<ModelClass> modelClasses, Context context) {
         this.mContext = context;
         this.modelClasses = modelClasses;
         this.modelClassList = new ArrayList<>();
-
     }
 
     @Override
@@ -38,8 +35,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final ModelClass currentItem = modelClasses.get(position);
-        //holder.img_food.setImageResource(currentItem.getImage_food());
-        //holder.imgDetail.setImageResource(currentItem.getImage_detail());
         holder.tv_ServiceName.setText(currentItem.getService_name());
         holder.tv_SupplierName.setText(currentItem.getSup_name());
         holder.tv_Location.setText(currentItem.getLocation());
@@ -47,9 +42,13 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         holder.details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( mContext, Activity_Detail.class );
-                mContext.startActivity(intent);
+//                Intent intent = new Intent(mContext, Activity_Detail.class);
+//                mContext.startActivity(intent);
+                Intent i = new Intent().setClass(mContext, Activity_Detail.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
 
+// Launch the new activity and add the additional flags to the intent
+                mContext.getApplicationContext().startActivity(i);
             }
         });
     }
@@ -63,8 +62,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         ImageView details;
         public ViewHolder(View itemView) {
             super(itemView);
-            //img_food= itemView.findViewById(R.id.img_Food_RecyclerView);
-            //imgDetail= itemView.findViewById(R.id.img_Details_RecyclerView);
             tv_ServiceName= itemView.findViewById(R.id.tv_ServiceName_RecyclerView);
             tv_SupplierName= itemView.findViewById(R.id.tv_SupplierName_RecyclerView);
             tv_Location = itemView.findViewById(R.id.tv_SupplierLocation_RecyclerView);
