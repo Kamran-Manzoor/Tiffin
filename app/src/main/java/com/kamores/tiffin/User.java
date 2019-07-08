@@ -7,6 +7,13 @@ public class User {
     ArrayList<String> sup_name;
     ArrayList<String> location;
 
+    public ArrayList<String> getSupplier_id() {
+        return supplier_id;
+    }
+
+    ArrayList<String> supplier_id
+            ;
+
     public ArrayList<String> getService_name() {
         return service_name;
     }

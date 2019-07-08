@@ -48,8 +48,9 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         holder.details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( mContext, Activity_Detail.class );
-                mContext.startActivity(intent);
+                Intent i = new Intent().setClass(mContext, Activity_Detail.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                mContext.getApplicationContext().startActivity(i);
 
             }
         });
