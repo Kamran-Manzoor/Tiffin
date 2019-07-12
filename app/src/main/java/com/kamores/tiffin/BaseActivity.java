@@ -1,28 +1,35 @@
 package com.kamores.tiffin;
 
 import android.app.ProgressDialog;
-import android.content.Context;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
-import android.support.v4.view.GravityCompat;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.view.MenuItem;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
 
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+
 import android.widget.TextView;
 import android.widget.Toast;
+
+
+
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.core.view.MenuItemCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +54,7 @@ public class BaseActivity extends AppCompatActivity
     ArrayList<String> service_name;
     ArrayList<String> sup_name;
     ArrayList<String> location;
-    ArrayList<String> supplier_id;
+    ArrayList<String> sup_id;
 
     ProgressDialog progressDialog;
     SwipeRefreshLayout refresh;
@@ -194,12 +201,12 @@ public class BaseActivity extends AppCompatActivity
                     sup_name = user.getSup_name();
                     service_name = user.getService_name();
                     location = user.getLocation();
-                    supplier_id =user.getSupplier_id();
-                   // progressDialog.dismiss();
+                    sup_id = user.getSupplier_id();
+                    //progressDialog.dismiss();
 
                     modelClasses = new ArrayList<>();
                     for (int i = 0; i < location.size(); i++) {
-                        modelClasses.add( new ModelClass( sup_name.get( i ),service_name.get( i ) ,location.get( i ), supplier_id.get(i)));
+                        modelClasses.add( new ModelClass( sup_name.get( i ),service_name.get( i ) ,location.get( i ),sup_id.get( i )));
                     }
                     setUpRecyclerView();
 

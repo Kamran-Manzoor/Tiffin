@@ -2,29 +2,99 @@ package com.kamores.tiffin.Fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.kamores.tiffin.Constants;
+import com.kamores.tiffin.CustomeAdapterItems;
+import com.kamores.tiffin.ModelClass;
 import com.kamores.tiffin.R;
+import com.kamores.tiffin.RequestInterfacePart;
+import com.kamores.tiffin.ServerRequest;
+import com.kamores.tiffin.ServerResponce;
+import com.kamores.tiffin.Suppliers;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FragmentDay extends Fragment {
-    //    ImageView imageView;
-    TextView to_name, to_item, to_Location;
-    ListView list_View;
+
+    TextView to_name, to_service, to_Location;
+    RecyclerView recyclerView;
+    CustomeAdapterItems adapter;
+
     View view;
 
+    private List<ModelClass> modelClasses;
+    ArrayList<String> item_name;
+    ArrayList<String> item_price;
 
 
     public FragmentDay() {
+
+    }
+
+    private void getDataSupplier() {
+
+        Retrofit retrofit = new Retrofit.Builder().baseUrl( Constants.BASE_URL ).addConverterFactory( GsonConverterFactory.create() ).build();
+        RequestInterfacePart requestInterfacePart = retrofit.create( RequestInterfacePart.class );
+
+        Suppliers suppliers = new Suppliers();
+        suppliers.setSupplier_id("2");
+
+        ServerRequest request = new ServerRequest();
+        request.setOperation(Constants.RETRIVE_DETAIL);
+        request.setSuppliers(suppliers);
+
+
+
+        Call<ServerResponce> response = requestInterfacePart.operationone(request);
+
+        response.enqueue( new Callback<ServerResponce>() {
+            Suppliers suppliers;
+            @Override
+            public void onResponse(Call<ServerResponce> call, Response<ServerResponce> response) {
+                try {
+                    ServerResponce resp = response.body();
+                    suppliers = resp.getSuppliers();
+                    String Sup_name = suppliers.getSupplier_name();
+                    String Ser_name = suppliers.getService_name();
+                    String Location = suppliers.getSupplier_location();
+                    String Contact_no = suppliers.getSupplier_contact();
+
+                    to_name.setText(Sup_name);
+                    to_service.setText(Ser_name);
+                    to_Location.setText(Location);
+                    Toast.makeText(getContext(), ""+Contact_no, Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText( getContext(), "Exception : " + e.getLocalizedMessage(), Toast.LENGTH_SHORT ).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponce> call, Throwable t) {
+                Toast.makeText( getContext(), "Connection Failure " + t.getLocalizedMessage(), Toast.LENGTH_SHORT ).show();
+            }
+        } );
     }
 
     @Nullable
@@ -33,55 +103,117 @@ public class FragmentDay extends Fragment {
         view = inflater.inflate(R.layout.day_fragment, container, false);
 //        imageView = view.findViewById(R.id.to_showimage);
         to_name = view.findViewById(R.id.to_showname);
-        to_item = view.findViewById(R.id.to_servicec);
+        to_service = view.findViewById(R.id.to_service);
         to_Location = view.findViewById(R.id.to_showlocation);
-        list_View = view.findViewById(R.id.listView);
+        recyclerView = view.findViewById(R.id.recycler_view_day);
 
-        CustomAdapter customAdapter = new CustomAdapter();
-        list_View.setAdapter(customAdapter);
-        Toast.makeText(getContext(), "Fragment", Toast.LENGTH_SHORT).show();
-
+        getDataSupplier();
+        String day = getDay();
+        getDataItems(day);
         return view;
     }
-    class CustomAdapter extends BaseAdapter {
 
 
-        @Override
-        public int getCount() {
-            return 0;
+
+        public void getDataItems(String day) {
+            Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
+            RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
+
+            Suppliers suppliers = new Suppliers();
+            suppliers.setSupplier_id("2");
+            suppliers.setDay(day);
+
+            ServerRequest request = new ServerRequest();
+            request.setOperation(Constants.RETRIVE_ITEMS);
+            request.setSuppliers(suppliers);
+
+
+            Call<ServerResponce> response = requestInterfacePart.operationone(request);
+
+            response.enqueue(new Callback<ServerResponce>() {
+                Suppliers suppliers;
+
+                @Override
+                public void onResponse(Call<ServerResponce> call, Response<ServerResponce> response) {
+                    try {
+                        ServerResponce resp = response.body();
+                        suppliers = resp.getSuppliers();
+                        item_name =suppliers.getItem_name();
+                        item_price = suppliers.getItem_price();
+
+                        modelClasses = new ArrayList<>();
+                        for (int i = 0; i < item_price.size(); i++) {
+                            modelClasses.add( new ModelClass( item_name.get( i ),item_price.get( i )));
+                        }
+                        setUpRecyclerView();
+
+                    } catch (Exception e) {
+                        Toast.makeText(getContext(), "Exception : " + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ServerResponce> call, Throwable t) {
+                    Toast.makeText(getContext(), "Connection Failure " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
-        @Override
-        public Object getItem(int i) {
-            return null;
+    public void setUpRecyclerView() {
+        recyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+
+        if (modelClasses == null){
+            Toast.makeText( getContext(), "Null", Toast.LENGTH_SHORT ).show();
+        }
+        else {
+            adapter = new CustomeAdapterItems(modelClasses,getContext());
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
         }
 
-        @Override
-        public long getItemId(int i) {
-            return 0;
-        }
+    }
 
-        @SuppressLint({"ViewHolder", "InflateParams"})
-        @Override
-        public View getView(int i, View views, ViewGroup viewGroup) {
-            views = getLayoutInflater().inflate(R.layout.customlayout, null);
-
-            TextView textView_name = views.findViewById(R.id.textView_name);
-            TextView textView_description = views.findViewById(R.id.textView_description);
-            String[] NAMES = {"Pakistan", "Australia", "England", "Russia", "USA", "Brazil", "China",
-                    "Germany", "Italy", "NewZeland", "India"};
-            String[] DESCRIPTION = {"22 Million", "40 Million", "70 Million", "75 Million", "29.32 Million",
-                    "2 Billion", "2 Billion", "89 Million", "94 Million", "88 Million", "1 Billion"};
-
-                textView_name.setText(NAMES[i]);
-            textView_description.setText(DESCRIPTION[i]);
-
-            Toast.makeText(getContext(), "all okay", Toast.LENGTH_SHORT).show();
-            return views;
+    private String getDay() {
+            Calendar calendar;
+            String currentDay = "";
+            calendar = Calendar.getInstance();
+            int day = calendar.get(Calendar.DAY_OF_WEEK);
+            switch (day) {
+                case Calendar.SUNDAY:
+                    currentDay = "Sunday";
+                    //Toast.makeText(this, "SUNDAY", Toast.LENGTH_SHORT).show();
+                    break;
+                case Calendar.MONDAY:
+                    currentDay = "Monday";
+                    //Toast.makeText(this, "MONDAY", Toast.LENGTH_SHORT).show();
+                    break;
+                case Calendar.TUESDAY:
+                    currentDay = "Tuesday";
+                    //Toast.makeText(this, "TUESDAY", Toast.LENGTH_SHORT).show();
+                    break;
+                case Calendar.WEDNESDAY:
+                    currentDay = "Wednesday";
+                    //Toast.makeText(this, "WEDNESDAY", Toast.LENGTH_SHORT).show();
+                    break;
+                case Calendar.THURSDAY:
+                    currentDay = "Thursday";
+                    //Toast.makeText(this, "THURSDAY", Toast.LENGTH_SHORT).show();
+                    break;
+                case Calendar.FRIDAY:
+                    currentDay = "Friday";
+                    //Toast.makeText(this, "FRIDAY", Toast.LENGTH_SHORT).show();
+                    break;
+                case Calendar.SATURDAY:
+                    currentDay = "Saturday";
+                    // Toast.makeText(this, "SATURDAY", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+            return currentDay;
         }
     }
 
-}
+
 
 
 
