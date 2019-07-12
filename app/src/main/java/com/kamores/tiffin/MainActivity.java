@@ -21,7 +21,6 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity {
-    // 1060189699412-qd99af58up2oqk2ct1jpukilctjc6g06.apps.googleusercontent.com
     ImageView next, facebook;
     EditText etEmail;
     String email;
@@ -63,14 +62,12 @@ public class MainActivity extends AppCompatActivity {
                 signIn();
             }
         });
-
     }
 
     public void initViews() {
         etEmail = findViewById(R.id.et_email);
         next = findViewById(R.id.img_Next);
         facebook = findViewById(R.id.img_Facebook);
-
     }
 
     public void getEmail() {
@@ -84,24 +81,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void signIn()
-    {
+    private void signIn() {
 //        Intent intent =  mGoogleSignInClient.getSignInIntent();
         Intent intent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(intent,REQ_CODE);
     }
-    private void handleResult(GoogleSignInResult result)
-    {
+    private void handleResult(GoogleSignInResult result) {
 
     }
-    private void updateUI(boolean isLogin)
-    {
+    private void updateUI(boolean isLogin) {
 
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
 
         // FOR GOOGLE LOGIN
         if (requestCode == REQ_CODE)
@@ -110,15 +103,13 @@ public class MainActivity extends AppCompatActivity {
             handleSignInResult(task);
         }
     }
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask)
-    {
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             startActivity(new Intent(MainActivity.this,Password.class));
 
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             Toast.makeText(this, "Failed'", Toast.LENGTH_SHORT).show();
         }
     }

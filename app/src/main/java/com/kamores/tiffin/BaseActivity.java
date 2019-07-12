@@ -1,17 +1,25 @@
 package com.kamores.tiffin;
 
 import android.app.ProgressDialog;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-
+import androidx.core.view.MenuItemCompat;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
-
+import androidx.core.view.GravityCompat;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
+import com.google.android.material.navigation.NavigationView;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,6 +66,7 @@ public class BaseActivity extends AppCompatActivity
 
     ProgressDialog progressDialog;
     SwipeRefreshLayout refresh;
+
 
 
     @Override

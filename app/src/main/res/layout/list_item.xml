@@ -10,71 +10,60 @@
         android:id="@+id/cardView_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
+        app:cardElevation="4dp"
         app:cardCornerRadius="5dp"
-        app:cardElevation="4dp">
+        android:layout_margin="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/cardview_shape"
             android:orientation="horizontal"
-            android:layout_margin="2dp"
-            android:elevation="10dp"
             android:weightSum="6">
-
-
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="85dp"
-                android:layout_gravity="center"
                 android:layout_weight="2.5"
                 android:padding="5dp"
-                android:elevation="10dp"
+                android:layout_gravity="center"
                 android:scaleType="fitXY"
-                android:src="@drawable/images21" />
+                android:src="@drawable/logo" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="3"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_ServiceName_RecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:text="Service Name"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/tv_SupplierName_RecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Supplier Name"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:text="Supplier Name" />
 
                 <TextView
                     android:id="@+id/tv_SupplierLocation_RecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Location"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:text="Location" />
             </LinearLayout>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/arrow" />
+                android:src="@drawable/arrow"
+                android:layout_gravity="center" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
