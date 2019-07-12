@@ -36,7 +36,6 @@ public class AdapterClass_For_Week extends RecyclerView.Adapter<AdapterClass_For
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.showDays.setText(mNames.get(position));
-
         holder.showDays.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -11,14 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kamores.tiffin.Fragment.FragmentDay;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> implements Filterable {
     private Context mContext;
@@ -48,7 +47,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         holder.tv_SupplierName.setText(currentItem.getSup_name());
         holder.tv_Location.setText(currentItem.getLocation());
 
-        holder.details.setOnClickListener(new View.OnClickListener() {
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent().setClass(mContext,Activity_Detail.class);
@@ -66,13 +65,13 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView tv_ServiceName, tv_SupplierName,tv_Location;
         ImageView details;
+        CardView cardView;
         public ViewHolder(View itemView) {
             super(itemView);
-            //img_food= itemView.findViewById(R.id.img_Food_RecyclerView);
-            //imgDetail= itemView.findViewById(R.id.img_Details_RecyclerView);
             tv_ServiceName= itemView.findViewById(R.id.tv_ServiceName_RecyclerView);
             tv_SupplierName= itemView.findViewById(R.id.tv_SupplierName_RecyclerView);
             tv_Location = itemView.findViewById(R.id.tv_SupplierLocation_RecyclerView);
+            cardView= itemView.findViewById(R.id.cardView);
             details = itemView.findViewById(R.id.btn_see_details);
         }
     }

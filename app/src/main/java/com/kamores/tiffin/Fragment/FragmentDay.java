@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,7 +42,6 @@ public class FragmentDay extends Fragment {
     ArrayList<String> item_name;
     ArrayList<String> item_price;
 
-
     public FragmentDay() {
 
     }
@@ -60,7 +57,6 @@ public class FragmentDay extends Fragment {
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.RETRIVE_DETAIL);
         request.setSuppliers(suppliers);
-
 
 
         Call<ServerResponce> response = requestInterfacePart.operationone(request);
@@ -122,7 +118,6 @@ public class FragmentDay extends Fragment {
             request.setOperation(Constants.RETRIVE_ITEMS);
             request.setSuppliers(suppliers);
 
-
             Call<ServerResponce> response = requestInterfacePart.operationone(request);
 
             response.enqueue(new Callback<ServerResponce>() {
@@ -166,7 +161,6 @@ public class FragmentDay extends Fragment {
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setAdapter(adapter);
         }
-
     }
 
     private String getDay() {
@@ -207,7 +201,3 @@ public class FragmentDay extends Fragment {
             return currentDay;
         }
     }
-
-
-
-
