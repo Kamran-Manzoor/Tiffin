@@ -10,6 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#B54E363A"
         android:theme="@style/AppTheme.AppBarOverlay">
 
 
@@ -17,18 +18,16 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="#B54E363A"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <TextView
                 android:id="@+id/text_SignIn_Main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign In"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textColor="#fff"
-                android:layout_gravity="center" />
+                android:layout_marginLeft="230dp"
+                android:background="@drawable/ic_person_black_24dp"
+                android:gravity="end" />
 
         </androidx.appcompat.widget.Toolbar>
 

@@ -2,11 +2,13 @@ package com.kamores.tiffin;
 
 import android.content.Context;
 
-import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -45,9 +47,8 @@ public class CustomeAdapterItems extends RecyclerView.Adapter<CustomeAdapterItem
         TextView tv_Item_name, tv_item_price;
         public ViewHolder(View itemView) {
             super(itemView);
-            tv_Item_name= itemView.findViewById(R.id.textView_item_name);
-            tv_item_price= itemView.findViewById(R.id.textView_item_price);
+            tv_Item_name= itemView.findViewById(R.id.tvItemNameDays);
+            tv_item_price= itemView.findViewById(R.id.tvItemPriceDays);
         }
     }
-
 }

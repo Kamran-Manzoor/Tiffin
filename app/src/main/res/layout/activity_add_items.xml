@@ -82,12 +82,13 @@
 
     <Button
         android:id="@+id/btn_Add_Items"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="217dp"
+        android:layout_height="49dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/shaded_view"
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,13 +112,14 @@
 
     <Button
         android:id="@+id/btn_choose_items"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="217dp"
+        android:layout_height="45dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         android:text="Choose Image"
+        android:background="#B54E363A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

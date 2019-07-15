@@ -11,6 +11,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.view.menu.MenuView;
 
@@ -56,11 +60,8 @@ public class Activity_Detail extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-
-        
-
 //        // coed for Call Button
-//        itemCall.setOnClickListener(new View.OnClickListener() {
+//        imageCall.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                Intent intent = new Intent(Intent.ACTION_DIAL);

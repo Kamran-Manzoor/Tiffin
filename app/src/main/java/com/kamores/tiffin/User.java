@@ -17,6 +17,9 @@ public class User {
         return supplier_id;
     }
 
+
+
+
     public ArrayList<String> getService_name() {
         return service_name;
     }

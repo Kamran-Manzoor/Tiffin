@@ -2,9 +2,6 @@ package com.kamores.tiffin;
 
 import android.content.Context;
 import android.content.Intent;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +9,18 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+
+import androidx.cardview.widget.CardView;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.kamores.tiffin.Fragment.FragmentDay;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> implements Filterable {
     private Context mContext;
@@ -47,7 +50,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         holder.tv_SupplierName.setText(currentItem.getSup_name());
         holder.tv_Location.setText(currentItem.getLocation());
 
-        holder.details.setOnClickListener(new View.OnClickListener() {
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent().setClass(mContext,Activity_Detail.class);
@@ -67,6 +70,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView tv_ServiceName, tv_SupplierName,tv_Location;
         ImageView details;
+        CardView cardView;
         public ViewHolder(View itemView) {
             super(itemView);
             //img_food= itemView.findViewById(R.id.img_Food_RecyclerView);
@@ -74,6 +78,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
             tv_ServiceName= itemView.findViewById(R.id.tv_ServiceName_RecyclerView);
             tv_SupplierName= itemView.findViewById(R.id.tv_SupplierName_RecyclerView);
             tv_Location = itemView.findViewById(R.id.tv_SupplierLocation_RecyclerView);
+            cardView= itemView.findViewById(R.id.cardView);
             details = itemView.findViewById(R.id.btn_see_details);
         }
     }
@@ -87,22 +92,19 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             List<ModelClass> filteredList = new ArrayList<>();
-
-                if (constraint == null || constraint.length() == 0){
-                    filteredList.addAll(modelClassList);
-                }else {
-                    String filterPattern = constraint.toString().toLowerCase().trim();
-                    for (ModelClass item : modelClassList){
-                        if (item.getService_name().toLowerCase().contains(filterPattern) ||
-                                item.getSup_name().toLowerCase().contains(filterPattern) ||
-                                item.getLocation().toLowerCase().contains(filterPattern)){
-                            filteredList.add(item);
-                        }
+            if (constraint == null || constraint.length() == 0){
+                filteredList.addAll(modelClassList);
+            }else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (ModelClass item : modelClassList){
+                    if (item.getService_name().toLowerCase().contains(filterPattern) ||
+                            item.getSup_name().toLowerCase().contains(filterPattern) ||
+                            item.getLocation().toLowerCase().contains(filterPattern)){
+                        filteredList.add(item);
                     }
                 }
-
+            }
             FilterResults results= new FilterResults();
-
             results.values= filteredList;
             return results;
         }
