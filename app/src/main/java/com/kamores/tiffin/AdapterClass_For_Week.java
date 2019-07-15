@@ -2,7 +2,11 @@ package com.kamores.tiffin;
 
 import android.content.Context;
 import android.content.Intent;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,13 +40,6 @@ public class AdapterClass_For_Week extends RecyclerView.Adapter<AdapterClass_For
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.showDays.setText(mNames.get(position));
-        holder.showDays.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, Activity_Detail.class);
-                mContext.startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -60,8 +57,17 @@ public class AdapterClass_For_Week extends RecyclerView.Adapter<AdapterClass_For
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(mContext,Activity_Detail.class);
-            mContext.startActivity(intent);
+            String Day = mNames.get(getAdapterPosition());
+//            Intent intent = new Intent(mContext,Activity_Detail.class);
+////            intent.putExtra("Selected_Day",Day);
+//            mContext.startActivity(intent);
+            Intent i = new Intent().setClass(mContext,Activity_Detail.class);
+            i.putExtra("Day",Day);
+            //Toast.makeText(mContext, ""+Activity_Detail.Sup_id, Toast.LENGTH_SHORT).show();
+            i.putExtra("Supplier_id",Activity_Detail.Sup_id);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+            mContext.getApplicationContext().startActivity(i);
+
         }
     }
 }

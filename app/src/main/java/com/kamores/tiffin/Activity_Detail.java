@@ -12,8 +12,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.view.menu.MenuView;
 
@@ -29,25 +32,20 @@ public class Activity_Detail extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
+    Bundle bundle;
+    public static String Sup_id,Day,Sup_contact;
 
     ImageView imageCall, imageSMS, imageShare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView(R.layout.activity_detail);
+        setContentView( R.layout.activity_detail );
 
-//        FragmentDay fragmentDay = new FragmentDay();//Get Fragment Instance
-//        Bundle data = new Bundle();//Use bundle to pass data
-//        data.putString("data", "This is Argument Fragment");//put string, int, etc in bundle with a key value
-//        fragmentDay.setArguments(data);//Finally set argument bundle to fragment
-
-
-//            Bundle bundle = getIntent().getExtras();
-//            String id = bundle.getString("Supplier_id");
-//
-//            FragmentDay fragmentDay = new FragmentDay();
-//            fragmentDay.setArguments(bundle);
+        bundle = getIntent().getExtras();
+        Sup_contact = bundle.getString("Contact_info");
+        Sup_id = bundle.getString("Supplier_id");
+        Day = bundle.getString("Day");
 //        initDayName();
 
         imageCall= findViewById(R.id.image_call);
@@ -103,5 +101,9 @@ public class Activity_Detail extends AppCompatActivity {
                 startActivity(createChooser(sharingIntent, "Share using"));
             }
         });
+    }
+
+    public String getMyData() {
+        return Sup_id;
     }
 }

@@ -11,11 +11,20 @@ public class Suppliers {
     String supplier_location;
     String user_id;
     String supplier_id;
+    String service_id;
     ArrayList<String> item_name;
     ArrayList<String> item_price;
 
     public String getSupplier_contact() {
         return supplier_contact;
+    }
+
+    public String getService_id() {
+        return service_id;
+    }
+
+    public String getSupplier_id() {
+        return supplier_id;
     }
 
     public ArrayList<String> getItem_name() {

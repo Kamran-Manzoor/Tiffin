@@ -8,6 +8,7 @@ public class ModelClass {
     public String service_name;
     public String location;
     public String supplier_id;
+    public String sup_contact;
 
     public String item_name;
     public String item_price;
@@ -25,11 +26,12 @@ public class ModelClass {
         return item_price;
     }
 
-    public ModelClass(String sup_name, String service_name, String location, String supplier_id) {
+    public ModelClass(String sup_name, String service_name, String location, String supplier_id, String sup_contact) {
         this.sup_name = sup_name;
         this.service_name = service_name;
         this.location = location;
         this.supplier_id = supplier_id;
+        this.sup_contact = sup_contact;
     }
 
     public String getSup_name() {
@@ -46,5 +48,9 @@ public class ModelClass {
 
     public String getSupplier_id() {
         return supplier_id;
+    }
+
+    public String getSup_contact() {
+        return sup_contact;
     }
 }

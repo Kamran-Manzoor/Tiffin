@@ -35,8 +35,10 @@ public class Add_Items extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_items );
 
+//        Toast.makeText(this, ""+Add_Supplier.Service_id, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, ""+Add_Supplier.Supplier_id, Toast.LENGTH_SHORT).show();
         initViewItems();
-        getValues();
+
 
 //        btnChooseImage.setOnClickListener( new View.OnClickListener() {
 //            @Override
@@ -49,6 +51,7 @@ public class Add_Items extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //addSuppliers();
+                getValues();
                 addItems();
 //                Intent intent = new Intent(Add_Items.this,BaseActivity.class);
 //                startActivity(intent);
@@ -76,13 +79,22 @@ public class Add_Items extends AppCompatActivity {
 
         RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
         Items items = new Items();
+
+//        items.setItem_name("56");
+//        items.setItem_price("89");
+//        items.setItem_image("89");
+//        items.setDay("56");
+//        items.setDescription("55");
+//        items.setService_id("3");
+//        items.setSupllier_id("2");
+
         items.setItem_name(Item_name);
         items.setItem_price(Item_price);
         items.setItem_image(Item_image);
         items.setDay(Item_days);
         items.setDescription(Item_desc);
-        items.setService_id("1");
-        items.setSupllier_id("2");
+        items.setService_id(Add_Supplier.Service_id);
+        items.setSupllier_id(Add_Supplier.Supplier_id);
 
 
         ServerRequest request = new ServerRequest();
@@ -97,6 +109,7 @@ public class Add_Items extends AppCompatActivity {
                 try {
                     ServerResponce resp = response.body();
                     Toast.makeText(Add_Items.this, "" + resp.getMessage(), Toast.LENGTH_LONG).show();
+                    setUpIntent();
                 }
                 catch(Exception e){
                     Toast.makeText(Add_Items.this, ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
@@ -112,6 +125,10 @@ public class Add_Items extends AppCompatActivity {
 
     }
 
+    private void setUpIntent() {
+        Intent intent = new Intent(Add_Items.this,BaseActivity.class);
+        startActivity(intent);
+    }
 
 
     private void getValues() {
