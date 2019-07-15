@@ -7,6 +7,12 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.appcompat.view.menu.MenuView;
 
 import com.kamores.tiffin.Fragment.FragmentDay;
@@ -16,14 +22,25 @@ public class Activity_Detail extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
+    Bundle bundle;
+    Button update;
 
 
     MenuView itemCall, itemSMS, itemShare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_detail);
+        update = findViewById(R.id.update);
+
+//        if (checkAddOrUpdate()){
+//            Toast.makeText(this, "Please Update", Toast.LENGTH_SHORT).show();
+//        }
+
 
 //        FragmentDay fragmentDay = new FragmentDay();//Get Fragment Instance
 //        Bundle data = new Bundle();//Use bundle to pass data
@@ -42,7 +59,7 @@ public class Activity_Detail extends AppCompatActivity {
 //        itemSMS= findViewById(R.id.action_sms);
 //        itemShare= findViewById(R.id.action_share);
 
-        ActionBar actionBar= getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -51,8 +68,8 @@ public class Activity_Detail extends AppCompatActivity {
         viewPager = findViewById(R.id.pageViewer);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        adapter.AddFragment(new FragmentDay(),"Current");
-        adapter.AddFragment(new FragmentWeek(),"Week");
+        adapter.AddFragment(new FragmentDay(), "Current");
+        adapter.AddFragment(new FragmentWeek(), "Week");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -80,4 +97,6 @@ public class Activity_Detail extends AppCompatActivity {
 //        ActionBar actionBar = getSupportActionBar();
 //        actionBar.setElevation(0);
     }
+
+
 }

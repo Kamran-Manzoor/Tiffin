@@ -14,7 +14,7 @@
         layout="@layout/app_bar_base"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFBD2B3D"
+        android:background="#B54E363A"
         />
 
 
@@ -23,7 +23,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#FFBD2B3D"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_base"
         app:menu="@menu/activity_base_drawer" />

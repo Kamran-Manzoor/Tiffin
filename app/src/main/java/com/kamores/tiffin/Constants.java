@@ -2,7 +2,7 @@ package com.kamores.tiffin;
 
 public class Constants {
     //public static final String RETRIEVE_ALL = "allCardDataItem";
-    public static final String BASE_URL = "http://192.168.10.12:8080/";
+    public static final String BASE_URL = "http://192.168.10.23:8080/";
 //    public static final String BASE_URL = "http://192.168.10.8:8080";
     public static final String REGISTER_SERVICE ="addServices";
     public static final String RETRIVE_DETAIL ="detailSup";

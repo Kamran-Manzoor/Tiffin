@@ -1,6 +1,9 @@
 package com.kamores.tiffin.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,10 +43,16 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.content.Context.CLIPBOARD_SERVICE;
+
 public class FragmentDay extends Fragment {
 
-    TextView to_name, to_service, to_Location;
+    TextView to_name, to_service, to_Location,phone;
+    private ClipboardManager myClipboard;
+    private ClipData myClip;
     RecyclerView recyclerView;
+    Context mcontex;
+    Button button;
     private CustomeAdapterItems adapter;
     View view;
 
@@ -82,10 +93,12 @@ public class FragmentDay extends Fragment {
                     String Location = suppliers.getSupplier_location();
                     String Contact_no = suppliers.getSupplier_contact();
 
+
                     to_name.setText(Sup_name);
                     to_service.setText(Ser_name);
                     to_Location.setText(Location);
-                    Toast.makeText(getContext(), ""+Contact_no, Toast.LENGTH_SHORT).show();
+                    phone.setText(Contact_no);
+                    //Toast.makeText(getContext(), ""+Contact_no, Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Toast.makeText( getContext(), "Exception : " + e.getLocalizedMessage(), Toast.LENGTH_SHORT ).show();
                 }
@@ -106,11 +119,33 @@ public class FragmentDay extends Fragment {
         to_service = view.findViewById(R.id.to_service);
         to_Location = view.findViewById(R.id.to_showlocation);
         recyclerView = view.findViewById(R.id.recycler_view_day);
+        phone = view.findViewById(R.id.to_showContact);
+        button = view.findViewById(R.id.btn_phone);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                myClipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+
+
+                String text;
+                text = phone.getText().toString();
+
+                myClip = ClipData.newPlainText("text", text);
+                myClipboard.setPrimaryClip(myClip);
+
+                Toast.makeText(getContext(), "Text Copied",Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         getDataSupplier();
         String day = getDay();
         getDataItems(day);
         return view;
+
+
     }
 
 

@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
     tools:context=".BaseActivity"
+    android:background="#E4E1E1"
     tools:showIn="@layout/app_bar_base">
 
 

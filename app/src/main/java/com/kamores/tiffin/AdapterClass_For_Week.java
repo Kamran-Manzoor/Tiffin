@@ -18,7 +18,8 @@ import java.util.ArrayList;
 
 public class AdapterClass_For_Week extends RecyclerView.Adapter<AdapterClass_For_Week.ViewHolder> {
     private ArrayList<String> mNames;
-    private Context mContext;
+     Context mContext;
+    String title;
 
     public AdapterClass_For_Week(Context mContext, ArrayList<String> mNames) {
         this.mNames = mNames;
@@ -43,7 +44,9 @@ public class AdapterClass_For_Week extends RecyclerView.Adapter<AdapterClass_For
                 mContext.startActivity(intent);
             }
         });
+
     }
+
 
     @Override
     public int getItemCount() {
@@ -60,8 +63,15 @@ public class AdapterClass_For_Week extends RecyclerView.Adapter<AdapterClass_For
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(mContext,Activity_Detail.class);
-            mContext.startActivity(intent);
+
+                moveTo(title);
+
         }
+    }
+    public void moveTo(String title) {
+        Intent intent = new Intent(mContext, Activity_Detail.class);
+        intent.putExtra("isUpdate", true);
+        intent.putExtra("Title", this.title);
+        mContext.startActivity(intent);
     }
 }
