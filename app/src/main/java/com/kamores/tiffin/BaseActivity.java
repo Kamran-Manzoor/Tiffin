@@ -47,6 +47,7 @@ public class BaseActivity extends AppCompatActivity
     ArrayList<String> sup_name;
     ArrayList<String> location;
     ArrayList<String> sup_id;
+    ArrayList<String> sup_contact;
 
     ProgressDialog progressDialog;
     SwipeRefreshLayout refresh;
@@ -195,11 +196,12 @@ public class BaseActivity extends AppCompatActivity
                     service_name = user.getService_name();
                     location = user.getLocation();
                     sup_id = user.getSupplier_id();
+                    sup_contact = user.getSup_contact();
                     //progressDialog.dismiss();
 
                     modelClasses = new ArrayList<>();
                     for (int i = 0; i < location.size(); i++) {
-                        modelClasses.add( new ModelClass( sup_name.get( i ),service_name.get( i ) ,location.get( i ),sup_id.get( i )));
+                        modelClasses.add( new ModelClass( sup_name.get( i ),service_name.get( i ) ,location.get( i ),sup_id.get( i ),sup_contact.get( i )));
                     }
                     setUpRecyclerView();
 

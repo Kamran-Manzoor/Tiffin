@@ -6,7 +6,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.view.menu.MenuView;
 
 import com.kamores.tiffin.Fragment.FragmentDay;
@@ -16,6 +21,8 @@ public class Activity_Detail extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
+    Bundle bundle;
+    public static String Sup_id,Day,Sup_contact;
 
 
     MenuView itemCall, itemSMS, itemShare;
@@ -25,17 +32,10 @@ public class Activity_Detail extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_detail );
 
-//        FragmentDay fragmentDay = new FragmentDay();//Get Fragment Instance
-//        Bundle data = new Bundle();//Use bundle to pass data
-//        data.putString("data", "This is Argument Fragment");//put string, int, etc in bundle with a key value
-//        fragmentDay.setArguments(data);//Finally set argument bundle to fragment
-
-
-//            Bundle bundle = getIntent().getExtras();
-//            String id = bundle.getString("Supplier_id");
-//
-//            FragmentDay fragmentDay = new FragmentDay();
-//            fragmentDay.setArguments(bundle);
+        bundle = getIntent().getExtras();
+        Sup_contact = bundle.getString("Contact_info");
+        Sup_id = bundle.getString("Supplier_id");
+        Day = bundle.getString("Day");
 //        initDayName();
 
 //        itemCall= findViewById(R.id.action_call);
@@ -56,8 +56,11 @@ public class Activity_Detail extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
+
+        
+
 //        // coed for Call Button
-//        imageCall.setOnClickListener(new View.OnClickListener() {
+//        itemCall.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -79,5 +82,9 @@ public class Activity_Detail extends AppCompatActivity {
 
 //        ActionBar actionBar = getSupportActionBar();
 //        actionBar.setElevation(0);
+    }
+
+    public String getMyData() {
+        return Sup_id;
     }
 }

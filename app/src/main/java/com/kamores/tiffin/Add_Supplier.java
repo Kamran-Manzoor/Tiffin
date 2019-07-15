@@ -2,6 +2,7 @@ package com.kamores.tiffin;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -32,7 +33,8 @@ public class Add_Supplier extends AppCompatActivity {
     EditText etName,etService, etContact;
     TextView addressTV;
     ImageView addSupplier;
-    String Sup_name,Sup_service,Sup_con,Sup_location;
+    String Sup_name,Sup_service,Sup_con,Sup_location,Sup_detail;
+    public static String Supplier_id,Service_id;
 
 
     LocationManager locationManager;
@@ -62,6 +64,7 @@ public class Add_Supplier extends AppCompatActivity {
         Sup_service = etService.getText().toString();
         Sup_con = etContact.getText().toString();
         Sup_location = "Khanewal";
+        Sup_detail = "Some Detail";
 
 
     }
@@ -72,7 +75,7 @@ public class Add_Supplier extends AppCompatActivity {
         etContact= findViewById(R.id.et_supplier_contact);
         addressTV = findViewById(R.id.tv_supplier_address);
         addSupplier= findViewById(R.id.img_AddSuppliers);
-        cruntAddress();
+        //cruntAddress();
 
     }
 
@@ -175,12 +178,16 @@ public class Add_Supplier extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
         RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
-        Suppliers suppliers = new Suppliers();
+        final Suppliers suppliers = new Suppliers();
+
+
+        suppliers.setService_name(Sup_service);
+        suppliers.setService_detail(Sup_detail);
         suppliers.setSupplier_name(Sup_name);
         suppliers.setSupplier_contact(Sup_con);
         suppliers.setSupplier_location(Sup_location);
         suppliers.setUser_id("1");
-        suppliers.setService_name(Sup_service);
+
 
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.REGISTER_SERVICE);
@@ -192,8 +199,19 @@ public class Add_Supplier extends AppCompatActivity {
             @Override
             public void onResponse(Call<ServerResponce> call, Response<ServerResponce> response) {
                 try {
+                    Suppliers suppliers1 = new Suppliers();
                     ServerResponce resp = response.body();
-                    Toast.makeText(Add_Supplier.this, "" + resp.getMessage(), Toast.LENGTH_LONG).show();
+                    suppliers1 = resp.getSuppliers();
+
+
+                    Supplier_id = suppliers1.getSupplier_id();
+                    Service_id = suppliers1.getService_id();
+
+                    setUpIntent();
+
+//                    Toast.makeText(Add_Supplier.this, ""+suppliers1.getSupplier_id(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(Add_Supplier.this, ""+suppliers1.getService_id(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Add_Supplier.this, "" + resp.getMessage(), Toast.LENGTH_LONG).show();
                 }
                 catch(Exception e){
                     Toast.makeText(Add_Supplier.this, ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
@@ -208,6 +226,13 @@ public class Add_Supplier extends AppCompatActivity {
         });
 
 
+    }
+
+    private void setUpIntent() {
+        Intent intent = new Intent(Add_Supplier.this,Add_Items.class);
+        intent.putExtra("Supplier_id",Supplier_id);
+        intent.putExtra("Service_id",Service_id);
+        startActivity(intent);
     }
 
 }

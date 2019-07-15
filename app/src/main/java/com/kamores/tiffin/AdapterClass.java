@@ -51,6 +51,8 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
             @Override
             public void onClick(View v) {
                 Intent i = new Intent().setClass(mContext,Activity_Detail.class);
+                i.putExtra("Supplier_id",currentItem.getSupplier_id());
+                i.putExtra("Contact_info",currentItem.getSup_contact());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 mContext.getApplicationContext().startActivity(i);
 

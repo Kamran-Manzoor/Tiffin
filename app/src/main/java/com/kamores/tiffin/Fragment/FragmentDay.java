@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kamores.tiffin.Activity_Detail;
 import com.kamores.tiffin.Constants;
 import com.kamores.tiffin.CustomeAdapterItems;
 import com.kamores.tiffin.ModelClass;
@@ -37,6 +38,7 @@ public class FragmentDay extends Fragment {
     RecyclerView recyclerView;
     private CustomeAdapterItems adapter;
     View view;
+    public static String Selected_Day;
 
     private List<ModelClass> modelClasses;
     ArrayList<String> item_name;
@@ -53,7 +55,7 @@ public class FragmentDay extends Fragment {
         RequestInterfacePart requestInterfacePart = retrofit.create( RequestInterfacePart.class );
 
         Suppliers suppliers = new Suppliers();
-        suppliers.setSupplier_id("2");
+        suppliers.setSupplier_id(Activity_Detail.Sup_id);
 
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.RETRIVE_DETAIL);
@@ -78,7 +80,7 @@ public class FragmentDay extends Fragment {
                     to_name.setText(Sup_name);
                     to_service.setText(Ser_name);
                     to_Location.setText(Location);
-                    Toast.makeText(getContext(), ""+Contact_no, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), ""+Contact_no, Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Toast.makeText( getContext(), "Exception : " + e.getLocalizedMessage(), Toast.LENGTH_SHORT ).show();
                 }
@@ -100,9 +102,17 @@ public class FragmentDay extends Fragment {
         to_Location = view.findViewById(R.id.to_showlocation);
         recyclerView = view.findViewById(R.id.recycler_view_day);
 
+
+        String day;
         getDataSupplier();
-        String day = getDay();
-        getDataItems(day);
+        if (Activity_Detail.Day !=null){
+            Selected_Day = Activity_Detail.Day;
+        }
+        else {
+            day = getDay();
+          Selected_Day = day;
+        }
+        getDataItems(Selected_Day);
         return view;
     }
 
@@ -113,14 +123,15 @@ public class FragmentDay extends Fragment {
             RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
 
             Suppliers suppliers = new Suppliers();
-            suppliers.setSupplier_id("2");
+            suppliers.setSupplier_id(Activity_Detail.Sup_id);
             suppliers.setDay(day);
 
             ServerRequest request = new ServerRequest();
             request.setOperation(Constants.RETRIVE_ITEMS);
             request.setSuppliers(suppliers);
 
-
+//            Toast.makeText(getContext(), ""+Selected_Day, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(), ""+Activity_Detail.Sup_id, Toast.LENGTH_SHORT).show();
             Call<ServerResponce> response = requestInterfacePart.operationone(request);
 
             response.enqueue(new Callback<ServerResponce>() {
@@ -130,15 +141,21 @@ public class FragmentDay extends Fragment {
                 public void onResponse(Call<ServerResponce> call, Response<ServerResponce> response) {
                     try {
                         ServerResponce resp = response.body();
-                        suppliers = resp.getSuppliers();
-                        item_name =suppliers.getItem_name();
-                        item_price = suppliers.getItem_price();
+                        if (resp.getResult().equals(Constants.SUCCESS)){
+                            suppliers = resp.getSuppliers();
+                            item_name =suppliers.getItem_name();
+                            item_price = suppliers.getItem_price();
 
-                        modelClasses = new ArrayList<>();
-                        for (int i = 0; i < item_price.size(); i++) {
-                            modelClasses.add( new ModelClass( item_name.get( i ),item_price.get( i )));
+                            modelClasses = new ArrayList<>();
+                            for (int i = 0; i < item_price.size(); i++) {
+                                modelClasses.add( new ModelClass( item_name.get( i ),item_price.get( i )));
+                            }
+                            setUpRecyclerView();
                         }
-                        setUpRecyclerView();
+                        else {
+                            Toast.makeText(getContext(), "Sorry No Record Found on this Day", Toast.LENGTH_SHORT).show();
+                        }
+
 
                     } catch (Exception e) {
                         Toast.makeText(getContext(), "Exception : " + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();

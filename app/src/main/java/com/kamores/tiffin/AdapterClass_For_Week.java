@@ -54,8 +54,17 @@ public class AdapterClass_For_Week extends RecyclerView.Adapter<AdapterClass_For
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(mContext,Activity_Detail.class);
-            mContext.startActivity(intent);
+            String Day = mNames.get(getAdapterPosition());
+//            Intent intent = new Intent(mContext,Activity_Detail.class);
+////            intent.putExtra("Selected_Day",Day);
+//            mContext.startActivity(intent);
+            Intent i = new Intent().setClass(mContext,Activity_Detail.class);
+            i.putExtra("Day",Day);
+            //Toast.makeText(mContext, ""+Activity_Detail.Sup_id, Toast.LENGTH_SHORT).show();
+            i.putExtra("Supplier_id",Activity_Detail.Sup_id);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+            mContext.getApplicationContext().startActivity(i);
+
         }
     }
 }
