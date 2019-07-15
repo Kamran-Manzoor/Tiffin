@@ -10,12 +10,8 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-import androidx.cardview.widget.CardView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.kamores.tiffin.Fragment.FragmentDay;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +22,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
     private Context mContext;
     private List<ModelClass> modelClasses;
     private List<ModelClass> modelClassList;
-
 
     public AdapterClass(List<ModelClass> modelClasses, Context context) {
         this.mContext = context;
