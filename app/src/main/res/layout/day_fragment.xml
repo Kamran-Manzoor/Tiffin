@@ -26,8 +26,6 @@
             app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="exitUntilCollapsed|scroll">
 
-
-
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -86,7 +84,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/to_showname"
                 app:layout_constraintVertical_bias="0.098" />
-
 
             <TextView
                 android:id="@+id/to_showlocation"

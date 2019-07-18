@@ -29,6 +29,9 @@
         app:layout_constraintVertical_bias="0.087"
         tools:ignore="MissingConstraints">
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <EditText
             android:id="@+id/et_supplier_name"
@@ -40,36 +43,30 @@
             android:hint="Name"
             android:inputType="textEmailAddress" />
 
-
-        <!--<com.google.android.material.textfield.TextInputLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
-
-        <EditText
-            android:id="@+id/et_supplier_serviceName"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="12dp"
-            android:textColor="#000"
-            android:background="@drawable/shaded_view"
-            android:gravity="center"
-            android:hint="Service"
-            android:inputType="textEmailAddress" />
-        <!--</com.google.android.material.textfield.TextInputLayout>-->
+            android:layout_height="wrap_content">
 
+            <EditText
+                android:id="@+id/et_supplier_serviceName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Service"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/et_supplier_contact"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="12dp"
-            android:textColor="#000"
-            android:background="@drawable/shaded_view"
-            android:gravity="center"
-            android:hint="Contact"
-            android:inputType="textEmailAddress" />
+            android:layout_height="wrap_content">
 
+            <EditText
+                android:id="@+id/et_supplier_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contact"
+                android:maxLength="11"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
