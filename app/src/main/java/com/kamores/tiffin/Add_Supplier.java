@@ -12,6 +12,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -22,6 +24,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,7 +39,6 @@ public class Add_Supplier extends AppCompatActivity {
     String Sup_name,Sup_service,Sup_con,Sup_location,Sup_detail;
     public static String Supplier_id,Service_id;
 
-
     LocationManager locationManager;
     android.location.LocationListener locationListener;
 
@@ -50,13 +52,23 @@ public class Add_Supplier extends AppCompatActivity {
         addSupplier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent= new Intent(Add_Supplier.this, Add_Items.class);
-//                startActivity(intent);
+                Sup_name = etName.getText().toString();
+                Sup_service = etService.getText().toString();
+                Sup_con = etContact.getText().toString();
+                if (Sup_name.equals("")) {
+                    etName.setError("Add Name!");
+                } else if (Sup_service.equals("")){
+                    etService.setError("Add Service!");
+                } else if (Sup_con.equals("") || Sup_con.length()<11){
+                    etContact.setError("Add Complete Mobile Number!");
+                } else {
+                    Intent intent= new Intent(Add_Supplier.this, Add_Items.class);
+                    startActivity(intent);
+                }
                 getValues();
                 addSuppliers();
             }
         });
-
     }
 
     private void getValues() {
@@ -65,8 +77,6 @@ public class Add_Supplier extends AppCompatActivity {
         Sup_con = etContact.getText().toString();
         Sup_location = "Khanewal";
         Sup_detail = "Some Detail";
-
-
     }
 
     public void initViewSuppliers(){
@@ -76,7 +86,6 @@ public class Add_Supplier extends AppCompatActivity {
         addressTV = findViewById(R.id.tv_supplier_address);
         addSupplier= findViewById(R.id.img_AddSuppliers);
         //cruntAddress();
-
     }
 
     public void cruntAddress() {

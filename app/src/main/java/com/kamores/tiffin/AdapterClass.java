@@ -63,6 +63,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
+        CircleImageView circleImageView;
         TextView tv_ServiceName, tv_SupplierName,tv_Location;
         ImageView details;
         CardView cardView;
@@ -70,6 +71,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
             super(itemView);
             //img_food= itemView.findViewById(R.id.img_Food_RecyclerView);
             //imgDetail= itemView.findViewById(R.id.img_Details_RecyclerView);
+            circleImageView= itemView.findViewById(R.id.imageView2);
             tv_ServiceName= itemView.findViewById(R.id.tv_ServiceName_RecyclerView);
             tv_SupplierName= itemView.findViewById(R.id.tv_SupplierName_RecyclerView);
             tv_Location = itemView.findViewById(R.id.tv_SupplierLocation_RecyclerView);
