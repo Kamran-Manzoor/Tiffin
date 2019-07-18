@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,7 +12,7 @@ import android.widget.TextView;
 public class Supplier_Information extends AppCompatActivity {
     EditText etName,etService, etContact;
     TextView address;
-    ImageView addSupplier;
+    Button addSupplier;
     String supplierName,serviceName,supplierContact;
 
     @Override
@@ -50,6 +51,6 @@ public class Supplier_Information extends AppCompatActivity {
                 etService = findViewById(R.id.et_supplier_serviceName);
                 etContact = findViewById(R.id.et_supplier_contact);
                 address = findViewById(R.id.tv_supplier_address);
-                addSupplier = findViewById(R.id.img_AddSuppliers);
+                addSupplier = findViewById(R.id.btn_Add_Supplier);
             }
         }

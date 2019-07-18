@@ -12,7 +12,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E4E1E1"
+        android:background="#577399"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -22,17 +22,12 @@
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/colorAccent"
         app:tabMode="fixed" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/update"
-        android:visibility="gone"
-        tools:ignore="InvalidId,MissingConstraints" />
+
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pageViewer"
         android:layout_width="match_parent"
-        android:layout_height="528dp"
+        android:layout_height="527dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
@@ -56,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="8dp"
-        android:background="#E4E1E1"
+        android:background="#577399"
         app:itemIconTint="@android:color/background_dark"
         app:itemTextColor="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="parent"

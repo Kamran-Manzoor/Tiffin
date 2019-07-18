@@ -4,19 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E4E1E1"
     tools:context=".Add_Items">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_New_Items"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="388dp"
+        android:layout_height="72dp"
         android:layout_gravity="center"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:src="@mipmap/ic_launcher"
-        app:layout_constraintBottom_toTopOf="@+id/btn_choose_items"
+        android:src="@mipmap/tiffin_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,12 +25,14 @@
     <EditText
         android:id="@+id/et_ItemName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/shaded_view"
         android:hint="Item Name"
+        android:gravity="center"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,12 +44,14 @@
     <EditText
         android:id="@+id/et_ItemPrice"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/shaded_view"
         android:hint="Price"
+        android:gravity="center"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,12 +70,14 @@
     <EditText
         android:id="@+id/et_ItemDescription"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
         android:hint="description"
+        android:gravity="center"
+        android:background="@drawable/shaded_view"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,13 +87,13 @@
 
     <Button
         android:id="@+id/btn_Add_Items"
-        android:layout_width="217dp"
+        android:layout_width="match_parent"
         android:layout_height="49dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/shaded_view"
+        android:background="@drawable/layotu_shape"
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,32 +104,34 @@
     <Spinner
         android:id="@+id/spinnerDays"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="46dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
+        android:textAlignment="center"
+        android:background="@drawable/shaded_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.63" />
+        app:layout_constraintVertical_bias="0.613" />
 
-    <Button
-        android:id="@+id/btn_choose_items"
-        android:layout_width="217dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
-        android:text="Choose Image"
-        android:background="#B54E363A"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309" />
+    <!--<Button-->
+        <!--android:id="@+id/btn_choose_items"-->
+        <!--android:layout_width="217dp"-->
+        <!--android:layout_height="45dp"-->
+        <!--android:layout_marginStart="32dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_marginEnd="32dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:text="Choose Image"-->
+        <!--android:background="#B54E363A"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.309" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

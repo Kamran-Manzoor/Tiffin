@@ -47,7 +47,7 @@
             android:label="@string/title_activity_maps" />
         <activity
             android:name=".Add_Supplier"
-            android:label="Add_Supplier" />
+            android:label="Add Supplier" />
         <activity
             android:name=".MainActivity"
             android:label="MainActivity"
