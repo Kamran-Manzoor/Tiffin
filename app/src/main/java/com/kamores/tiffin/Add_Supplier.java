@@ -72,17 +72,17 @@ public class Add_Supplier extends AppCompatActivity {
                 Sup_service = etService.getText().toString();
                 Sup_con = etContact.getText().toString();
                 if (Sup_name.equals("")) {
-                    etName.setError("Add Name!");
+                    etName.setError("Enter Name!");
                 } else if (Sup_service.equals("")){
-                    etService.setError("Add Service!");
+                    etService.setError("Enter Service!");
                 } else if (Sup_con.equals("") || Sup_con.length()<11){
-                    etContact.setError("Add Complete Mobile Number!");
+                    etContact.setError("Enter Complete Mobile Number!");
                 } else {
+                    getValues();
+                    addSuppliers();
                     Intent intent= new Intent(Add_Supplier.this, Add_Items.class);
                     startActivity(intent);
                 }
-                getValues();
-                addSuppliers();
             }
         });
     }

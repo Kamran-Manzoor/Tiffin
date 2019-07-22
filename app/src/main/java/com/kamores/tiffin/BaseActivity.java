@@ -83,25 +83,6 @@ public class BaseActivity extends AppCompatActivity
         //views Initialise
         initialviews();
 
-
-
-//        progressDialog = new ProgressDialog(BaseActivity.this);
-//        progressDialog.setMessage("Loading..."); // Setting Message
-//        progressDialog.setTitle("ProgressDialog"); // Setting Title
-//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
-//        progressDialog.show(); // Display Progress Dialog
-//        progressDialog.setCancelable(false);
-//        new Thread(new Runnable() {
-//            public void run() {
-//                try {
-//                    Thread.sleep(10000);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        }).start();
-
         refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -223,7 +204,9 @@ public class BaseActivity extends AppCompatActivity
 
                     modelClasses = new ArrayList<>();
                     for (int i = 0; i < location.size(); i++) {
+                    //for (int i = 0; i < 3; i++) {
                         modelClasses.add( new ModelClass( sup_name.get( i ),service_name.get( i ) ,location.get( i ),sup_id.get( i ),sup_contact.get( i )));
+                        //modelClasses.add( new ModelClass( "Seerat Abbas","Dinner" ,"Khanewal","1","030466542557"));
                     }
                     setUpRecyclerView();
 

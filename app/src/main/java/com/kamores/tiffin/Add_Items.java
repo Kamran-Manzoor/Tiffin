@@ -171,6 +171,7 @@ public class Add_Items extends AppCompatActivity {
 
     public void showDays() {
         listDays = new ArrayList<>();
+        listDays.add("Select Day");
         listDays.add("Monday");
         listDays.add("Tuesday");
         listDays.add("Wednesday");
