@@ -29,9 +29,6 @@
         app:layout_constraintVertical_bias="0.087"
         tools:ignore="MissingConstraints">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
         <EditText
             android:id="@+id/et_supplier_name"
@@ -43,30 +40,37 @@
             android:hint="Name"
             android:inputType="textEmailAddress" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/et_supplier_serviceName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Service"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <!--<com.google.android.material.textfield.TextInputLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
 
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
+            android:id="@+id/et_supplier_serviceName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="55dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000"
+            android:background="@drawable/shaded_view"
+            android:gravity="center"
+            android:hint="Service"
+            android:inputType="textEmailAddress" />
+        <!--</com.google.android.material.textfield.TextInputLayout>-->
+
+
 
             <EditText
                 android:id="@+id/et_supplier_contact"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:hint="Contact"
                 android:maxLength="11"
+                android:gravity="center"
+                android:layout_marginTop="9dp"
+                android:background="@drawable/shaded_view"
                 android:inputType="phone" />
-        </com.google.android.material.textfield.TextInputLayout>
+
 
     </LinearLayout>
 
@@ -92,11 +96,10 @@
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:gravity="center"
         android:hint="Show Location"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.525" />

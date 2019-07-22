@@ -59,8 +59,8 @@ public class Password extends AppCompatActivity {
 
         // for google retrive image, name & email
         //signOut = findViewById(R.id.sign_Out);
-        nameTV = findViewById(R.id.user_name);
-        emailTV = findViewById(R.id.user_email);
+//        nameTV = findViewById(R.id.user_name);
+//        emailTV = findViewById(R.id.user_email);
         imageIV = findViewById(R.id.imageIVGoogle);
 
 

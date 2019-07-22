@@ -78,11 +78,12 @@ public class Add_Supplier extends AppCompatActivity {
                 } else if (Sup_con.equals("") || Sup_con.length()<11){
                     etContact.setError("Add Complete Mobile Number!");
                 } else {
+                    getValues();
+                    addSuppliers();
                     Intent intent= new Intent(Add_Supplier.this, Add_Items.class);
                     startActivity(intent);
                 }
-                getValues();
-                addSuppliers();
+
             }
         });
     }

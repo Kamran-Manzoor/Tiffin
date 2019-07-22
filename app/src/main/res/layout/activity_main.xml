@@ -79,18 +79,20 @@
             <EditText
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:hint="Email"
+                android:gravity="center"
+                android:background="@drawable/shaded_view"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_Next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:src="@drawable/next1" />
+            android:src="@drawable/ic_navigate_next_black_24dp" />
 
         <TextView
             android:id="@+id/textView"
@@ -166,7 +168,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/google"
-            android:background="#FFBD2B3D"
             tools:layout_editor_absoluteX="245dp"
             tools:layout_editor_absoluteY="411dp" />
 
