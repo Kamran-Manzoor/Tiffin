@@ -75,6 +75,7 @@ public class Add_Items extends AppCompatActivity {
 
         showDays();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listDays);
+        adapter.setDropDownViewResource(R.layout.custom_spinner);
         spinnerDays.setAdapter(adapter);
         spinnerDays.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
             @Override

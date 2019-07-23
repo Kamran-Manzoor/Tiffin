@@ -2,7 +2,7 @@
 <LinearLayout
     android:id="@+id/week_linear_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="360dp"
+    android:layout_width="380dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="2dp"
+        android:gravity="center"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
@@ -23,9 +24,9 @@
                 android:id="@+id/tv_Days"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:background="@drawable/shape_cardview"
                 android:gravity="center"
                 android:text="MONDAY"
-                android:background="@drawable/shape_cardview"
                 android:textColor="#fff"
                 android:textSize="12sp"
                 android:textStyle="bold|italic" />

@@ -13,11 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#577399"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@+id/pageViewer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/recyclerView"
         app:layout_constraintVertical_bias="0.0"
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/colorAccent"
@@ -26,14 +25,12 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pageViewer"
-        android:layout_width="match_parent"
-        android:layout_height="548dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
+        android:layout_width="401dp"
+        android:layout_height="513dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
     <LinearLayout
         android:id="@+id/linearLayout6"
