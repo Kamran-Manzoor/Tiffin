@@ -11,7 +11,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="380dp"
-        android:layout_height="190dp"
+        android:layout_height="210dp"
         android:background="#577399"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
