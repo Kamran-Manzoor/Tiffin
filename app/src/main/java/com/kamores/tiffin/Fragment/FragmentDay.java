@@ -131,7 +131,7 @@ public class FragmentDay extends Fragment {
                 myClip = ClipData.newPlainText("text", text);
                 myClipboard.setPrimaryClip(myClip);
 
-                Toast.makeText(getContext(), "Text Copied",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Text Copied to ClipBoard",Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -180,7 +180,9 @@ public class FragmentDay extends Fragment {
                             item_price = suppliers.getItem_price();
 
                             modelClasses = new ArrayList<>();
+                            //for (int i = 0; i < 3; i++) {
                             for (int i = 0; i < item_price.size(); i++) {
+                                //modelClasses.add( new ModelClass( "Baryani","120" ));
                                 modelClasses.add( new ModelClass( item_name.get( i ),item_price.get( i )));
                             }
                             setUpRecyclerView();

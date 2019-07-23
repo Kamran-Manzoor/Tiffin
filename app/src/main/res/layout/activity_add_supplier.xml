@@ -13,7 +13,7 @@
     <LinearLayout
         android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
-        android:layout_height="232dp"
+        android:layout_height="250dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -30,6 +30,7 @@
         tools:ignore="MissingConstraints">
 
 
+
         <EditText
             android:id="@+id/et_supplier_name"
             android:layout_width="match_parent"
@@ -41,36 +42,26 @@
             android:inputType="textEmailAddress" />
 
 
-        <!--<com.google.android.material.textfield.TextInputLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
-
-        <EditText
-            android:id="@+id/et_supplier_serviceName"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="12dp"
-            android:textColor="#000"
-            android:background="@drawable/shaded_view"
-            android:gravity="center"
-            android:hint="Service"
-            android:inputType="textEmailAddress" />
-        <!--</com.google.android.material.textfield.TextInputLayout>-->
-
-
+            <EditText
+                android:id="@+id/et_supplier_serviceName"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/shaded_view"
+                android:hint="Service"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:inputType="textEmailAddress" />
 
             <EditText
                 android:id="@+id/et_supplier_contact"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:hint="Contact"
-                android:maxLength="11"
                 android:gravity="center"
-                android:layout_marginTop="9dp"
+                android:maxLength="11"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/shaded_view"
                 android:inputType="phone" />
-
 
     </LinearLayout>
 
@@ -93,16 +84,17 @@
     <TextView
         android:id="@+id/tv_supplier_address"
         android:layout_width="354dp"
-        android:layout_height="35dp"
+        android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:hint="Show Location"
         android:gravity="center"
+        android:text="Show Location"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.525" />
+        app:layout_constraintVertical_bias="0.567" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
