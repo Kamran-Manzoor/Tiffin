@@ -50,13 +50,21 @@ public class Add_Supplier extends AppCompatActivity {
         addSupplier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent= new Intent(Add_Supplier.this, Add_Items.class);
-//                startActivity(intent);
+                Sup_name = etName.getText().toString();
+                Sup_service = etService.getText().toString();
+                Sup_con = etContact.getText().toString();
+                if (Sup_name.equals("")) {
+                    etName.setError("Add Name!");
+                } else if (Sup_service.equals("")){
+                    etService.setError("Add Service!");
+                } else if (Sup_con.equals("")){
+                    etContact.setError("Add Contact!");
+                } else {
                 getValues();
                 addSuppliers();
+                }
             }
         });
-
     }
 
     private void getValues() {
@@ -230,9 +238,8 @@ public class Add_Supplier extends AppCompatActivity {
 
     private void setUpIntent() {
         Intent intent = new Intent(Add_Supplier.this,Add_Items.class);
-        intent.putExtra("Supplier_id",Supplier_id);
-        intent.putExtra("Service_id",Service_id);
         startActivity(intent);
+        finish();
     }
 
 }

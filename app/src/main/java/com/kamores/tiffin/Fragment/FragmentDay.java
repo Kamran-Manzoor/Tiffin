@@ -4,6 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,10 +18,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.kamores.tiffin.Activity_Detail;
+import com.kamores.tiffin.AdapterClass;
 import com.kamores.tiffin.Constants;
 import com.kamores.tiffin.CustomeAdapterItems;
 import com.kamores.tiffin.ModelClass;
@@ -28,9 +34,11 @@ import com.kamores.tiffin.ServerRequest;
 import com.kamores.tiffin.ServerResponce;
 import com.kamores.tiffin.Suppliers;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,8 +54,12 @@ public class FragmentDay extends Fragment {
     private ClipboardManager myClipboard;
     private ClipData myClip;
     RecyclerView recyclerView;
+    Bitmap bitmap;
+    String URLIMAGE;
+    Bitmap myImage = null;
     Context mcontex;
     Button button;
+    ImageView imageView_show;
     private CustomeAdapterItems adapter;
     View view;
     public static String Selected_Day;
@@ -89,6 +101,9 @@ public class FragmentDay extends Fragment {
                     String Location = suppliers.getSupplier_location();
                     String Contact_no = suppliers.getSupplier_contact();
 
+
+
+
                     to_name.setText(Sup_name);
                     to_service.setText(Ser_name);
                     to_Location.setText(Location);
@@ -117,7 +132,11 @@ public class FragmentDay extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_view_day);
         phone = view.findViewById(R.id.to_showContact);
         button = view.findViewById(R.id.btn_phone);
+        imageView_show = view.findViewById(R.id.image_view_show);
 
+        URLIMAGE = Constants.BASE_URL+"TiffinApp/uploads/"+AdapterClass.image_name+".jpg";
+
+        new GetImageFromURL(imageView_show).execute(URLIMAGE);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -131,7 +150,7 @@ public class FragmentDay extends Fragment {
                 myClip = ClipData.newPlainText("text", text);
                 myClipboard.setPrimaryClip(myClip);
 
-                Toast.makeText(getContext(), "Text Copied",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Text Copied to Clipboard",Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -148,6 +167,35 @@ public class FragmentDay extends Fragment {
         }
         getDataItems(Selected_Day);
         return view;
+    }
+
+    public class GetImageFromURL extends AsyncTask<String,Void, Bitmap> {
+        ImageView imageView;
+
+        public GetImageFromURL(ImageView imageView) {
+            this.imageView = imageView;
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            String uriDisplay = strings[0];
+            bitmap = null;
+            try {
+                InputStream str = new java.net.URL(uriDisplay).openStream();
+                bitmap = BitmapFactory.decodeStream(str);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+            imageView.setImageBitmap(bitmap);
+        }
     }
 
 

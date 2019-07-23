@@ -8,6 +8,7 @@ public class User {
     ArrayList<String> location;
     ArrayList<String> supplier_id;
     ArrayList<String> sup_contact;
+    ArrayList<String> item_image;
 
     public ArrayList<String> getSup_contact() {
         return sup_contact;
@@ -30,5 +31,9 @@ public class User {
 
     public ArrayList<String> getLocation() {
         return location;
+    }
+
+    public ArrayList<String> getItem_image() {
+        return item_image;
     }
 }

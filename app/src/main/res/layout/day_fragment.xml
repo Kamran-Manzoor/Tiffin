@@ -21,10 +21,17 @@
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/fo1"
             app:expandedTitleMarginEnd="65dp"
             app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="exitUntilCollapsed|scroll">
+            <ImageView
+                android:id="@+id/image_view_show"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/logo"
+                tools:ignore="MissingConstraints"
+                android:contentDescription="TODO" />
 
 
 
@@ -45,6 +52,7 @@
             android:orientation="vertical"
             tools:layout_editor_absoluteY="81dp"
             tools:ignore="RedundantNamespace">
+
 
 
             <TextView
