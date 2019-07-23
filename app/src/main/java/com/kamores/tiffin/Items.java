@@ -4,6 +4,7 @@ public class Items {
     String item_name;
     String item_price;
     String item_image;
+    String image_code;
     String day;
     String description;
     String service_id;
@@ -35,5 +36,9 @@ public class Items {
 
     public void setSupllier_id(String supllier_id) {
         this.supllier_id = supllier_id;
+    }
+
+    public void setImage_code(String image_code) {
+        this.image_code = image_code;
     }
 }

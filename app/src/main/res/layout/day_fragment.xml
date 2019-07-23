@@ -77,6 +77,7 @@
                 app:layout_constraintTop_toTopOf="@+id/to_showname"
                 app:layout_constraintVertical_bias="0.098" />
 
+
             <TextView
                 android:id="@+id/to_showlocation"
                 android:layout_width="180dp"
@@ -131,10 +132,11 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.437"
+                app:layout_constraintHorizontal_bias="0.45"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/to_service"
-                app:layout_constraintVertical_bias="0.257" />
+                app:layout_constraintVertical_bias="0.259" />
+
 
             <TextView
                 android:layout_width="90dp"

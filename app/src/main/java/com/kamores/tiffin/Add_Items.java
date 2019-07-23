@@ -2,9 +2,18 @@ package com.kamores.tiffin;
 
 import android.content.Intent;
 
+import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.provider.OpenableColumns;
+import android.util.Base64;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -16,6 +25,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +37,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Add_Items extends AppCompatActivity {
+
+    private static final int IMG_REQUEST = 777;
+    String file_name;
+    private Bitmap bitmap;
+
+
     ImageView itemImage;
     EditText itemName, itemPrice,itemDescription;
     Spinner spinnerDays;
@@ -48,19 +65,17 @@ public class Add_Items extends AppCompatActivity {
 
         setContentView(R.layout.activity_add_items );
 
-
-
 //        Toast.makeText(this, ""+Add_Supplier.Service_id, Toast.LENGTH_SHORT).show();
 //        Toast.makeText(this, ""+Add_Supplier.Supplier_id, Toast.LENGTH_SHORT).show();
         initViewItems();
 
 
-//        btnChooseImage.setOnClickListener( new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openFileChooser();
-//            }
-//        });
+        btnChooseImage.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFileChooser();
+            }
+        });
 
         btnAddItem.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -95,7 +110,7 @@ public class Add_Items extends AppCompatActivity {
 
         RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
         Items items = new Items();
-
+        final String image = imageToString();
 //        items.setItem_name("56");
 //        items.setItem_price("89");
 //        items.setItem_image("89");
@@ -106,7 +121,8 @@ public class Add_Items extends AppCompatActivity {
 
         items.setItem_name(Item_name);
         items.setItem_price(Item_price);
-        items.setItem_image(Item_image);
+        items.setItem_image(file_name);
+        items.setImage_code(image);
         items.setDay(Item_days);
         items.setDescription(Item_desc);
         items.setService_id(Add_Supplier.Service_id);
@@ -144,6 +160,7 @@ public class Add_Items extends AppCompatActivity {
     private void setUpIntent() {
         Intent intent = new Intent(Add_Items.this,BaseActivity.class);
         startActivity(intent);
+        finish();
     }
 
 
@@ -151,7 +168,6 @@ public class Add_Items extends AppCompatActivity {
         Item_name = itemName.getText().toString();
         Item_price = itemPrice.getText().toString();
         Item_desc = itemDescription.getText().toString();
-        Item_image = "some.jpg";
     }
 
     public void initViewItems(){
@@ -167,12 +183,59 @@ public class Add_Items extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+        startActivityForResult(intent,IMG_REQUEST);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
+            Uri path = data.getData();
+            file_name = getFileName(path);
+
+            int pos = file_name.lastIndexOf(".");
+            if (pos >= 0) {
+                file_name = file_name.substring(0, pos);
+            }
+
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),path);
+                itemImage.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    private String getFileName(Uri uri) {
+
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+        if (result == null) {
+            result = uri.getPath();
+            int cut = result.lastIndexOf('/');
+            if (cut != -1) {
+                result = result.substring(cut + 1);
+            }
+        }
+        return result;
+    }
+    private String imageToString(){
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,20,byteArrayOutputStream);
+        byte[] imgByte = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(imgByte,Base64.DEFAULT);
     }
 
     public void showDays() {
         listDays = new ArrayList<>();
-        listDays.add("Select Day");
         listDays.add("Monday");
         listDays.add("Tuesday");
         listDays.add("Wednesday");
