@@ -3,6 +3,8 @@ package com.kamores.tiffin;
 import android.content.Intent;
 
 import androidx.annotation.Nullable;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
@@ -13,6 +15,8 @@ import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.Base64;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -50,6 +54,15 @@ public class Add_Items extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar1);
+
         setContentView(R.layout.activity_add_items );
 
 //        Toast.makeText(this, ""+Add_Supplier.Service_id, Toast.LENGTH_SHORT).show();
@@ -77,6 +90,7 @@ public class Add_Items extends AppCompatActivity {
 
         showDays();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listDays);
+        adapter.setDropDownViewResource(R.layout.custom_spinner);
         spinnerDays.setAdapter(adapter);
         spinnerDays.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
             @Override
@@ -162,7 +176,7 @@ public class Add_Items extends AppCompatActivity {
         itemPrice= findViewById(R.id.et_ItemPrice);
         itemDescription= findViewById(R.id.et_ItemDescription);
         spinnerDays= findViewById(R.id.spinnerDays);
-        btnChooseImage= findViewById(R.id.btn_choose_items);
+//        btnChooseImage= findViewById(R.id.btn_choose_items);
         btnAddItem=findViewById(R.id.btn_Add_Items);
     }
     private void openFileChooser() {

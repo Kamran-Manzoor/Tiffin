@@ -84,25 +84,6 @@ public class BaseActivity extends AppCompatActivity
         //views Initialise
         initialviews();
 
-
-
-//        progressDialog = new ProgressDialog(BaseActivity.this);
-//        progressDialog.setMessage("Loading..."); // Setting Message
-//        progressDialog.setTitle("ProgressDialog"); // Setting Title
-//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
-//        progressDialog.show(); // Display Progress Dialog
-//        progressDialog.setCancelable(false);
-//        new Thread(new Runnable() {
-//            public void run() {
-//                try {
-//                    Thread.sleep(10000);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        }).start();
-
         refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

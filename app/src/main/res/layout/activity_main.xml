@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
+    android:background="#dddd"
     tools:context=".MainActivity">
 
 
@@ -166,8 +167,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/google"
-            android:background="#FFBD2B3D"
-            tools:layout_editor_absoluteX="245dp"
+            android:background="#577399"
             tools:layout_editor_absoluteY="411dp" />
 
     </LinearLayout>

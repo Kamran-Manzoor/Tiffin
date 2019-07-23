@@ -1,6 +1,7 @@
 package com.kamores.tiffin;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,10 +11,16 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +29,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,7 +40,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Add_Supplier extends AppCompatActivity {
     EditText etName,etService, etContact;
     TextView addressTV;
-    ImageView addSupplier;
+    Button addSupplier;
     String Sup_name,Sup_service,Sup_con,Sup_location,Sup_detail;
     public static String Supplier_id,Service_id;
 
@@ -43,6 +51,16 @@ public class Add_Supplier extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar);
+
+
+
         setContentView(R.layout.activity_add_supplier );
 
         initViewSuppliers();
@@ -65,6 +83,7 @@ public class Add_Supplier extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     private void getValues() {
@@ -82,7 +101,7 @@ public class Add_Supplier extends AppCompatActivity {
         etService= findViewById(R.id.et_supplier_serviceName);
         etContact= findViewById(R.id.et_supplier_contact);
         addressTV = findViewById(R.id.tv_supplier_address);
-        addSupplier= findViewById(R.id.img_AddSuppliers);
+        addSupplier= findViewById(R.id.btn_Add_Supplier);
         //cruntAddress();
 
     }

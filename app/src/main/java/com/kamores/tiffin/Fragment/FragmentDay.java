@@ -101,9 +101,6 @@ public class FragmentDay extends Fragment {
                     String Location = suppliers.getSupplier_location();
                     String Contact_no = suppliers.getSupplier_contact();
 
-
-
-
                     to_name.setText(Sup_name);
                     to_service.setText(Ser_name);
                     to_Location.setText(Location);
@@ -150,7 +147,7 @@ public class FragmentDay extends Fragment {
                 myClip = ClipData.newPlainText("text", text);
                 myClipboard.setPrimaryClip(myClip);
 
-                Toast.makeText(getContext(), "Text Copied to Clipboard",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Text Copied",Toast.LENGTH_SHORT).show();
 
             }
         });

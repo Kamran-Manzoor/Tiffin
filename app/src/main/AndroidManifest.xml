@@ -19,11 +19,12 @@
         android:label="Tiffin"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".Item_Schedule_Activity"
             android:label="Item Schedule Activity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="landscape"/>
         <activity android:name=".Activity_Detail"
             android:label="Activity Detail"
             android:screenOrientation="portrait"/>
@@ -47,7 +48,8 @@
             android:label="@string/title_activity_maps" />
         <activity
             android:name=".Add_Supplier"
-            android:label="Add_Supplier" />
+            android:label="Add Supplier"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
             android:label="MainActivity"

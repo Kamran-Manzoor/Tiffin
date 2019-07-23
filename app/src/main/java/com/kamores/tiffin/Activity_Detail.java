@@ -37,6 +37,7 @@ public class Activity_Detail extends AppCompatActivity {
     public static String Sup_id,Day,Sup_contact;
 
     ImageView imageCall, imageSMS, imageShare;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -55,40 +56,6 @@ public class Activity_Detail extends AppCompatActivity {
         imageSMS= findViewById(R.id.image_sms);
         imageShare= findViewById(R.id.image_share);
 
-        // coed for Call Image
-        imageCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:"));
-                startActivity(intent);
-            }
-        });
-
-        // coed for TextMessage Image
-        imageSMS.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint({"WrongViewCast", "MissingPermission"})
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent( Intent.ACTION_VIEW, Uri.fromParts("sms", "1234567890", null));
-                intent.putExtra("sms-body", "Pakistan...");
-                startActivity(intent);
-            }
-        });
-
-        // code for share Image
-        imageShare.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent sharingIntent = new Intent(ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                String shareBody = "Your body here";
-                String shareSub = "Your subject here";
-                sharingIntent.putExtra(EXTRA_SUBJECT, shareSub);
-                sharingIntent.putExtra(EXTRA_TEXT, shareBody);
-                startActivity(createChooser(sharingIntent, "Share using"));
-            }
-        });
 
         ActionBar actionBar= getSupportActionBar();
         actionBar.hide();
@@ -104,8 +71,40 @@ public class Activity_Detail extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.setElevation(0);
+        // coed for Call Button
+        imageCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:"+Sup_contact));
+                startActivity(intent);
+            }
+        });
+
+        // coed for TextMessage Button
+        imageSMS.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint({"WrongViewCast", "MissingPermission"})
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( Intent.ACTION_VIEW, Uri.fromParts("sms", Sup_contact, null));
+                intent.putExtra("sms-body", "Pakistan...");
+                startActivity(intent);
+            }
+        });
+
+        // code for share Button
+        imageShare.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sharingIntent = new Intent(ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = Sup_contact+" cll";
+                String shareSub = "Your subject here";
+                sharingIntent.putExtra(EXTRA_SUBJECT, shareSub);
+                sharingIntent.putExtra(EXTRA_TEXT, shareBody);
+                startActivity(createChooser(sharingIntent, "Share using"));
+            }
+        });
     }
 
     public String getMyData() {
