@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
+    android:background="#dddd"
     tools:context=".MainActivity">
 
 
@@ -79,7 +80,7 @@
             <EditText
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:hint="Email"
                 android:gravity="center"
                 android:background="@drawable/shaded_view"
@@ -168,7 +169,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/google"
-            tools:layout_editor_absoluteX="245dp"
+            android:background="#577399"
             tools:layout_editor_absoluteY="411dp" />
 
     </LinearLayout>

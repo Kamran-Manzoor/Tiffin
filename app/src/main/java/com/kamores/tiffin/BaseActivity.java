@@ -67,6 +67,7 @@ public class BaseActivity extends AppCompatActivity
     ArrayList<String> location;
     ArrayList<String> sup_id;
     ArrayList<String> sup_contact;
+    ArrayList<String> item_image;
 
     ProgressDialog progressDialog;
     SwipeRefreshLayout refresh;
@@ -76,10 +77,8 @@ public class BaseActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView( R.layout.activity_base );
+
         //views Initialise
         initialviews();
 
@@ -168,6 +167,7 @@ public class BaseActivity extends AppCompatActivity
         if (id == R.id.nav_Supplier) {
             Intent intent = new Intent( BaseActivity.this, Add_Supplier.class );
             startActivity( intent );
+            finish();
         } else if (id == R.id.nav_Save_Location) {
         } else if (id == R.id.nav_show_In_Map) {
             Intent i = new Intent(BaseActivity.this,MapsActivity.class);
@@ -200,13 +200,13 @@ public class BaseActivity extends AppCompatActivity
                     location = user.getLocation();
                     sup_id = user.getSupplier_id();
                     sup_contact = user.getSup_contact();
+                    sup_contact = user.getSup_contact();
+                    item_image = user.getItem_image();
                     //progressDialog.dismiss();
 
                     modelClasses = new ArrayList<>();
                     for (int i = 0; i < location.size(); i++) {
-                    //for (int i = 0; i < 3; i++) {
-                        modelClasses.add( new ModelClass( sup_name.get( i ),service_name.get( i ) ,location.get( i ),sup_id.get( i ),sup_contact.get( i )));
-                        //modelClasses.add( new ModelClass( "Seerat Abbas","Dinner" ,"Khanewal","1","030466542557"));
+                        modelClasses.add( new ModelClass( sup_name.get( i ),service_name.get( i ) ,location.get( i ),sup_id.get( i ),sup_contact.get( i ),item_image.get( i )));
                     }
                     setUpRecyclerView();
 
@@ -222,10 +222,10 @@ public class BaseActivity extends AppCompatActivity
         } );
     }
     private void setUpRecyclerView(){
+
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         if (modelClasses == null){
             Toast.makeText( this, "Null", Toast.LENGTH_SHORT ).show();
         }

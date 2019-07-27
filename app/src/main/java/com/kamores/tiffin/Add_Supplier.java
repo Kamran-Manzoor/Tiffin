@@ -44,6 +44,7 @@ public class Add_Supplier extends AppCompatActivity {
     String Sup_name,Sup_service,Sup_con,Sup_location,Sup_detail;
     public static String Supplier_id,Service_id;
 
+
     LocationManager locationManager;
     android.location.LocationListener locationListener;
 
@@ -62,7 +63,6 @@ public class Add_Supplier extends AppCompatActivity {
 
         setContentView(R.layout.activity_add_supplier );
 
-
         initViewSuppliers();
 
         addSupplier.setOnClickListener(new View.OnClickListener() {
@@ -72,19 +72,18 @@ public class Add_Supplier extends AppCompatActivity {
                 Sup_service = etService.getText().toString();
                 Sup_con = etContact.getText().toString();
                 if (Sup_name.equals("")) {
-                    etName.setError("Enter Name!");
+                    etName.setError("Add Name!");
                 } else if (Sup_service.equals("")){
-                    etService.setError("Enter Service!");
-                } else if (Sup_con.equals("") || Sup_con.length()<11){
-                    etContact.setError("Enter Complete Mobile Number!");
+                    etService.setError("Add Service!");
+                } else if (Sup_con.equals("")){
+                    etContact.setError("Add Contact!");
                 } else {
-                    getValues();
-                    addSuppliers();
-                    Intent intent= new Intent(Add_Supplier.this, Add_Items.class);
-                    startActivity(intent);
+                getValues();
+                addSuppliers();
                 }
             }
         });
+
     }
 
     private void getValues() {
@@ -93,6 +92,8 @@ public class Add_Supplier extends AppCompatActivity {
         Sup_con = etContact.getText().toString();
         Sup_location = "Khanewal";
         Sup_detail = "Some Detail";
+
+
     }
 
     public void initViewSuppliers(){
@@ -102,6 +103,7 @@ public class Add_Supplier extends AppCompatActivity {
         addressTV = findViewById(R.id.tv_supplier_address);
         addSupplier= findViewById(R.id.btn_Add_Supplier);
         //cruntAddress();
+
     }
 
     public void cruntAddress() {
@@ -255,9 +257,8 @@ public class Add_Supplier extends AppCompatActivity {
 
     private void setUpIntent() {
         Intent intent = new Intent(Add_Supplier.this,Add_Items.class);
-        intent.putExtra("Supplier_id",Supplier_id);
-        intent.putExtra("Service_id",Service_id);
         startActivity(intent);
+        finish();
     }
 
 }

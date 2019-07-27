@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kamores.tiffin.Fragment.FragmentDay;
+import com.kamores.tiffin.Fragment.FragmentWeek;
 
 import java.util.ArrayList;
 
@@ -67,6 +68,7 @@ public class AdapterClass_For_Week extends RecyclerView.Adapter<AdapterClass_For
             i.putExtra("Supplier_id",Activity_Detail.Sup_id);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
             mContext.getApplicationContext().startActivity(i);
+
 
         }
     }

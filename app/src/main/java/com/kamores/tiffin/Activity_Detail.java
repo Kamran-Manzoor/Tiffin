@@ -2,18 +2,24 @@ package com.kamores.tiffin;
 
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import androidx.appcompat.view.menu.MenuView;
 
 import com.kamores.tiffin.Fragment.FragmentDay;
 import com.kamores.tiffin.Fragment.FragmentWeek;
@@ -51,7 +57,7 @@ public class Activity_Detail extends AppCompatActivity {
         imageShare= findViewById(R.id.image_share);
 
 
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar= getSupportActionBar();
         actionBar.hide();
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
