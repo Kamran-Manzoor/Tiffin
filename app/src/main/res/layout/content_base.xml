@@ -10,7 +10,6 @@
     android:background="#F8F8F8"
     tools:showIn="@layout/app_bar_base">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

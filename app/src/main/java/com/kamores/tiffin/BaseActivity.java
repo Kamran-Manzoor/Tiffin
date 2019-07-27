@@ -51,8 +51,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class BaseActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout mDrawerLayout;
     TextView signIn;
     User user;
@@ -100,10 +99,7 @@ public class BaseActivity extends AppCompatActivity
         user = new User();
         getUsers();
 
-
         modelClasses = new ArrayList<>();
-
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
 
@@ -114,7 +110,6 @@ public class BaseActivity extends AppCompatActivity
                 startActivity( intent );
             }
         } );
-
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawerLayout, toolbar, R.string.navigation_drawer_open,
@@ -259,5 +254,7 @@ public class BaseActivity extends AppCompatActivity
         });
         return true;
     }
+
+
 
 }

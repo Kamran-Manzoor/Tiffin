@@ -9,7 +9,6 @@
     android:background="#dddd"
     tools:context=".Add_Supplier">
 
-
     <LinearLayout
         android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
@@ -27,7 +26,6 @@
         app:layout_constraintVertical_bias="0.087"
         tools:ignore="MissingConstraints">
 
-
         <EditText
             android:id="@+id/et_supplier_name"
             android:layout_width="match_parent"
@@ -37,7 +35,6 @@
             android:hint="Name"
             android:inputType="textEmailAddress"
             android:textColor="#000" />
-
 
         <EditText
             android:id="@+id/et_supplier_serviceName"
@@ -57,7 +54,7 @@
             android:background="@drawable/shaded_view"
             android:gravity="center"
             android:hint="Contact"
-            android:inputType="phone"
+            android:inputType="numberDecimal"
             android:maxLength="11" />
         <TextView
             android:id="@+id/tv_supplier_address"
@@ -91,8 +88,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.663" />
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

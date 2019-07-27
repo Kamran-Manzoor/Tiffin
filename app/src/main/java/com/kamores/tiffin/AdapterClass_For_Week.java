@@ -34,7 +34,7 @@ public class AdapterClass_For_Week extends RecyclerView.Adapter<AdapterClass_For
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_for_week, parent, false);
-        ViewHolder holder =new ViewHolder(view);
+        ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
@@ -47,6 +47,7 @@ public class AdapterClass_For_Week extends RecyclerView.Adapter<AdapterClass_For
     public int getItemCount() {
         return mNames.size();
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView showDays;
 
@@ -68,8 +69,6 @@ public class AdapterClass_For_Week extends RecyclerView.Adapter<AdapterClass_For
             i.putExtra("Supplier_id",Activity_Detail.Sup_id);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
             mContext.getApplicationContext().startActivity(i);
-
-
         }
     }
 }

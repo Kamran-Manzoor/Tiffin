@@ -33,12 +33,10 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
     private List<ModelClass> modelClassList;
     public static String image_name;
 
-
     public AdapterClass(List<ModelClass> modelClasses, Context context) {
         this.mContext = context;
         this.modelClasses = modelClasses;
         this.modelClassList = new ArrayList<>();
-
     }
 
     @Override
@@ -46,7 +44,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, null);
         return new ViewHolder(view);
     }
-
     public static class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
 
         @Override
@@ -66,7 +63,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
                 //Toast.makeText(getApplicationContext(), "4", Toast.LENGTH_SHORT).show();
                 return null;
             }
-
         }
     }
 
@@ -77,37 +73,32 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         ImageDownloader task = new ImageDownloader();
         Bitmap myImage = null;
         try {
-            myImage = task.execute(Constants.BASE_URL + "/TiffinApp/uploads/" + modelClasses.get(position).getItem_image() + ".jpg").get();
+            myImage = task.execute(Constants.BASE_URL+"/TiffinApp/uploads/"+modelClasses.get(position).getItem_image() +".jpg").get();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        Glide.with(mContext)
-                .load(myImage)
-                .into(holder.ImageView);
-        //.into(holder.img_show);
+        Glide.with(mContext).load(myImage).into(holder.ImageView);
+                //.into(holder.img_show);
 
         holder.tv_ServiceName.setText(currentItem.getService_name());
         holder.tv_SupplierName.setText(currentItem.getSup_name());
         holder.tv_Location.setText(currentItem.getLocation());
 
-
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 image_name = currentItem.getItem_image();
-                Intent i = new Intent().setClass(mContext, Activity_Detail.class);
-                i.putExtra("Supplier_id", currentItem.getSupplier_id());
-                i.putExtra("Contact_info", currentItem.getSup_contact());
+                Intent i = new Intent().setClass(mContext,Activity_Detail.class);
+                i.putExtra("Supplier_id",currentItem.getSupplier_id());
+                i.putExtra("Contact_info",currentItem.getSup_contact());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 mContext.getApplicationContext().startActivity(i);
-
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return modelClasses.size();
@@ -118,7 +109,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         TextView tv_ServiceName, tv_SupplierName, tv_Location;
         ImageView details, img_show;
         CardView cardView;
-
         public ViewHolder(View itemView) {
             super(itemView);
             //img_food= itemView.findViewById(R.id.img_Food_RecyclerView);
@@ -142,20 +132,20 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             List<ModelClass> filteredList = new ArrayList<>();
-            if (constraint == null || constraint.length() == 0) {
+            if (constraint == null || constraint.length() == 0){
                 filteredList.addAll(modelClassList);
-            } else {
+            }else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
-                for (ModelClass item : modelClassList) {
+                for (ModelClass item : modelClassList){
                     if (item.getService_name().toLowerCase().contains(filterPattern) ||
                             item.getSup_name().toLowerCase().contains(filterPattern) ||
-                            item.getLocation().toLowerCase().contains(filterPattern)) {
+                            item.getLocation().toLowerCase().contains(filterPattern)){
                         filteredList.add(item);
                     }
                 }
             }
-            FilterResults results = new FilterResults();
-            results.values = filteredList;
+            FilterResults results= new FilterResults();
+            results.values= filteredList;
             return results;
         }
 

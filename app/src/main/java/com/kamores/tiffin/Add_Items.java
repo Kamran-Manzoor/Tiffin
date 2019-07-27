@@ -43,10 +43,10 @@ public class Add_Items extends AppCompatActivity {
     private Bitmap bitmap;
 
 
-    ImageView itemImage;
+    ImageView itemImageChose;
     EditText itemName, itemPrice,itemDescription;
     Spinner spinnerDays;
-    Button btnChooseImage, btnAddItem;
+    Button btnAddItem;
     List<String> listDays;
     String Item_name,Item_price,Item_days,Item_image,Item_desc;
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -70,7 +70,7 @@ public class Add_Items extends AppCompatActivity {
         initViewItems();
 
 
-        btnChooseImage.setOnClickListener( new View.OnClickListener() {
+        itemImageChose.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFileChooser();
@@ -171,7 +171,7 @@ public class Add_Items extends AppCompatActivity {
     }
 
     public void initViewItems(){
-        itemImage= findViewById(R.id.img_New_Items);
+        itemImageChose= findViewById(R.id.img_New_Items);
         itemName= findViewById(R.id.et_ItemName);
         itemPrice= findViewById(R.id.et_ItemPrice);
         itemDescription= findViewById(R.id.et_ItemDescription);
@@ -199,7 +199,7 @@ public class Add_Items extends AppCompatActivity {
 
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),path);
-                itemImage.setImageBitmap(bitmap);
+                itemImageChose.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
