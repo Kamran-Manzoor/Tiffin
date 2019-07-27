@@ -68,7 +68,6 @@ public class FragmentDay extends Fragment {
     ArrayList<String> item_name;
     ArrayList<String> item_price;
 
-
     public FragmentDay() {
 
     }
@@ -84,8 +83,6 @@ public class FragmentDay extends Fragment {
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.RETRIVE_DETAIL);
         request.setSuppliers(suppliers);
-
-
 
         Call<ServerResponce> response = requestInterfacePart.operationone(request);
 
@@ -259,7 +256,6 @@ public class FragmentDay extends Fragment {
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setAdapter(adapter);
         }
-
     }
 
     private String getDay() {
@@ -300,7 +296,3 @@ public class FragmentDay extends Fragment {
             return currentDay;
         }
     }
-
-
-
-

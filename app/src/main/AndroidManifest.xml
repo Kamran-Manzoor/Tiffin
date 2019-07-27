@@ -22,7 +22,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Item_Schedule_Activity"
+        <activity android:name=".Service_Name"
             android:label="Item Schedule Activity"
             android:screenOrientation="landscape"/>
         <activity android:name=".Activity_Detail"

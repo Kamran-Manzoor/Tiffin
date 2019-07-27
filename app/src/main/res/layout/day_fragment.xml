@@ -15,6 +15,13 @@
         android:background="#577399"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:contentDescription="Todo"
+            android:id="@+id/image_view_show"/>
+
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsingtoolbar"
             android:layout_width="380dp"

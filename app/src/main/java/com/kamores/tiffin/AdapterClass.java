@@ -36,12 +36,10 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
     private List<ModelClass> modelClassList;
     public static String image_name;
 
-
     public AdapterClass(List<ModelClass> modelClasses, Context context) {
         this.mContext = context;
         this.modelClasses = modelClasses;
         this.modelClassList = new ArrayList<>();
-
     }
 
     @Override
@@ -49,8 +47,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, null);
         return new ViewHolder(view);
     }
-    public static class ImageDownloader extends AsyncTask<String, Void, Bitmap>
-    {
+    public static class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
 
         @Override
         protected Bitmap doInBackground(String... urls) {
@@ -69,7 +66,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
                 //Toast.makeText(getApplicationContext(), "4", Toast.LENGTH_SHORT).show();
                 return null;
             }
-
         }
     }
 
@@ -87,15 +83,12 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
             e.printStackTrace();
         }
 
-        Glide.with(mContext)
-                .load(myImage)
-                .into(holder.circleImageView);
+        Glide.with(mContext).load(myImage).into(holder.circleImageView);
                 //.into(holder.img_show);
 
         holder.tv_ServiceName.setText(currentItem.getService_name());
         holder.tv_SupplierName.setText(currentItem.getSup_name());
         holder.tv_Location.setText(currentItem.getLocation());
-
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +99,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
                 i.putExtra("Contact_info",currentItem.getSup_contact());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 mContext.getApplicationContext().startActivity(i);
-
             }
         });
     }
@@ -117,19 +109,16 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
 
     class ViewHolder extends RecyclerView.ViewHolder{
         CircleImageView circleImageView;
-        TextView tv_ServiceName, tv_SupplierName,tv_Location;
-        ImageView details,img_show;
+        TextView tv_ServiceName, tv_SupplierName, tv_Location;
+        ImageView details;
         CardView cardView;
         public ViewHolder(View itemView) {
             super(itemView);
-            //img_food= itemView.findViewById(R.id.img_Food_RecyclerView);
-            //imgDetail= itemView.findViewById(R.id.img_Details_RecyclerView);
-            tv_ServiceName= itemView.findViewById(R.id.tv_ServiceName_RecyclerView);
-            tv_SupplierName= itemView.findViewById(R.id.tv_SupplierName_RecyclerView);
-            tv_Location = itemView.findViewById(R.id.tv_SupplierLocation_RecyclerView);
-            cardView= itemView.findViewById(R.id.cardView);
-            details = itemView.findViewById(R.id.btn_see_details);
-            //img_show = itemView.findViewById(R.id.imageView2);
+//            tv_ServiceName= itemView.findViewById(R.id.tv_ServiceName_RecyclerView);
+//            tv_SupplierName= itemView.findViewById(R.id.tv_SupplierName_RecyclerView);
+//            tv_Location = itemView.findViewById(R.id.tv_SupplierLocation_RecyclerView);
+//            cardView= itemView.findViewById(R.id.cardView);
+//            details = itemView.findViewById(R.id.btn_see_details);
             circleImageView  = itemView.findViewById(R.id.imageView2);
         }
     }
