@@ -41,9 +41,6 @@ public class Activity_Detail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView( R.layout.activity_detail );
 
         bundle = getIntent().getExtras();
@@ -66,8 +63,8 @@ public class Activity_Detail extends AppCompatActivity {
         viewPager = findViewById(R.id.pageViewer);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        adapter.AddFragment(new FragmentDay(),"Current");
-        adapter.AddFragment(new FragmentWeek(),"Week");
+        adapter.AddFragment(new FragmentDay(),"Supplier Profile");
+      //  adapter.AddFragment(new FragmentWeek(),"Week");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
