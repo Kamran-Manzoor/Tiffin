@@ -10,8 +10,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -19,16 +19,21 @@
         android:label="Tiffin"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Service_Name"
+        <activity android:name=".Register_Activity"></activity>
+        <activity android:name=".Login_Activity" />
+        <activity
+            android:name=".Service_Name"
             android:label="Item Schedule Activity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".Activity_Detail"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activity_Detail"
             android:label="Activity Detail"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Add_Items"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Add_Items"
             android:label="Add Items"
             android:screenOrientation="portrait" />
         <!--
@@ -49,7 +54,7 @@
         <activity
             android:name=".Add_Supplier"
             android:label="Add Supplier"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:label="MainActivity"
@@ -60,8 +65,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".BaseActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

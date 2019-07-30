@@ -53,8 +53,8 @@ public class AdapterClass_For_Service_Items extends RecyclerView.Adapter<Adapter
 
         public ViewHolder(View itemView) {
             super( itemView );
-            showItems = itemView.findViewById(R.id.tv_Service_Items);
-            cardView= itemView.findViewById(R.id.cardViewServices);
+//            showItems = itemView.findViewById(R.id.tv_Service_Items);
+//            cardView= itemView.findViewById(R.id.cardViewServices);
             itemView.setOnClickListener( this );
         }
 

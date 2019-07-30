@@ -106,7 +106,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         signIn.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( BaseActivity.this, MainActivity.class );
+                Intent intent = new Intent( BaseActivity.this, Login_Activity.class );
                 startActivity( intent );
             }
         } );
