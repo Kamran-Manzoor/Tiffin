@@ -2,6 +2,8 @@ package com.kamores.tiffin;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.core.view.MenuItemCompat;
@@ -21,26 +23,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-
-
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.core.view.MenuItemCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import com.google.android.material.navigation.NavigationView;
+import com.kamores.tiffin.Constants.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +64,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_base );
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+      //  toolbar.setTitleTextColor(getResources().getColor(android.R.color.holo_red_light));
 
         //views Initialise
         initialviews();
@@ -116,6 +107,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 R.string.navigation_drawer_close );
         mDrawerLayout.addDrawerListener( toggle );
         toggle.syncState();
+        toggle.getDrawerArrowDrawable().setColor(Color.RED);
         navigationView.setNavigationItemSelectedListener( this );
 //        fillExampleList();
 
@@ -139,20 +131,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected( item );
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -162,7 +140,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_Supplier) {
             Intent intent = new Intent( BaseActivity.this, Add_Supplier.class );
             startActivity( intent );
-            finish();
         } else if (id == R.id.nav_Save_Location) {
         } else if (id == R.id.nav_show_In_Map) {
             Intent i = new Intent(BaseActivity.this,MapsActivity.class);
@@ -170,6 +147,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
         DrawerLayout drawer = findViewById( R.id.drawer_layout );
         drawer.closeDrawer( GravityCompat.START );
+
         return true;
     }
 

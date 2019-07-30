@@ -1,6 +1,5 @@
 package com.kamores.tiffin.Fragment;
 
-import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -22,10 +21,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.kamores.tiffin.Activity_Detail;
 import com.kamores.tiffin.AdapterClass;
-import com.kamores.tiffin.Constants;
+import com.kamores.tiffin.Constants.Constants;
 import com.kamores.tiffin.CustomeAdapterItems;
 import com.kamores.tiffin.ModelClass;
 import com.kamores.tiffin.R;
@@ -38,15 +36,12 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import static android.content.Context.CLIPBOARD_SERVICE;
 
 public class FragmentDay extends Fragment {
 

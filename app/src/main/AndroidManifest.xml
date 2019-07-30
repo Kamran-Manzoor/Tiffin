@@ -49,6 +49,7 @@
         <activity
             android:name=".Add_Supplier"
             android:label="Add Supplier"
+            android:parentActivityName=".BaseActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
@@ -61,6 +62,7 @@
         <activity
             android:name=".BaseActivity"
             android:theme="@style/AppTheme.NoActionBar"
+            android:label="Menu"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

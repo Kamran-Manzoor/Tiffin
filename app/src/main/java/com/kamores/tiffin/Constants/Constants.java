@@ -1,4 +1,4 @@
-package com.kamores.tiffin;
+package com.kamores.tiffin.Constants;
 
 public class Constants {
     //public static final String RETRIEVE_ALL = "allCardDataItem";

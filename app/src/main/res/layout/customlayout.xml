@@ -40,9 +40,6 @@
                     android:textSize="15sp" />
 
 
-
-
-
                 <TextView
                     android:id="@+id/tvItemPriceDays"
                     android:layout_width="10dp"
