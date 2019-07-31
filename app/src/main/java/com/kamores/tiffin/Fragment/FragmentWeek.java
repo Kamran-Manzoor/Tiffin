@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kamores.tiffin.AdapterClass_For_Week;
+import com.kamores.tiffin.Adapter.AdapterClass_For_Week;
 import com.kamores.tiffin.R;
 
 import java.util.ArrayList;

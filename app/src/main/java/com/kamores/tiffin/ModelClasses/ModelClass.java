@@ -1,4 +1,4 @@
-package com.kamores.tiffin;
+package com.kamores.tiffin.ModelClasses;
 
 public class ModelClass {
 //    public int image_food;

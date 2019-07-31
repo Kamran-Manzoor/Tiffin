@@ -18,12 +18,13 @@
             android:title="show In Map" />
     </group>
 
-    <item android:title="Tools">
+    <item android:title="More">
         <menu>
             <item
+                android:iconTint="@color/colorAccent"
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/logout"
-                android:title="Log out" />
+                android:title="Visit Us" />
 
         </menu>
     </item>

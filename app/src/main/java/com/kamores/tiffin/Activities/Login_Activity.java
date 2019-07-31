@@ -1,4 +1,4 @@
-package com.kamores.tiffin;
+package com.kamores.tiffin.Activities;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
@@ -14,6 +14,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.kamores.tiffin.R;
 
 public class Login_Activity extends AppCompatActivity implements View.OnClickListener {
 

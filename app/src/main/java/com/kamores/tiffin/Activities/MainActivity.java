@@ -1,4 +1,4 @@
-package com.kamores.tiffin;
+package com.kamores.tiffin.Activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -17,8 +17,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.kamores.tiffin.R;
 
 public class MainActivity extends AppCompatActivity {
     ImageView next, facebook;
@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
             etEmail.setError("enter a valid email address");
         } else {
           //  etEmail.setError(null);
-            Intent intent= new Intent(MainActivity.this, Password.class);
-            startActivity(intent);
+//            Intent intent= new Intent(MainActivity.this, Password.class);
+//            startActivity(intent);
         }
     }
 
@@ -105,8 +105,8 @@ public class MainActivity extends AppCompatActivity {
     }
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            startActivity(new Intent(MainActivity.this,Password.class));
+            //GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            //startActivity(new Intent(MainActivity.this,Password.class));
 
         }
         catch (Exception e) {
@@ -117,11 +117,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         // IF ALREADY LOGIN
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        if (account != null)
-        {
-            startActivity(new Intent(MainActivity.this,Password.class));
-        }
+
         super.onStart();
     }
 }

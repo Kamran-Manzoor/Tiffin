@@ -1,4 +1,4 @@
-package com.kamores.tiffin;
+package com.kamores.tiffin.Activities;
 
 import android.content.Intent;
 
@@ -26,6 +26,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.kamores.tiffin.Constants.Constants;
+import com.kamores.tiffin.ModelClasses.Items;
+import com.kamores.tiffin.R;
+import com.kamores.tiffin.Constants.RequestInterfacePart;
+import com.kamores.tiffin.Constants.ServerRequest;
+import com.kamores.tiffin.Constants.ServerResponce;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -160,7 +165,7 @@ public class Add_Items extends AppCompatActivity {
     }
 
     private void setUpIntent() {
-        Intent intent = new Intent(Add_Items.this,BaseActivity.class);
+        Intent intent = new Intent(Add_Items.this, BaseActivity.class);
         startActivity(intent);
         finish();
     }
@@ -173,10 +178,10 @@ public class Add_Items extends AppCompatActivity {
     }
 
     public void initViewItems(){
-        itemImageChose= findViewById(R.id.img_New_Items);
-        itemName= findViewById(R.id.et_ItemName);
-        itemPrice= findViewById(R.id.et_ItemPrice);
-        itemDescription= findViewById(R.id.et_ItemDescription);
+//        itemImageChose= findViewById(R.id.img_New_Items);
+//        itemName= findViewById(R.id.et_ItemName);
+//        itemPrice= findViewById(R.id.et_ItemPrice);
+//        itemDescription= findViewById(R.id.et_ItemDescription);
         spinnerDays= findViewById(R.id.spinnerDays);
 //        btnChooseImage= findViewById(R.id.btn_choose_items);
         btnAddItem=findViewById(R.id.btn_Add_Items);

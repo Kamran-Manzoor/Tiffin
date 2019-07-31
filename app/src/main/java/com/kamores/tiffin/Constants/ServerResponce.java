@@ -1,4 +1,7 @@
-package com.kamores.tiffin;
+package com.kamores.tiffin.Constants;
+
+import com.kamores.tiffin.Activities.Suppliers;
+import com.kamores.tiffin.ModelClasses.User;
 
 public class ServerResponce {
     private User user;

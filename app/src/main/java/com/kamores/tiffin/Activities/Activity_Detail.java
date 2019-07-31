@@ -1,28 +1,21 @@
-package com.kamores.tiffin;
+package com.kamores.tiffin.Activities;
 
 import com.google.android.material.tabs.TabLayout;
 
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
-
-import androidx.appcompat.view.menu.MenuView;
 
 import com.kamores.tiffin.Fragment.FragmentDay;
-import com.kamores.tiffin.Fragment.FragmentWeek;
+import com.kamores.tiffin.R;
+import com.kamores.tiffin.Adapter.ViewPagerAdapter;
 
 import static android.content.Intent.ACTION_SEND;
 import static android.content.Intent.EXTRA_SUBJECT;

@@ -21,16 +21,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kamores.tiffin.Activity_Detail;
-import com.kamores.tiffin.AdapterClass;
+import com.kamores.tiffin.Activities.Activity_Detail;
+import com.kamores.tiffin.Adapter.AdapterClass;
 import com.kamores.tiffin.Constants.Constants;
-import com.kamores.tiffin.CustomeAdapterItems;
-import com.kamores.tiffin.ModelClass;
+import com.kamores.tiffin.Adapter.CustomeAdapterItems;
+import com.kamores.tiffin.ModelClasses.ModelClass;
 import com.kamores.tiffin.R;
-import com.kamores.tiffin.RequestInterfacePart;
-import com.kamores.tiffin.ServerRequest;
-import com.kamores.tiffin.ServerResponce;
-import com.kamores.tiffin.Suppliers;
+import com.kamores.tiffin.Constants.RequestInterfacePart;
+import com.kamores.tiffin.Constants.ServerRequest;
+import com.kamores.tiffin.Constants.ServerResponce;
+import com.kamores.tiffin.Activities.Suppliers;
 
 import java.io.InputStream;
 import java.util.ArrayList;
