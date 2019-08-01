@@ -55,7 +55,8 @@
         <RelativeLayout
             android:id="@+id/rlayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv"
@@ -74,33 +75,37 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:text="Contact"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/user_contact"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:maxLength="11"
+                        android:inputType="number" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
                         android:text="Email"
                         android:textColor="@color/colorAccent"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/user_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:maxLength="20"
                         android:inputType="textEmailAddress" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="Username"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:inputType="text" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -112,10 +117,12 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/user_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:maxLength="10"
                         android:inputType="textPassword" />
 
                     <TextView
@@ -128,10 +135,12 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/user_confirmPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:maxLength="10"
                         android:inputType="textPassword" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -148,6 +157,7 @@
                 android:elevation="10dp">
 
                 <Button
+                    android:id="@+id/btn_signUp_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_ui"

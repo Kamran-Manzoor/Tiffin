@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -51,40 +52,51 @@ public class Add_Items extends AppCompatActivity {
 
 
     ImageView itemImageChose;
-    EditText itemName, itemPrice,itemDescription;
+    EditText itemName, itemPrice, itemDescription;
     Spinner spinnerDays;
+    ImageButton imageButton;
     Button btnAddItem;
     List<String> listDays;
-    String Item_name,Item_price,Item_days,Item_image,Item_desc;
+    String Item_name, Item_price, Item_days, Item_image, Item_desc;
     private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_items);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.actionbar1);
+//        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+//        getSupportActionBar().setCustomView(R.layout.actionbar1);
 
-        setContentView(R.layout.activity_add_items );
 
 //        Toast.makeText(this, ""+Add_Supplier.Service_id, Toast.LENGTH_SHORT).show();
 //        Toast.makeText(this, ""+Add_Supplier.Supplier_id, Toast.LENGTH_SHORT).show();
         initViewItems();
 
 
-        itemImageChose.setOnClickListener( new View.OnClickListener() {
+        itemImageChose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFileChooser();
             }
         });
 
-        btnAddItem.setOnClickListener( new View.OnClickListener() {
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Add_Items.this, BaseActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+        btnAddItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //addSuppliers();
@@ -96,10 +108,10 @@ public class Add_Items extends AppCompatActivity {
         });
 
         showDays();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,listDays);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listDays);
         adapter.setDropDownViewResource(R.layout.custom_spinner);
         spinnerDays.setAdapter(adapter);
-        spinnerDays.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
+        spinnerDays.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Item_days = parent.getItemAtPosition(position).toString();
@@ -112,6 +124,16 @@ public class Add_Items extends AppCompatActivity {
         });
     }
 
+    public void initViewItems() {
+        itemImageChose = findViewById(R.id.imageView_upper);
+        imageButton=findViewById(R.id.previous);
+//        itemName= findViewById(R.id.et_ItemName);
+//        itemPrice= findViewById(R.id.et_ItemPrice);
+//        itemDescription= findViewById(R.id.et_ItemDescription);
+        spinnerDays = findViewById(R.id.spinnerDays);
+//        btnChooseImage= findViewById(R.id.btn_choose_items);
+        btnAddItem = findViewById(R.id.btn_Add_Items);
+    }
     private void addItems() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
@@ -135,7 +157,6 @@ public class Add_Items extends AppCompatActivity {
         items.setService_id(Add_Supplier.Service_id);
         items.setSupllier_id(Add_Supplier.Supplier_id);
 
-
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.ADD_ITEMS);
         request.setItems(items);
@@ -149,16 +170,15 @@ public class Add_Items extends AppCompatActivity {
                     ServerResponce resp = response.body();
                     Toast.makeText(Add_Items.this, "" + resp.getMessage(), Toast.LENGTH_LONG).show();
                     setUpIntent();
-                }
-                catch(Exception e){
-                    Toast.makeText(Add_Items.this, ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(Add_Items.this, "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
 
             @Override
             public void onFailure(Call<ServerResponce> call, Throwable t) {
-                Toast.makeText(Add_Items.this, "Connection Failure "+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Add_Items.this, "Connection Failure " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -177,25 +197,17 @@ public class Add_Items extends AppCompatActivity {
         Item_desc = itemDescription.getText().toString();
     }
 
-    public void initViewItems(){
-//        itemImageChose= findViewById(R.id.img_New_Items);
-//        itemName= findViewById(R.id.et_ItemName);
-//        itemPrice= findViewById(R.id.et_ItemPrice);
-//        itemDescription= findViewById(R.id.et_ItemDescription);
-        spinnerDays= findViewById(R.id.spinnerDays);
-//        btnChooseImage= findViewById(R.id.btn_choose_items);
-        btnAddItem=findViewById(R.id.btn_Add_Items);
-    }
     private void openFileChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,IMG_REQUEST);
+        startActivityForResult(intent, IMG_REQUEST);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==IMG_REQUEST && resultCode == RESULT_OK && data != null){
+        if (requestCode == IMG_REQUEST && resultCode == RESULT_OK && data != null) {
             Uri path = data.getData();
             file_name = getFileName(path);
 
@@ -205,13 +217,14 @@ public class Add_Items extends AppCompatActivity {
             }
 
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),path);
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
                 itemImageChose.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
     private String getFileName(Uri uri) {
 
         String result = null;
@@ -234,11 +247,12 @@ public class Add_Items extends AppCompatActivity {
         }
         return result;
     }
-    private String imageToString(){
+
+    private String imageToString() {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,20,byteArrayOutputStream);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream);
         byte[] imgByte = byteArrayOutputStream.toByteArray();
-        return Base64.encodeToString(imgByte,Base64.DEFAULT);
+        return Base64.encodeToString(imgByte, Base64.DEFAULT);
     }
 
     public void showDays() {

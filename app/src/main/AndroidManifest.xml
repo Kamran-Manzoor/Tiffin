@@ -34,6 +34,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.Add_Items"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="Add Items"
             android:screenOrientation="portrait" />
         <!--
