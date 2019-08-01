@@ -22,7 +22,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="40dp"
         android:elevation="5dp"
-        android:text="Welcome to apps"
+        android:text="Welcome to app"
         android:textColor="@color/colorWhite"
         android:textSize="17sp" />
 
@@ -34,7 +34,7 @@
         android:transitionName="tvLogin"
         android:layout_alignLeft="@+id/tvDesc"
         android:elevation="5dp"
-        android:text="Login"
+        android:text="Supplier Login"
         android:textColor="@color/colorWhite"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -106,8 +106,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="Username"
-                        android:textColor="@color/colorPurple"
+                        android:text="Contact"
+                        android:textColor="@color/colorAccent"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -116,14 +116,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:inputType="text" />
+                        android:inputType="number" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:text="Password"
-                        android:textColor="@color/colorPurple"
+                        android:textColor="@color/colorAccent"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -184,21 +184,6 @@
                 android:text="Forgot your password?"
                 android:textSize="14sp" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvForgot"
-                android:layout_alignLeft="@+id/cv"
-                android:layout_alignRight="@+id/cv"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/bt_uifb"
-                android:drawableLeft="@drawable/logofacebook"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="LOGIN WITH FACEBOOK"
-                android:textColor="@color/colorPurple" />
         </RelativeLayout>
     </ScrollView>
 

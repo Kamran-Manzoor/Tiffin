@@ -1,4 +1,4 @@
-package com.kamores.tiffin;
+package com.kamores.tiffin.ModelClasses;
 
 import java.util.ArrayList;
 

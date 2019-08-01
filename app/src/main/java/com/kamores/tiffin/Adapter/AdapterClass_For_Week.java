@@ -1,23 +1,17 @@
-package com.kamores.tiffin;
+package com.kamores.tiffin.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.kamores.tiffin.Fragment.FragmentDay;
-import com.kamores.tiffin.Fragment.FragmentWeek;
+import com.kamores.tiffin.Activities.Activity_Detail;
+import com.kamores.tiffin.R;
 
 import java.util.ArrayList;
 
@@ -63,7 +57,7 @@ public class AdapterClass_For_Week extends RecyclerView.Adapter<AdapterClass_For
 //            Intent intent = new Intent(mContext,Activity_Detail.class);
 ////            intent.putExtra("Selected_Day",Day);
 //            mContext.startActivity(intent);
-            Intent i = new Intent().setClass(mContext,Activity_Detail.class);
+            Intent i = new Intent().setClass(mContext, Activity_Detail.class);
             i.putExtra("Day",Day);
             //Toast.makeText(mContext, ""+Activity_Detail.Sup_id, Toast.LENGTH_SHORT).show();
             i.putExtra("Supplier_id",Activity_Detail.Sup_id);

@@ -1,13 +1,13 @@
-package com.kamores.tiffin;
+package com.kamores.tiffin.Activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.kamores.tiffin.R;
 
 public class Supplier_Information extends AppCompatActivity {
     EditText etName,etService, etContact;
@@ -38,8 +38,8 @@ public class Supplier_Information extends AppCompatActivity {
                     etContact.setError("Enter Supplier Contact");
                 }
                 else {
-                    Intent intent= new Intent( Supplier_Information.this, Password.class);
-                    startActivity(intent);
+                   // Intent intent= new Intent( Supplier_Information.this, Password.class);
+                   // startActivity(intent);
                 }
             }
         });

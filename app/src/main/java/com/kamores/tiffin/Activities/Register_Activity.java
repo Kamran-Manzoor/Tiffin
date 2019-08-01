@@ -1,4 +1,4 @@
-package com.kamores.tiffin;
+package com.kamores.tiffin.Activities;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
+
+import com.kamores.tiffin.R;
 
 public class Register_Activity extends AppCompatActivity {
 

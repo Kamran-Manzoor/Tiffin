@@ -1,4 +1,4 @@
-package com.kamores.tiffin;
+package com.kamores.tiffin.Adapter;
 
 import android.content.Context;
 
@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.kamores.tiffin.ModelClasses.ModelClass;
+import com.kamores.tiffin.R;
 
 import java.util.List;
 

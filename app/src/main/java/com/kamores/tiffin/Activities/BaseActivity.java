@@ -1,8 +1,11 @@
-package com.kamores.tiffin;
+package com.kamores.tiffin.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,6 +14,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.SearchView;
+
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -23,14 +28,22 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.kamores.tiffin.Adapter.AdapterClass;
 import com.kamores.tiffin.Constants.Constants;
+import com.kamores.tiffin.ModelClasses.ModelClass;
+import com.kamores.tiffin.R;
+import com.kamores.tiffin.Constants.RequestInterface;
+import com.kamores.tiffin.Constants.ServerResponce;
+import com.kamores.tiffin.ModelClasses.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -72,25 +85,26 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         //views Initialise
         initialviews();
 
-        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refresh.setRefreshing(true);
-                new Handler().postDelayed( new Runnable() {
-                    @Override
-                    public void run() {
-                        getUsers();
-                        Toast.makeText(BaseActivity.this, "Refresh Complete", Toast.LENGTH_SHORT).show();
-                        refresh.setRefreshing(false);
-                    }
-                },1000);
-            }
-        });
+//        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                refresh.setRefreshing(true);
+//                new Handler().postDelayed( new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        getUsers();
+//                        Toast.makeText(BaseActivity.this, "Refresh Complete", Toast.LENGTH_SHORT).show();
+//                        refresh.setRefreshing(false);
+//                    }
+//                },1000);
+//            }
+//        });
 
         user = new User();
         getUsers();
 
         modelClasses = new ArrayList<>();
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
 
@@ -109,12 +123,24 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         toggle.getDrawerArrowDrawable().setColor(Color.RED);
         navigationView.setNavigationItemSelectedListener( this );
+        ColorStateList csl = new ColorStateList(
+                new int[][] {
+                        new int[] {-android.R.attr.state_checked}, // unchecked
+                        new int[] { android.R.attr.state_checked}  // checked
+                },
+                new int[] {
+                        Color.BLACK,
+                        Color.RED
+                }
+        );
+        navigationView.setItemTextColor(csl);
+        navigationView.setItemIconTintList(csl);
 //        fillExampleList();
 
     }
 
     private void initialviews() {
-        refresh = findViewById( R.id.refresh);
+//        refresh = findViewById( R.id.refresh);
         signIn = findViewById( R.id.text_SignIn_Main );
         toolbar = findViewById( R.id.toolbar );
         mDrawerLayout = findViewById( R.id.drawer_layout );
@@ -137,10 +163,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+
         if (id == R.id.nav_Supplier) {
-            Intent intent = new Intent( BaseActivity.this, Add_Supplier.class );
+            Intent intent = new Intent( BaseActivity.this, Login_Activity_Supplier.class );
             startActivity( intent );
         } else if (id == R.id.nav_Save_Location) {
+            Intent intent = new Intent( BaseActivity.this, Add_Items.class );
+            startActivity( intent );
         } else if (id == R.id.nav_show_In_Map) {
             Intent i = new Intent(BaseActivity.this,MapsActivity.class);
             startActivity(i);
@@ -213,7 +242,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.example_menu, menu);
         MenuItem searchIItem = menu.findItem(R.id.action_search);
+
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchIItem);
+        searchView.setQueryHint(Html.fromHtml("<font color = #F35746>" + getResources().getString(R.string.hintSearchMess) + "</font>"));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

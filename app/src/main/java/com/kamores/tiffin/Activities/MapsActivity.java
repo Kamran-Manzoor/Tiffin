@@ -1,4 +1,4 @@
-package com.kamores.tiffin;
+package com.kamores.tiffin.Activities;
 
 import android.Manifest;
 import android.app.ProgressDialog;
@@ -26,6 +26,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.kamores.tiffin.R;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 

@@ -22,7 +22,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/bakso1" />
+                android:src="@drawable/logo" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -51,14 +51,14 @@
 
             <TextView
                 android:id="@+id/tvPrice"
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="0dp"
                 android:background="@color/colorBrown"
                 android:gravity="center"
                 android:padding="20dp"
-                android:text="Rp.0"
+                android:text="RS.0"
                 android:textColor="@color/colorWhite"
                 android:textSize="14sp"
                 android:textStyle="bold" />

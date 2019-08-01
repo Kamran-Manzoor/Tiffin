@@ -1,10 +1,9 @@
-package com.kamores.tiffin;
+package com.kamores.tiffin.Activities;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -15,21 +14,18 @@ import androidx.appcompat.app.ActionBar;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kamores.tiffin.Constants.Constants;
+import com.kamores.tiffin.R;
+import com.kamores.tiffin.Constants.RequestInterfacePart;
+import com.kamores.tiffin.Constants.ServerRequest;
+import com.kamores.tiffin.Constants.ServerResponce;
 
 import java.io.IOException;
 import java.util.List;
