@@ -23,6 +23,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -52,7 +54,7 @@ public class Add_Items extends AppCompatActivity {
 
 
     ImageView itemImageChose;
-    EditText itemName, itemPrice, itemDescription;
+    EditText itemName, itemPrice, itemDescription,et_day;
     Spinner spinnerDays;
     ImageButton imageButton;
     Button btnAddItem;
@@ -124,13 +126,15 @@ public class Add_Items extends AppCompatActivity {
         });
     }
 
+
     public void initViewItems() {
         itemImageChose = findViewById(R.id.imageView_upper);
         imageButton=findViewById(R.id.previous);
+        et_day=findViewById(R.id.editText_day);
 //        itemName= findViewById(R.id.et_ItemName);
 //        itemPrice= findViewById(R.id.et_ItemPrice);
 //        itemDescription= findViewById(R.id.et_ItemDescription);
-        spinnerDays = findViewById(R.id.spinnerDays);
+     //   spinnerDays = findViewById(R.id.spinnerDays);
 //        btnChooseImage= findViewById(R.id.btn_choose_items);
         btnAddItem = findViewById(R.id.btn_Add_Items);
     }

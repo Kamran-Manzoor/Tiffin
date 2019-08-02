@@ -218,7 +218,7 @@ public class FragmentDay extends Fragment {
 
                             modelClasses = new ArrayList<>();
                             for (int i = 0; i < item_price.size(); i++) {
-                                modelClasses.add( new ModelClass( item_name.get( i ),item_price.get( i )));
+                              //  modelClasses.add( new ModelClass( item_name.get( i ),item_price.get( i )));
                             }
                             setUpRecyclerView();
                         }

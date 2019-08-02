@@ -87,9 +87,10 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         Glide.with(mContext).load(myImage).into(holder.ImageView);
                 //.into(holder.img_show);
 
-        holder.tv_ServiceName.setText(currentItem.getService_name());
-        holder.tv_SupplierName.setText(currentItem.getSup_name());
-        holder.tv_Location.setText(currentItem.getLocation());
+        holder.tv_ServiceName.setText(currentItem.getItemName());
+        holder.tv_SupplierName.setText(currentItem.getName());
+        holder.tv_Location.setText(currentItem.getAddress());
+        holder.tv_price.setText("RS:" + currentItem.getPrice());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +98,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
                 image_name = currentItem.getItem_image();
                 Intent i = new Intent().setClass(mContext, Activity_Detail.class);
                 i.putExtra("Supplier_id",currentItem.getSupplier_id());
-                i.putExtra("Contact_info",currentItem.getSup_contact());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 mContext.getApplicationContext().startActivity(i);
             }
@@ -110,19 +110,18 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
 
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ImageView;
-        TextView tv_ServiceName, tv_SupplierName, tv_Location;
+        TextView tv_ServiceName, tv_SupplierName, tv_Location,tv_price;
         ImageView details, img_show;
         CardView cardView;
         public ViewHolder(View itemView) {
             super(itemView);
             //img_food= itemView.findViewById(R.id.img_Food_RecyclerView);
             //imgDetail= itemView.findViewById(R.id.img_Details_RecyclerView);
-            tv_ServiceName = itemView.findViewById(R.id.tv_ServiceName_RecyclerView);
+            tv_ServiceName = itemView.findViewById(R.id.tv_item_name);
             tv_SupplierName = itemView.findViewById(R.id.tv_SupplierName_RecyclerView);
             tv_Location = itemView.findViewById(R.id.tv_SupplierLocation_RecyclerView);
+            tv_price = itemView.findViewById(R.id.tv_item_price);
             cardView = itemView.findViewById(R.id.cardView);
-//            details = itemView.findViewById(R.id.btn_see_details);
-            //img_show = itemView.findViewById(R.id.imageView2);
             ImageView = itemView.findViewById(R.id.imageView2);
         }
     }
@@ -141,9 +140,9 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
             }else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
                 for (ModelClass item : modelClassList){
-                    if (item.getService_name().toLowerCase().contains(filterPattern) ||
-                            item.getSup_name().toLowerCase().contains(filterPattern) ||
-                            item.getLocation().toLowerCase().contains(filterPattern)){
+                    if (item.getItemName().toLowerCase().contains(filterPattern) ||
+                            item.getName().toLowerCase().contains(filterPattern) ||
+                            item.getAddress().toLowerCase().contains(filterPattern)){
                         filteredList.add(item);
                     }
                 }

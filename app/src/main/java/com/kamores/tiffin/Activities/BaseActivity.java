@@ -1,16 +1,11 @@
 package com.kamores.tiffin.Activities;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import androidx.core.view.MenuItemCompat;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.SearchView;
@@ -27,8 +22,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,7 +36,6 @@ import com.kamores.tiffin.ModelClasses.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -61,17 +53,12 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
 
     private List<ModelClass> modelClasses;
-    ArrayList<String> service_name;
-    ArrayList<String> sup_name;
-    ArrayList<String> location;
-    ArrayList<String> sup_id;
-    ArrayList<String> sup_contact;
-    ArrayList<String> item_image;
-
-    ProgressDialog progressDialog;
-    SwipeRefreshLayout refresh;
-
-
+        ArrayList<String> itemName;
+        ArrayList<String> name;
+        ArrayList<String> supplier_id;
+        ArrayList<String> address;
+        ArrayList<String> price;
+        ArrayList<String> item_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,25 +67,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
-      //  toolbar.setTitleTextColor(getResources().getColor(android.R.color.holo_red_light));
 
         //views Initialise
         initialviews();
-
-//        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                refresh.setRefreshing(true);
-//                new Handler().postDelayed( new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        getUsers();
-//                        Toast.makeText(BaseActivity.this, "Refresh Complete", Toast.LENGTH_SHORT).show();
-//                        refresh.setRefreshing(false);
-//                    }
-//                },1000);
-//            }
-//        });
 
         user = new User();
         getUsers();
@@ -140,12 +111,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void initialviews() {
-//        refresh = findViewById( R.id.refresh);
         signIn = findViewById( R.id.text_SignIn_Main );
         toolbar = findViewById( R.id.toolbar );
         mDrawerLayout = findViewById( R.id.drawer_layout );
         navigationView = findViewById( R.id.nav_view );
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -185,9 +157,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         Retrofit retrofit = new Retrofit.Builder().baseUrl( Constants.BASE_URL )
                 .addConverterFactory( GsonConverterFactory.create() ).build();
 
-//        ServerRequest request = new ServerRequest();
-//        request.setOperation( Constants.RETRIEVE_ALL );
-
         RequestInterface requestInterface = retrofit.create( RequestInterface.class );
         Call<ServerResponce> response = requestInterface.operation();
 
@@ -197,18 +166,17 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 try {
                     ServerResponce resp = response.body();
                     user = resp.getUser();
-                    sup_name = user.getSup_name();
-                    service_name = user.getService_name();
-                    location = user.getLocation();
-                    sup_id = user.getSupplier_id();
-                    sup_contact = user.getSup_contact();
-                    sup_contact = user.getSup_contact();
+                    name = user.getName();
+                    itemName = user.getItemName();
+                    address = user.getAddress();
+                    supplier_id = user.getSupplier_id();
+                    price = user.getPrice();
                     item_image = user.getItem_image();
-                    //progressDialog.dismiss();
+
 
                     modelClasses = new ArrayList<>();
-                    for (int i = 0; i < location.size(); i++) {
-                        modelClasses.add( new ModelClass( sup_name.get( i ),service_name.get( i ) ,location.get( i ),sup_id.get( i ),sup_contact.get( i ),item_image.get( i )));
+                    for (int i = 0; i < address.size(); i++) {
+                        modelClasses.add( new ModelClass( name.get( i ),itemName.get( i ) ,address.get( i ),supplier_id.get( i ),item_image.get( i ),price.get( i )));
                     }
                     setUpRecyclerView();
 
