@@ -30,7 +30,7 @@ import com.kamores.tiffin.R;
 import com.kamores.tiffin.Constants.RequestInterfacePart;
 import com.kamores.tiffin.Constants.ServerRequest;
 import com.kamores.tiffin.Constants.ServerResponce;
-import com.kamores.tiffin.Activities.Suppliers;
+import com.kamores.tiffin.ModelClasses.Suppliers;
 
 import java.io.InputStream;
 import java.util.ArrayList;

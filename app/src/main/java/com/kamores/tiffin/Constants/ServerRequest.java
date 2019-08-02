@@ -1,8 +1,9 @@
 package com.kamores.tiffin.Constants;
 
-import com.kamores.tiffin.Activities.Suppliers;
+import com.kamores.tiffin.ModelClasses.Suppliers;
 import com.kamores.tiffin.ModelClasses.Items;
 import com.kamores.tiffin.ModelClasses.User;
+import com.kamores.tiffin.ModelClasses.UserModel;
 
 public class ServerRequest {
     private String operation;
@@ -10,6 +11,11 @@ public class ServerRequest {
     private User user;
     Suppliers suppliers;
     Items items;
+    UserModel userModel;
+
+    public void setUserModel(UserModel userModel) {
+        this.userModel = userModel;
+    }
 
     public void setItems(Items items) {
         this.items = items;
