@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,6 +9,9 @@
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
     tools:context=".Activities.BaseActivity"
     tools:showIn="@layout/app_bar_base">
+
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,10 +35,6 @@
             android:text="Today's Menu"
             android:textColor="@color/colorAccent" />
 
-        <!--<androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
-            <!--android:id="@+id/refresh"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent">-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -56,26 +56,32 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="23sp"
-                    android:layout_marginStart="30dp"
+                    android:textSize="18sp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:textStyle="bold"
-                    android:text="Today's Menu"
+                    android:text="Available Now"
                     android:textColor="@color/colorAccent" />
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_view1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:orientation="horizontal"></androidx.recyclerview.widget.RecyclerView>
+                    android:layout_height="match_parent"
+                    >
+                </androidx.recyclerview.widget.RecyclerView>
+                </LinearLayout>
 
 
-            </LinearLayout>
-        <!--</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
 
 
     </LinearLayout>
 
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

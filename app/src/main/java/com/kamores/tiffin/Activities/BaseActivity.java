@@ -1,8 +1,12 @@
 package com.kamores.tiffin.Activities;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.core.view.MenuItemCompat;
@@ -11,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.SearchView;
 
 import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -22,11 +27,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.android.material.snackbar.Snackbar;
 import com.kamores.tiffin.Adapter.AdapterClass;
+import com.kamores.tiffin.Adapter.AdapterServiceType;
 import com.kamores.tiffin.Constants.Constants;
 import com.kamores.tiffin.ModelClasses.ModelClass;
 import com.kamores.tiffin.R;
@@ -47,10 +56,12 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout mDrawerLayout;
     TextView signIn;
     User user;
-    RecyclerView recyclerView;
+    RecyclerView recyclerView,recyclerView_all;
     private AdapterClass adapter;
+    private AdapterServiceType adaptertype;
     Toolbar toolbar;
     NavigationView navigationView;
+    LinearLayout logoutLayout;
 
     private List<ModelClass> modelClasses;
         ArrayList<String> itemName;
@@ -72,7 +83,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         initialviews();
 
         user = new User();
-        getUsers();
+        getToDaymenu();
 
         modelClasses = new ArrayList<>();
 
@@ -106,15 +117,29 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         );
         navigationView.setItemTextColor(csl);
         navigationView.setItemIconTintList(csl);
+        logoutLayout.setVisibility(View.GONE);
+
+        if(!isConnectedToInternet(BaseActivity.this)){
+             Toast.makeText(BaseActivity.this, "Can't connect to Internet!", Toast.LENGTH_SHORT).show();
+        }
 //        fillExampleList();
 
     }
+    private boolean isConnectedToInternet(Context context) {
+        ConnectivityManager cm =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+
+
 
     private void initialviews() {
         signIn = findViewById( R.id.text_SignIn_Main );
         toolbar = findViewById( R.id.toolbar );
         mDrawerLayout = findViewById( R.id.drawer_layout );
         navigationView = findViewById( R.id.nav_view );
+        logoutLayout=findViewById(R.id.logout_layout);
     }
 
 
@@ -153,7 +178,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
 //Get all Data of Main Card View
-    private void getUsers() {
+    private void getToDaymenu() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl( Constants.BASE_URL )
                 .addConverterFactory( GsonConverterFactory.create() ).build();
 
@@ -178,7 +203,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                     for (int i = 0; i < address.size(); i++) {
                         modelClasses.add( new ModelClass( name.get( i ),itemName.get( i ) ,address.get( i ),supplier_id.get( i ),item_image.get( i ),price.get( i )));
                     }
-                    setUpRecyclerView();
+                    setUpRecyclerViewToday();
+                    setUpRecyclerViewAll();
 
                 } catch (Exception e) {
                     Toast.makeText( BaseActivity.this, "Exception : " + e.getLocalizedMessage(), Toast.LENGTH_SHORT ).show();
@@ -191,7 +217,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         } );
     }
-    private void setUpRecyclerView(){
+
+    private void setUpRecyclerViewToday(){
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -205,6 +232,21 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             recyclerView.setAdapter(adapter);
         }
     }
+    private void setUpRecyclerViewAll(){
+
+        recyclerView_all = findViewById(R.id.recycler_view1);
+        recyclerView_all.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        if (modelClasses == null){
+            Toast.makeText( this, "Null", Toast.LENGTH_SHORT ).show();
+        }
+        else {
+            adaptertype = new AdapterServiceType(modelClasses, getApplicationContext());
+            recyclerView_all.setLayoutManager(layoutManager);
+            recyclerView_all.setAdapter(adaptertype);
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -231,6 +273,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         });
         return true;
     }
+
 
 
 
