@@ -78,7 +78,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         ImageDownloader task = new ImageDownloader();
         Bitmap myImage = null;
         try {
-            myImage = task.execute(Constants.BASE_URL+"/TiffinApp/uploads/"+modelClasses.get(position).getItem_image() +".jpg").get();
+            myImage = task.execute(Constants.BASE_URL+"/Tiffin/uploads/"+modelClasses.get(position).getItem_image() +".jpg").get();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

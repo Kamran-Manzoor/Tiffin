@@ -23,6 +23,7 @@ import com.kamores.tiffin.Constants.RequestInterfacePart;
 import com.kamores.tiffin.Constants.ServerRequest;
 import com.kamores.tiffin.Constants.ServerResponce;
 import com.kamores.tiffin.ModelClasses.Suppliers;
+import com.kamores.tiffin.ModelClasses.User;
 import com.kamores.tiffin.ModelClasses.UserModel;
 import com.kamores.tiffin.R;
 
@@ -94,7 +95,7 @@ public class Register_Activity extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
         RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
-        final UserModel user = new UserModel();
+        final User user = new User();
 
         user.setContact(contact);
         user.setEmail(email);
@@ -102,15 +103,16 @@ public class Register_Activity extends AppCompatActivity {
 
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.REGISTER_USER);
-        request.setUserModel(user);
+        request.setUser(user);
 
         final Call<ServerResponce> resp = requestInterfacePart.operationone(request);
 
         resp.enqueue(new Callback<ServerResponce>() {
             @Override
             public void onResponse(Call<ServerResponce> call, Response<ServerResponce> response) {
-
+                User user = new User();
                 ServerResponce resp = response.body();
+                user = resp.getUser();
                 Toast.makeText(Register_Activity.this, resp.getMessage(), Toast.LENGTH_SHORT).show();
 //                try {
 //                    ServerResponce resp = response.body();
