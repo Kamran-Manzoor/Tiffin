@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.kamores.tiffin.Activities.Activity_Detail;
+import com.kamores.tiffin.Activities.Supplier_profile;
 import com.kamores.tiffin.Constants.Constants;
 import com.kamores.tiffin.ModelClasses.ModelClass;
 import com.kamores.tiffin.R;
@@ -96,7 +97,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
             @Override
             public void onClick(View v) {
                 image_name = currentItem.getItem_image();
-                Intent i = new Intent().setClass(mContext, Activity_Detail.class);
+                Intent i = new Intent().setClass(mContext, Supplier_profile.class);
                 i.putExtra("Supplier_id",currentItem.getSupplier_id());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 mContext.getApplicationContext().startActivity(i);

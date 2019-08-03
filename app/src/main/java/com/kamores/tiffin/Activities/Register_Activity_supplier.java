@@ -27,7 +27,7 @@ public class Register_Activity_supplier extends AppCompatActivity {
         setContentView(R.layout.activity_register_supplier);
 
         ActionBar actionBar= getSupportActionBar();
-        actionBar.hide();
+//        actionBar.hide();
 
 //        Toolbar toolbar = findViewById(R.id.bgHeader);
 //        setSupportActionBar(toolbar);

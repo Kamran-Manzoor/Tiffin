@@ -1,5 +1,6 @@
 package com.kamores.tiffin.Activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 
 import androidx.annotation.Nullable;
@@ -19,12 +20,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -54,8 +54,8 @@ public class Add_Items extends AppCompatActivity {
 
 
     ImageView itemImageChose;
-    EditText itemName, itemPrice, itemDescription,et_day;
-    Spinner spinnerDays;
+    EditText itemName, itemPrice, itemDescription;
+    AutoCompleteTextView spinnerDays;
     ImageButton imageButton;
     Button btnAddItem;
     List<String> listDays;
@@ -126,15 +126,14 @@ public class Add_Items extends AppCompatActivity {
         });
     }
 
-
+    @SuppressLint("WrongViewCast")
     public void initViewItems() {
         itemImageChose = findViewById(R.id.imageView_upper);
         imageButton=findViewById(R.id.previous);
-        et_day=findViewById(R.id.editText_day);
 //        itemName= findViewById(R.id.et_ItemName);
 //        itemPrice= findViewById(R.id.et_ItemPrice);
 //        itemDescription= findViewById(R.id.et_ItemDescription);
-     //   spinnerDays = findViewById(R.id.spinnerDays);
+        spinnerDays = findViewById(R.id.spinnerDays);
 //        btnChooseImage= findViewById(R.id.btn_choose_items);
         btnAddItem = findViewById(R.id.btn_Add_Items);
     }
