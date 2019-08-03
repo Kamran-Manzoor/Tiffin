@@ -42,7 +42,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginBottom="8dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/logo"
+        app:layout_constraintCircleRadius=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView4"
         app:layout_constraintHorizontal_bias="0.484"
