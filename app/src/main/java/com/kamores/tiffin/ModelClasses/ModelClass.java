@@ -1,62 +1,45 @@
 package com.kamores.tiffin.ModelClasses;
 
 public class ModelClass {
-//    public int image_food;
-//    public int image_detail;
 
-    public String sup_name;
-    public String service_name;
-    public String location;
+
+    public String name;
+    public String itemName;
+    public String address;
     public String supplier_id;
-    public String sup_contact;
     public String item_image;
+    public String price;
 
-    public String item_name;
-    public String item_price;
-
-    public ModelClass(String item_name, String item_price) {
-        this.item_name = item_name;
-        this.item_price = item_price;
-    }
-
-    public String getItem_name() {
-        return item_name;
-    }
-
-    public String getItem_price() {
-        return item_price;
-    }
-
-    public ModelClass(String sup_name, String service_name, String location, String supplier_id, String sup_contact, String item_image) {
-        this.sup_name = sup_name;
-        this.service_name = service_name;
-        this.location = location;
+    public ModelClass(String name, String itemName, String address, String supplier_id, String item_image, String price) {
+        this.name = name;
+        this.itemName = itemName;
+        this.address = address;
         this.supplier_id = supplier_id;
-        this.sup_contact = sup_contact;
         this.item_image = item_image;
+        this.price = price;
     }
 
-    public String getSup_name() {
-        return sup_name;
+    public String getName() {
+        return name;
     }
 
-    public String getService_name() {
-        return service_name;
+    public String getItemName() {
+        return itemName;
     }
 
-    public String getLocation() {
-        return location;
+    public String getAddress() {
+        return address;
     }
 
     public String getSupplier_id() {
         return supplier_id;
     }
 
-    public String getSup_contact() {
-        return sup_contact;
-    }
-
     public String getItem_image() {
         return item_image;
+    }
+
+    public String getPrice() {
+        return price;
     }
 }

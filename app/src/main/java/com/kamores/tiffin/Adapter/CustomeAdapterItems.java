@@ -37,8 +37,8 @@ public class CustomeAdapterItems extends RecyclerView.Adapter<CustomeAdapterItem
     @Override
     public void onBindViewHolder(CustomeAdapterItems.ViewHolder holder, final int position) {
         final ModelClass currentItem = modelClasses.get(position);
-        holder.tv_Item_name.setText(currentItem.getItem_name());
-        holder.tv_item_price.setText(currentItem.getItem_price());
+        holder.tv_Item_name.setText(currentItem.getItemName());
+        holder.tv_item_price.setText(currentItem.getPrice());
 
     }
     @Override

@@ -25,9 +25,10 @@
         <activity android:name=".Activities.Register_Activity"></activity>
         <activity android:name=".Activities.Login_Activity" />
         <activity
-            android:name=".Service_Name"
+            android:name=".Activities.Supplier_profile"
             android:label="Item Schedule Activity"
-            android:screenOrientation="landscape" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.Activity_Detail"
             android:label="Activity Detail"
