@@ -2,12 +2,6 @@ package com.kamores.tiffin.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-
-import androidx.annotation.Nullable;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -25,15 +19,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.kamores.tiffin.Constants.Constants;
-import com.kamores.tiffin.ModelClasses.Items;
-import com.kamores.tiffin.R;
 import com.kamores.tiffin.Constants.RequestInterfacePart;
 import com.kamores.tiffin.Constants.ServerRequest;
 import com.kamores.tiffin.Constants.ServerResponce;
+import com.kamores.tiffin.ModelClasses.Items;
+import com.kamores.tiffin.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -51,7 +47,6 @@ public class Add_Items extends AppCompatActivity {
     private static final int IMG_REQUEST = 777;
     String file_name;
     private Bitmap bitmap;
-
 
     ImageView itemImageChose;
     EditText itemName, itemPrice, itemDescription;
@@ -129,7 +124,7 @@ public class Add_Items extends AppCompatActivity {
     @SuppressLint("WrongViewCast")
     public void initViewItems() {
         itemImageChose = findViewById(R.id.imageView_upper);
-        imageButton=findViewById(R.id.previous);
+        imageButton = findViewById(R.id.previous);
 //        itemName= findViewById(R.id.et_ItemName);
 //        itemPrice= findViewById(R.id.et_ItemPrice);
 //        itemDescription= findViewById(R.id.et_ItemDescription);
@@ -137,6 +132,7 @@ public class Add_Items extends AppCompatActivity {
 //        btnChooseImage= findViewById(R.id.btn_choose_items);
         btnAddItem = findViewById(R.id.btn_Add_Items);
     }
+
     private void addItems() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
