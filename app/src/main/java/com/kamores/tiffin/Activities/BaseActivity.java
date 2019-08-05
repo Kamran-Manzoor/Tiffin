@@ -29,6 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,6 +63,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     NavigationView navigationView;
     LinearLayout logoutLayout;
+    TextView today,available;
+    ProgressBar progressBar;
 
     private List<ModelClass> modelClasses;
         ArrayList<String> itemName;
@@ -118,6 +121,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setItemTextColor(csl);
         navigationView.setItemIconTintList(csl);
         logoutLayout.setVisibility(View.GONE);
+        today.setText("");
+        available.setText("");
+        progressBar.setVisibility(View.VISIBLE);
 
         if(!isConnectedToInternet(BaseActivity.this)){
              Toast.makeText(BaseActivity.this, "Can't connect to Internet!", Toast.LENGTH_SHORT).show();
@@ -132,17 +138,18 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
-
-
     private void initialviews() {
         signIn = findViewById( R.id.text_SignIn_Main );
         toolbar = findViewById( R.id.toolbar );
         mDrawerLayout = findViewById( R.id.drawer_layout );
         navigationView = findViewById( R.id.nav_view );
         logoutLayout=findViewById(R.id.logout_layout);
+        today=findViewById(R.id.tv_today_menu);
+        available=findViewById(R.id.tv_now);
+        progressBar=findViewById(R.id.progressBar);
+
+
     }
-
-
 
     @Override
     public void onBackPressed() {
@@ -153,7 +160,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
-
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -204,7 +210,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                         modelClasses.add( new ModelClass( name.get( i ),itemName.get( i ) ,address.get( i ),supplier_id.get( i ),item_image.get( i ),price.get( i )));
                     }
                     setUpRecyclerViewToday();
+                    today.setText("Today's Menu");
+                    available.setText("Available Now");
                     setUpRecyclerViewAll();
+                    progressBar.setVisibility(View.GONE);
 
                 } catch (Exception e) {
                     Toast.makeText( BaseActivity.this, "Exception : " + e.getLocalizedMessage(), Toast.LENGTH_SHORT ).show();
@@ -221,6 +230,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     private void setUpRecyclerViewToday(){
 
         recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         if (modelClasses == null){
@@ -235,8 +245,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     private void setUpRecyclerViewAll(){
 
         recyclerView_all = findViewById(R.id.recycler_view1);
+
         recyclerView_all.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setAutoMeasureEnabled(true);
         if (modelClasses == null){
             Toast.makeText( this, "Null", Toast.LENGTH_SHORT ).show();
         }
