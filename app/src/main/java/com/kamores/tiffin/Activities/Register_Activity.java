@@ -1,9 +1,5 @@
 package com.kamores.tiffin.Activities;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -17,14 +13,14 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.kamores.tiffin.Constants.Constants;
 import com.kamores.tiffin.Constants.RequestInterfacePart;
 import com.kamores.tiffin.Constants.ServerRequest;
 import com.kamores.tiffin.Constants.ServerResponce;
-import com.kamores.tiffin.ModelClasses.Suppliers;
 import com.kamores.tiffin.ModelClasses.User;
-import com.kamores.tiffin.ModelClasses.UserModel;
 import com.kamores.tiffin.R;
 
 import retrofit2.Call;
@@ -110,20 +106,9 @@ public class Register_Activity extends AppCompatActivity {
         resp.enqueue(new Callback<ServerResponce>() {
             @Override
             public void onResponse(Call<ServerResponce> call, Response<ServerResponce> response) {
-                User user = new User();
                 ServerResponce resp = response.body();
-                user = resp.getUser();
                 Toast.makeText(Register_Activity.this, resp.getMessage(), Toast.LENGTH_SHORT).show();
-//                try {
-//                    ServerResponce resp = response.body();
-//
-//                    assert resp != null;
-//                    Toast.makeText(Register_Activity.this, "You Have Successfully Sign Up "+resp.getMessage(), Toast.LENGTH_SHORT).show();
-//                    setUpIntent();
-//                }
-//                catch(Exception e){
-//                    Toast.makeText(Register_Activity.this, ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-//                }
+                setUpIntent();
 
             }
 

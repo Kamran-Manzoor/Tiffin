@@ -57,7 +57,7 @@ public class Add_Supplier extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
 
-        setContentView(R.layout.activity_add_supplier );
+        setContentView(R.layout.activity_register_supplier );
 
         initViewSuppliers();
 

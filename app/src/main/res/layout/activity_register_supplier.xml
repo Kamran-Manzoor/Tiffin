@@ -14,6 +14,20 @@
         android:elevation="5dp"
         android:theme="@style/ToolbarTheme" />
 
+    <ImageButton
+        android:id="@+id/previous"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@null"
+        android:elevation="5dp"
+        android:src="@drawable/back_arrow_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
     <TextView
         android:id="@+id/tvSignUp"
         android:layout_width="wrap_content"
@@ -21,11 +35,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:elevation="10dp"
-        android:transitionName="tvLogin"
         android:text="Sign up Supplier"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:transitionName="tvLogin" />
 
     <ImageView
         android:id="@+id/circle1"
@@ -41,11 +55,11 @@
         android:layout_width="200dp"
         android:layout_height="206dp"
         android:layout_alignParentBottom="false"
-        android:layout_toEndOf="@id/circle1"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="600dp"
         android:layout_marginEnd="-200dp"
-        android:layout_marginStart="200dp"
         android:layout_marginBottom="-100dp"
+        android:layout_toEndOf="@id/circle1"
         android:src="@drawable/circle" />
 
 
@@ -54,15 +68,32 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/bgHeader"
         android:layout_margin="20dp">
+
         <RelativeLayout
             android:id="@+id/rlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageView_supplier"
+                android:layout_width="114dp"
+                android:layout_height="114dp"
+                android:layout_above="@id/cv"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="130dp"
+                android:layout_marginEnd="127dp"
+                android:layout_marginBottom="-134dp"
+                android:elevation="5dp"
+                android:foregroundGravity="center"
+                android:src="@drawable/selectpic" />
+
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="150dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="4dp">
 
@@ -82,27 +113,30 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/tv_full_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:inputType="textPersonName" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="Contact"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                    <!--<TextView-->
 
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:inputType="number" />
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_margin="10dp"-->
+                        <!--android:text="Contact"-->
+                        <!--android:textColor="@color/colorAccent"-->
+                        <!--android:textSize="14sp"-->
+                        <!--android:textStyle="bold" />-->
+
+                    <!--<EditText-->
+                        <!--android:id="@+id/tv_contact"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="10dp"-->
+                        <!--android:layout_marginRight="10dp"-->
+                        <!--android:inputType="number" />-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -114,42 +148,13 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/tv_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:inputType="text" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="Email"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:inputType="textEmailAddress" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="Password"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:inputType="textPassword" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -165,6 +170,7 @@
                 android:elevation="10dp">
 
                 <Button
+                    android:id="@+id/btn_signUp_supplier"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_ui"
