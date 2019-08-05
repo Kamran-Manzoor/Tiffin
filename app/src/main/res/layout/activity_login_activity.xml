@@ -14,15 +14,28 @@
         android:background="@drawable/header_login"
         android:elevation="5dp"
         tools:ignore="NewApi" />
+    <ImageButton
+        android:id="@+id/previous"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@null"
+        android:elevation="5dp"
+        android:src="@drawable/back_arrow_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
     <TextView
         android:id="@+id/tvDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:elevation="5dp"
-        android:text="Welcome to apps"
+        android:text="Welcome to App"
         android:textColor="@color/colorWhite"
         android:textSize="17sp" />
 

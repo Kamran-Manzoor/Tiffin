@@ -70,7 +70,8 @@
             android:name=".Activities.Register_Activity_supplier"
             android:parentActivityName=".Activities.Login_Activity_Supplier"
             android:label="MainActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
             android:name=".Activities.BaseActivity"
