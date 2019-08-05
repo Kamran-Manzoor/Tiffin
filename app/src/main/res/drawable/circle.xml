@@ -4,8 +4,8 @@
         <shape android:shape="oval">
             <gradient
                 android:angle="90"
-                android:endColor="@color/gradEnd"
-                android:startColor="@color/gradStart" />
+                android:endColor="@color/gradStart"
+                android:startColor="@color/gradEnd" />
         </shape>
     </item>
 </layer-list>

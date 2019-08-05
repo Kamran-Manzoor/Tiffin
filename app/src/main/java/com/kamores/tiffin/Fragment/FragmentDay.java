@@ -120,7 +120,7 @@ public class FragmentDay extends Fragment {
         to_Location = view.findViewById(R.id.to_showlocation);
         recyclerView = view.findViewById(R.id.recycler_view_day);
         phone = view.findViewById(R.id.to_showContact);
-        button = view.findViewById(R.id.btn_phone);
+//        button = view.findViewById(R.id.btn_phone);
         imageView_show = view.findViewById(R.id.image_view_show);
 
         URLIMAGE = Constants.BASE_URL+"TiffinApp/uploads/"+AdapterClass.image_name+".jpg";
