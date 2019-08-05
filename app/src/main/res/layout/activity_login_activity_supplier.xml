@@ -117,9 +117,9 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/Supplier_Contact"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/Supplier_Contact"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:inputType="number" />
@@ -134,9 +134,9 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/et_Supplier_Password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/et_Supplier_Password"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:inputType="textPassword" />
@@ -155,9 +155,9 @@
                 android:elevation="10dp">
 
                 <Button
+                    android:id="@+id/btn_Supplier_Login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/et_Supplier_Login"
                     android:background="@drawable/bg_ui"
                     android:text="Login"
                     android:textAllCaps="false"

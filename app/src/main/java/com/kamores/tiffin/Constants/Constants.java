@@ -22,4 +22,5 @@ public class Constants {
 
     public static final String REGISTER_USER ="register";
     public static final String LOG_IN ="loginUser";
+    public static final String LOG_IN_SUPPLIER ="loginSupplier";
 }
