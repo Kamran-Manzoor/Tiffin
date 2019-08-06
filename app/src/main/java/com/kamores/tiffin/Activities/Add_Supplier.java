@@ -207,9 +207,10 @@ public class Add_Supplier extends AppCompatActivity {
 //
 //        suppliers.set
 //   name(name);
+        suppliers.setName(name);
         suppliers.setAddress(address);
        // suppliers.setSupplier_image(Sup_name);
-        suppliers.setUser_id(user_id);
+      //  suppliers.setUser_id(user_id);
        // suppliers.setUser_id("1");
 
 
