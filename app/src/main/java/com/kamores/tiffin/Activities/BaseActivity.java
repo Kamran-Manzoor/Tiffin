@@ -1,7 +1,9 @@
 package com.kamores.tiffin.Activities;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.SearchView;
 
+import android.os.Handler;
 import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
@@ -39,6 +42,7 @@ import com.kamores.tiffin.Adapter.AdapterClass;
 import com.kamores.tiffin.Adapter.AdapterServiceType;
 import com.kamores.tiffin.Constants.Constants;
 import com.kamores.tiffin.ModelClasses.ModelClass;
+import com.kamores.tiffin.ModelClasses.UserShared;
 import com.kamores.tiffin.R;
 import com.kamores.tiffin.Constants.RequestInterface;
 import com.kamores.tiffin.Constants.ServerResponce;
@@ -125,6 +129,16 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         available.setText("");
         progressBar.setVisibility(View.VISIBLE);
 
+        final UserShared userShared =new UserShared(BaseActivity.this);
+
+        if (!userShared.getUser_id().equals("")){
+            // loginProcess(em,pass);
+            Toast.makeText(this, userShared.getUser_id(), Toast.LENGTH_SHORT).show();
+            signIn.setVisibility(View.GONE);
+            logoutLayout.setVisibility(View.VISIBLE);
+        }
+
+
         if(!isConnectedToInternet(BaseActivity.this)){
              Toast.makeText(BaseActivity.this, "Can't connect to Internet!", Toast.LENGTH_SHORT).show();
         }
@@ -136,6 +150,31 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+
+
+    public void LogOut(View view){
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(BaseActivity.this);
+        builder.setTitle("Confirm:");
+        builder.setMessage("Are you sure you want to Log Out?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                new UserShared(BaseActivity.this).removerUser();
+                startActivity(new Intent(getApplicationContext(), BaseActivity.class));
+                finish();
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     private void initialviews() {

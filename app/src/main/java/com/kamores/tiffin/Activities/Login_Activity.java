@@ -25,6 +25,7 @@ import com.kamores.tiffin.Constants.RequestInterfacePart;
 import com.kamores.tiffin.Constants.ServerRequest;
 import com.kamores.tiffin.Constants.ServerResponce;
 import com.kamores.tiffin.ModelClasses.User;
+import com.kamores.tiffin.ModelClasses.UserShared;
 import com.kamores.tiffin.R;
 
 import retrofit2.Call;
@@ -38,6 +39,9 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
     private TextView tvLogin;
     private EditText contact,password;
     private Button btn_login;
+    String id;
+    User userData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +69,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
                 }
 
                else{
-                    loginProcess(con,pass);
+                    loginProcess(con,pass,id);
                 }
             }
         });
@@ -93,7 +97,9 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
             startActivity(intent,activityOptions.toBundle());
         }
     }
-    private void loginProcess(String contact,String password){
+
+
+    private void loginProcess(final String contact, String password, final String Userid ){
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
@@ -102,9 +108,12 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
 
         RequestInterfacePart requestInterface = retrofit.create(RequestInterfacePart.class);
 
-        User user = new User();
+
+        final User user = new User();
         user.setContact(contact);
         user.setPassword(password);
+
+
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.LOG_IN);
         request.setUser(user);
@@ -115,14 +124,18 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
             public void onResponse(Call<ServerResponce> call, retrofit2.Response<ServerResponce> response) {
 
                 ServerResponce resp = response.body();
-                //  Snackbar.make(getView(), resp.getMessage(), Snackbar.LENGTH_LONG).show();
-                Toast.makeText(Login_Activity.this, "" + resp.getMessage(), Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(Login_Activity.this,BaseActivity.class);
-                startActivity(intent);
+                userData = resp.getUser();
+                id = userData.getId();
+
+                Toast.makeText(Login_Activity.this, "" + resp.getMessage() + id, Toast.LENGTH_SHORT).show();
+
 
                 if(resp.getResult().equals(Constants.SUCCESS)){
-//                    Intent intent=new Intent(Login_Activity.this,BaseActivity.class);
-//                    startActivity(intent);
+                    UserShared user1 =new UserShared(Login_Activity.this);
+                    user1.setUser_id(id);
+                    Intent intent=new Intent(Login_Activity.this,BaseActivity.class);
+                    intent.putExtra("user_id",id);
+                    startActivity(intent);
 
 //                    startActivity(new Intent(getApplicationContext(), TeacherPanel.class));
 

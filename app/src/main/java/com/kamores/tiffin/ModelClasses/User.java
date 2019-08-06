@@ -13,6 +13,19 @@ public class User {
     String contact;
     String email;
     String password;
+    String id;
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
 
     public void setContact(String contact) {
         this.contact = contact;
@@ -49,4 +62,6 @@ public class User {
     public ArrayList<String> getItem_image() {
         return item_image;
     }
+
+
 }
