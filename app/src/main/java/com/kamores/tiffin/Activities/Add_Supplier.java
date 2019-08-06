@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,10 +41,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Add_Supplier extends AppCompatActivity {
-    EditText etName,etService, etContact;
+    EditText etName,etService;
+   // ImageView supplier_image1;
     TextView addressTV;
     Button addSupplier;
-    String Sup_name,Sup_service,Sup_con,Sup_location,Sup_detail;
+    String name,address,supplier_image,user_id;
     public static String Supplier_id,Service_id;
 
 
@@ -64,15 +66,14 @@ public class Add_Supplier extends AppCompatActivity {
         addSupplier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Sup_name = etName.getText().toString();
-                Sup_service = etService.getText().toString();
-                Sup_con = etContact.getText().toString();
-                if (Sup_name.equals("")) {
+                name = etName.getText().toString();
+                address = etService.getText().toString();
+               // supplier_image = supplier_image1.getText().toString();
+                if (name.equals("")) {
                     etName.setError("Add Name!");
-                } else if (Sup_service.equals("")){
+                } else if (address.equals("")){
                     etService.setError("Add Service!");
-                } else if (Sup_con.equals("")){
-                    etContact.setError("Add Contact!");
+
                 } else {
                 getValues();
                 addSuppliers();
@@ -83,11 +84,11 @@ public class Add_Supplier extends AppCompatActivity {
     }
 
     private void getValues() {
-        Sup_name = etName.getText().toString();
-        Sup_service = etService.getText().toString();
-        Sup_con = etContact.getText().toString();
-        Sup_location = "Khanewal";
-        Sup_detail = "Some Detail";
+        name = etName.getText().toString();
+        address = etService.getText().toString();
+       // supplier_image = etContact.getText().toString();
+        user_id = "Khanewal";
+        //Sup_detail = "Some Detail";
 
 
     }
@@ -95,7 +96,7 @@ public class Add_Supplier extends AppCompatActivity {
     public void initViewSuppliers(){
         etName =findViewById(R.id.et_supplier_name);
         etService= findViewById(R.id.et_supplier_serviceName);
-        etContact= findViewById(R.id.et_supplier_contact);
+       // etContact= findViewById(R.id.et_supplier_contact);
         addressTV = findViewById(R.id.tv_supplier_address);
         addSupplier= findViewById(R.id.btn_Add_Supplier);
         //cruntAddress();
@@ -203,17 +204,17 @@ public class Add_Supplier extends AppCompatActivity {
         RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
         final Suppliers suppliers = new Suppliers();
 
-
-        suppliers.setService_name(Sup_service);
-        suppliers.setService_detail(Sup_detail);
-        suppliers.setSupplier_name(Sup_name);
-        suppliers.setSupplier_contact(Sup_con);
-        suppliers.setSupplier_location(Sup_location);
-        suppliers.setUser_id("1");
+//
+//        suppliers.set
+//   name(name);
+        suppliers.setAddress(address);
+       // suppliers.setSupplier_image(Sup_name);
+        suppliers.setUser_id(user_id);
+       // suppliers.setUser_id("1");
 
 
         ServerRequest request = new ServerRequest();
-        request.setOperation(Constants.REGISTER_SERVICE);
+        request.setOperation(Constants.REGISTER_SUPPLIER);
         request.setSuppliers(suppliers);
 
         Call<ServerResponce> resp = requestInterfacePart.operationone(request);
@@ -227,8 +228,8 @@ public class Add_Supplier extends AppCompatActivity {
                     suppliers1 = resp.getSuppliers();
 
 
-                    Supplier_id = suppliers1.getSupplier_id();
-                    Service_id = suppliers1.getService_id();
+                    Supplier_id = suppliers1.getUser_id();
+                    Service_id = suppliers1.getAddress();
 
                     setUpIntent();
 

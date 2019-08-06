@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.kamores.tiffin.Fragment.FragmentDay;
 import com.kamores.tiffin.R;
 import com.kamores.tiffin.Adapter.ViewPagerAdapter;
 
@@ -56,7 +55,7 @@ public class Activity_Detail extends AppCompatActivity {
         viewPager = findViewById(R.id.pageViewer);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        adapter.AddFragment(new FragmentDay(),"Supplier Profile");
+       // adapter.AddFragment(new FragmentDay(),"Supplier Profile");
       //  adapter.AddFragment(new FragmentWeek(),"Week");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

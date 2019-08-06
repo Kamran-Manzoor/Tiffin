@@ -50,11 +50,12 @@ public class Add_Items extends AppCompatActivity {
 
     ImageView itemImageChose;
     EditText itemName, itemPrice, itemDescription;
-    AutoCompleteTextView spinnerDays;
+    AutoCompleteTextView spinnerDays,spinnerService;
     ImageButton imageButton;
     Button btnAddItem;
     List<String> listDays;
-    String Item_name, Item_price, Item_days, Item_image, Item_desc;
+    List<String> listService;
+    String Item_name, Item_price, Item_days, Item_image, Item_desc ,Item_service;
     private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
@@ -119,13 +120,30 @@ public class Add_Items extends AppCompatActivity {
 
             }
         });
+
+
+        showService();
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listService);
+        adapter1.setDropDownViewResource(R.layout.custom_spinner);
+        spinnerService.setAdapter(adapter1);
+        spinnerService.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Item_service = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @SuppressLint("WrongViewCast")
     public void initViewItems() {
         itemImageChose = findViewById(R.id.imageView_upper);
         imageButton = findViewById(R.id.previous);
-//        itemName= findViewById(R.id.et_ItemName);
+        spinnerService= findViewById(R.id.spinnerService);
 //        itemPrice= findViewById(R.id.et_ItemPrice);
 //        itemDescription= findViewById(R.id.et_ItemDescription);
         spinnerDays = findViewById(R.id.spinnerDays);
@@ -264,4 +282,14 @@ public class Add_Items extends AppCompatActivity {
         listDays.add("Saturday");
         listDays.add("Sunday");
     }
+
+    public void showService() {
+        listDays = new ArrayList<>();
+        listDays.add("BreakFast");
+        listDays.add("Lunch");
+        listDays.add("Dinner");
+
+    }
+
+
 }
