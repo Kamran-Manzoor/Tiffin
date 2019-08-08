@@ -46,7 +46,6 @@ public class Add_Supplier extends AppCompatActivity {
     TextView addressTV;
     Button addSupplier;
     String name,address,supplier_image,user_id;
-    public static String Supplier_id,Service_id;
 
 
     LocationManager locationManager;

@@ -2,7 +2,7 @@ package com.kamores.tiffin.Constants;
 
 public class Constants {
     //public static final String RETRIEVE_ALL = "allCardDataItem";
-    public static final String BASE_URL = "http://192.168.137.1/";
+    public static final String BASE_URL = "http://192.168.10.9/";
     public static final String REGISTER_SERVICE ="addServices";
     public static final String RETRIVE_DETAIL ="detailSup";
     public static final String RETRIVE_ITEMS ="allitemtoSupDay";
@@ -22,4 +22,8 @@ public class Constants {
     public static final String LOG_IN ="loginUser";
     public static final String LOG_IN_SUPPLIER ="loginSupplier";
     public static final String REGISTER_SUPPLIER ="register_Supplier";
+    public static final String TODAY_MENU ="today_menu";
+
+
+
 }

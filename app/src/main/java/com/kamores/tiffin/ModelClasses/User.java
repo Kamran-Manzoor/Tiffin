@@ -14,6 +14,12 @@ public class User {
     String email;
     String password;
     String id;
+    String sup_id;
+    String day;
+
+    public void setDay(String day) {
+        this.day = day;
+    }
 
     public String getContact() {
         return contact;
@@ -25,6 +31,10 @@ public class User {
 
     public String getId() {
         return id;
+    }
+
+    public String getSup_id() {
+        return sup_id;
     }
 
     public void setContact(String contact) {

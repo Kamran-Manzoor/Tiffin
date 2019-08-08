@@ -1,7 +1,7 @@
 package com.kamores.tiffin.Constants;
 
 import com.kamores.tiffin.ModelClasses.Suppliers;
-import com.kamores.tiffin.ModelClasses.Items;
+import com.kamores.tiffin.ModelClasses.Item;
 import com.kamores.tiffin.ModelClasses.User;
 import com.kamores.tiffin.ModelClasses.UserModel;
 
@@ -10,14 +10,14 @@ public class ServerRequest {
     private String email;
     private User user;
     Suppliers suppliers;
-    Items items;
+    Item items;
     UserModel userModel;
 
     public void setUserModel(UserModel userModel) {
         this.userModel = userModel;
     }
 
-    public void setItems(Items items) {
+    public void setItems(Item items) {
         this.items = items;
     }
 

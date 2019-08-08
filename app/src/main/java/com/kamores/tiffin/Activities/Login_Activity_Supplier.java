@@ -24,6 +24,7 @@ import com.kamores.tiffin.Constants.RequestInterfacePart;
 import com.kamores.tiffin.Constants.ServerRequest;
 import com.kamores.tiffin.Constants.ServerResponce;
 import com.kamores.tiffin.ModelClasses.User;
+import com.kamores.tiffin.ModelClasses.UserShared;
 import com.kamores.tiffin.R;
 
 import retrofit2.Call;
@@ -37,6 +38,8 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
     private TextView tvLogin;
     private EditText contact,password;
     private Button btn_login;
+    String supplier_id;
+    User userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,17 +117,18 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
             public void onResponse(Call<ServerResponce> call, retrofit2.Response<ServerResponce> response) {
 
                 ServerResponce resp = response.body();
-                //  Snackbar.make(getView(), resp.getMessage(), Snackbar.LENGTH_LONG).show();
-                Toast.makeText(Login_Activity_Supplier.this, "" + resp.getMessage(), Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(Login_Activity_Supplier.this,Add_Items.class);
-                startActivity(intent);
+                userData = resp.getUser();
+                supplier_id = userData.getSup_id();
+
+                Toast.makeText(Login_Activity_Supplier.this, "" + resp.getMessage() + supplier_id, Toast.LENGTH_SHORT).show();
 
                 if(resp.getResult().equals(Constants.SUCCESS)){
-//                    Intent intent=new Intent(Login_Activity.this,BaseActivity.class);
-//                    startActivity(intent);
-
-//                    startActivity(new Intent(getApplicationContext(), TeacherPanel.class));
-
+                    UserShared user1 =new UserShared(Login_Activity_Supplier.this);
+                    user1.setSupplier_id(supplier_id);
+                    Intent intent=new Intent(Login_Activity_Supplier.this,Add_Items.class);
+                    intent.putExtra("supplier_id",supplier_id);
+                    Toast.makeText(Login_Activity_Supplier.this, supplier_id, Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
                 }
             }
 

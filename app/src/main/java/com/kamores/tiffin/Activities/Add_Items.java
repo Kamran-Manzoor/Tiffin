@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.icu.util.Calendar;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
@@ -22,17 +24,22 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.kamores.tiffin.Constants.Constants;
 import com.kamores.tiffin.Constants.RequestInterfacePart;
 import com.kamores.tiffin.Constants.ServerRequest;
 import com.kamores.tiffin.Constants.ServerResponce;
-import com.kamores.tiffin.ModelClasses.Items;
+import com.kamores.tiffin.ModelClasses.Item;
+import com.kamores.tiffin.ModelClasses.UserShared;
 import com.kamores.tiffin.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.FloatBuffer;
+import java.text.DateFormatSymbols;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,14 +57,15 @@ public class Add_Items extends AppCompatActivity {
 
     ImageView itemImageChose;
     EditText itemName, itemPrice, itemDescription;
-    AutoCompleteTextView spinnerDays,spinnerService;
+    AutoCompleteTextView spinnerDays, spinnerService;
     ImageButton imageButton;
     Button btnAddItem;
     List<String> listDays;
     List<String> listService;
-    String Item_name, Item_price, Item_days, Item_image, Item_desc ,Item_service;
+    String Item_name, sup_id, service_id, Item_price, Item_days, Item_image, Item_desc, Item_service;
     private static final int PICK_IMAGE_REQUEST = 1;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -67,30 +75,16 @@ public class Add_Items extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-
-//        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-//        getSupportActionBar().setCustomView(R.layout.actionbar1);
-
-
-//        Toast.makeText(this, ""+Add_Supplier.Service_id, Toast.LENGTH_SHORT).show();
-//        Toast.makeText(this, ""+Add_Supplier.Supplier_id, Toast.LENGTH_SHORT).show();
         initViewItems();
 
+
+        String currentDay=LocalDate.now().getDayOfWeek().name();
+        Toast.makeText(this, currentDay, Toast.LENGTH_SHORT).show();
 
         itemImageChose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFileChooser();
-            }
-        });
-
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Add_Items.this, BaseActivity.class);
-                startActivity(intent);
-                finish();
-
             }
         });
 
@@ -141,42 +135,46 @@ public class Add_Items extends AppCompatActivity {
 
     @SuppressLint("WrongViewCast")
     public void initViewItems() {
+        itemName = findViewById(R.id.et_item_name);
         itemImageChose = findViewById(R.id.imageView_upper);
-        imageButton = findViewById(R.id.previous);
-        spinnerService= findViewById(R.id.spinnerService);
-//        itemPrice= findViewById(R.id.et_ItemPrice);
-//        itemDescription= findViewById(R.id.et_ItemDescription);
+        spinnerService = findViewById(R.id.spinnerService);
+        itemPrice = findViewById(R.id.et_item_price);
+        itemDescription = findViewById(R.id.et_item_discription);
         spinnerDays = findViewById(R.id.spinnerDays);
 //        btnChooseImage= findViewById(R.id.btn_choose_items);
         btnAddItem = findViewById(R.id.btn_Add_Items);
+    }
+
+    private void getValues() {
+        Item_name = itemName.getText().toString();
+        Item_price = itemPrice.getText().toString();
+        Item_desc = itemDescription.getText().toString();
+        Item_image = "some";
+        service_id = "2";
+
+        final UserShared userShared = new UserShared(Add_Items.this);
+        sup_id = userShared.getSupplier_id();
     }
 
     private void addItems() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
         RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
-        Items items = new Items();
-        final String image = imageToString();
-//        items.setItem_name("56");
-//        items.setItem_price("89");
-//        items.setItem_image("89");
-//        items.setDay("56");
-//        items.setDescription("55");
-//        items.setService_id("3");
-//        items.setSupllier_id("2");
+        Item item = new Item();
+//        final String image = imageToString();
 
-        items.setItem_name(Item_name);
-        items.setItem_price(Item_price);
-        items.setItem_image(file_name);
-        items.setImage_code(image);
-        items.setDay(Item_days);
-        items.setDescription(Item_desc);
-        items.setService_id(Add_Supplier.Service_id);
-        items.setSupllier_id(Add_Supplier.Supplier_id);
+        item.setItem_name(Item_name);
+        item.setItem_price(Item_price);
+        item.setItem_image(Item_image);
+//        items.setImage_code(image);
+        item.setDay(Item_days);
+        item.setDescription(Item_desc);
+        item.setService_id(service_id);
+        item.setSupllier_id(sup_id);
 
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.ADD_ITEMS);
-        request.setItems(items);
+        request.setItems(item);
 
         Call<ServerResponce> resp = requestInterfacePart.operationone(request);
 
@@ -207,12 +205,6 @@ public class Add_Items extends AppCompatActivity {
         finish();
     }
 
-
-    private void getValues() {
-        Item_name = itemName.getText().toString();
-        Item_price = itemPrice.getText().toString();
-        Item_desc = itemDescription.getText().toString();
-    }
 
     private void openFileChooser() {
         Intent intent = new Intent();

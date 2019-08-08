@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 public class UserShared {
 
     private String user_id;
+    private  String supplier_id;
     private String contact;
     Context context;
     SharedPreferences sharedPreferences;
@@ -18,6 +19,16 @@ public class UserShared {
 
     public void removerUser(){
         sharedPreferences.edit().clear().apply();
+    }
+
+    public String getSupplier_id() {
+        supplier_id=sharedPreferences.getString("supplier_id","");
+        return supplier_id;
+    }
+
+    public void setSupplier_id(String supplier_id) {
+        sharedPreferences.edit().putString("supplier_id",supplier_id).apply();
+        this.supplier_id = supplier_id;
     }
 
     public String getContact() {
