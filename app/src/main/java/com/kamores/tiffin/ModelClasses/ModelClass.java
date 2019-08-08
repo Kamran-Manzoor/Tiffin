@@ -10,6 +10,9 @@ public class ModelClass {
     public String item_image;
     public String price;
 
+
+
+
     public ModelClass(String name, String itemName, String address, String supplier_id, String item_image, String price) {
         this.name = name;
         this.itemName = itemName;
@@ -17,6 +20,7 @@ public class ModelClass {
         this.supplier_id = supplier_id;
         this.item_image = item_image;
         this.price = price;
+
     }
 
     public String getName() {

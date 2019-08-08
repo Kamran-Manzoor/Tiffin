@@ -1,14 +1,14 @@
 package com.kamores.tiffin.ModelClasses;
 
-public class Items {
+public class Item {
     String item_name;
     String item_price;
     String item_image;
-    String image_code;
+   // String image_code;
     String day;
     String description;
-    String service_id;
     String supllier_id;
+    String service_id;
 
     public void setItem_name(String item_name) {
         this.item_name = item_name;
@@ -30,15 +30,11 @@ public class Items {
         this.description = description;
     }
 
-    public void setService_id(String service_id) {
-        this.service_id = service_id;
-    }
-
     public void setSupllier_id(String supllier_id) {
         this.supllier_id = supllier_id;
     }
 
-    public void setImage_code(String image_code) {
-        this.image_code = image_code;
+    public void setService_id(String service_id) {
+        this.service_id = service_id;
     }
 }

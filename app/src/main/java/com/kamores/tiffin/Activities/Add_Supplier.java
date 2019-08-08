@@ -46,7 +46,6 @@ public class Add_Supplier extends AppCompatActivity {
     TextView addressTV;
     Button addSupplier;
     String name,address,supplier_image,user_id;
-    public static String Supplier_id,Service_id;
 
 
     LocationManager locationManager;
@@ -72,7 +71,7 @@ public class Add_Supplier extends AppCompatActivity {
                 if (name.equals("")) {
                     etName.setError("Add Name!");
                 } else if (address.equals("")){
-                    etService.setError("Add Service!");
+                    etService.setError("Add Address!");
 
                 } else {
                 getValues();
@@ -87,18 +86,17 @@ public class Add_Supplier extends AppCompatActivity {
         name = etName.getText().toString();
         address = etService.getText().toString();
        // supplier_image = etContact.getText().toString();
-        user_id = "Khanewal";
+        user_id = "2";
         //Sup_detail = "Some Detail";
 
 
     }
 
     public void initViewSuppliers(){
-        etName =findViewById(R.id.et_supplier_name);
-        etService= findViewById(R.id.et_supplier_serviceName);
+        etName =findViewById(R.id.tv_full_name);
        // etContact= findViewById(R.id.et_supplier_contact);
-        addressTV = findViewById(R.id.tv_supplier_address);
-        addSupplier= findViewById(R.id.btn_Add_Supplier);
+        addressTV = findViewById(R.id.tv_address);
+        addSupplier= findViewById(R.id.btn_signUp_supplier);
         //cruntAddress();
 
     }
@@ -229,14 +227,12 @@ public class Add_Supplier extends AppCompatActivity {
                     suppliers1 = resp.getSuppliers();
 
 
-                    Supplier_id = suppliers1.getUser_id();
-                    Service_id = suppliers1.getAddress();
+                    Toast.makeText(Add_Supplier.this, "Sign Up Successfully", Toast.LENGTH_SHORT).show();
+//                    Supplier_id = suppliers1.getUser_id();
+//                    Service_id = suppliers1.getAddress();
+//
+//                    setUpIntent();
 
-                    setUpIntent();
-
-//                    Toast.makeText(Add_Supplier.this, ""+suppliers1.getSupplier_id(), Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(Add_Supplier.this, ""+suppliers1.getService_id(), Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(Add_Supplier.this, "" + resp.getMessage(), Toast.LENGTH_LONG).show();
                 }
                 catch(Exception e){
                     Toast.makeText(Add_Supplier.this, ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
