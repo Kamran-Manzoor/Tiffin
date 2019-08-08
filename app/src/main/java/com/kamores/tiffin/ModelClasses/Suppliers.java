@@ -5,7 +5,9 @@ import java.util.ArrayList;
 public class Suppliers {
     String name;
     String address;
-    String supplier_image;
+    String image_name;
+    String image_code;
+
     String user_id;
 
     public String getName() {
@@ -24,12 +26,12 @@ public class Suppliers {
         this.address = address;
     }
 
-    public String getSupplier_image() {
-        return supplier_image;
+    public void setImage_name(String image_name) {
+        this.image_name = image_name;
     }
 
-    public void setSupplier_image(String supplier_image) {
-        this.supplier_image = supplier_image;
+    public void setImage_code(String image_code) {
+        this.image_code = image_code;
     }
 
     public String getUser_id() {

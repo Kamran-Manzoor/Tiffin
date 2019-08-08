@@ -136,6 +136,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(this, sup_id, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(BaseActivity.this, Add_Items.class);
             startActivity(intent);
+            finish();
 
         }
         if (!userShared.getUser_id().equals("")) {
@@ -144,7 +145,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             logoutLayout.setVisibility(View.VISIBLE);
             ShowItem();
         }
-
 
         if (!isConnectedToInternet(BaseActivity.this)) {
             Toast.makeText(BaseActivity.this, "Can't connect to Internet!", Toast.LENGTH_SHORT).show();

@@ -21,7 +21,6 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.kamores.tiffin.Constants.Constants;
@@ -34,7 +33,6 @@ import com.kamores.tiffin.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.sql.Struct;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,7 +51,7 @@ public class Register_Activity_supplier extends AppCompatActivity {
     EditText etfullName, etAddress;
     Button btn_signUp;
     ImageView supplier_image;
-    String name,address,supplierimage,user_id;
+    String name, address, supplierimage, user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +63,7 @@ public class Register_Activity_supplier extends AppCompatActivity {
 
 
         rlayout = findViewById(R.id.rlayout);
-        animation = AnimationUtils.loadAnimation(this,R.anim.uptodowndiagonal);
+        animation = AnimationUtils.loadAnimation(this, R.anim.uptodowndiagonal);
         rlayout.setAnimation(animation);
         initViewSupplier();
 
@@ -83,7 +81,7 @@ public class Register_Activity_supplier extends AppCompatActivity {
                 String add = etAddress.getText().toString();
                 if (name.equals("")) {
                     etfullName.setError("Add Name!");
-                } else if (add.equals("")){
+                } else if (add.equals("")) {
                     etAddress.setError("Add Address!");
 
                 } else {
@@ -104,20 +102,22 @@ public class Register_Activity_supplier extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home :
+        switch (item.getItemId()) {
+            case android.R.id.home:
                 onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
     private void getValues() {
         name = etfullName.getText().toString();
         address = etAddress.getText().toString();
-        UserShared user1 =new UserShared(Register_Activity_supplier.this);
-        user_id=user1.getUser_id();
+        UserShared user1 = new UserShared(Register_Activity_supplier.this);
+        user_id = user1.getUser_id();
 
     }
+
     private void openFileChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -182,12 +182,14 @@ public class Register_Activity_supplier extends AppCompatActivity {
         RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
         final Suppliers suppliers = new Suppliers();
         final String image = imageToString();
+        Toast.makeText(this, "" + image, Toast.LENGTH_LONG).show();
 
         getValues();
 
         suppliers.setName(name);
         suppliers.setAddress(address);
-        suppliers.setSupplier_image(image);
+        suppliers.setImage_name(file_name);
+        suppliers.setImage_code(image);
         suppliers.setUser_id(user_id);
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.REGISTER_SUPPLIER);
@@ -203,22 +205,16 @@ public class Register_Activity_supplier extends AppCompatActivity {
                     ServerResponce resp = response.body();
                     suppliers1 = resp.getSuppliers();
 
-
-                    Toast.makeText(Register_Activity_supplier.this, resp.getMessage(), Toast.LENGTH_SHORT).show();
-
-
                     setUpIntent();
 
+                } catch (Exception e) {
+                    Toast.makeText(Register_Activity_supplier.this, "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
-                catch(Exception e){
-                    Toast.makeText(Register_Activity_supplier.this, ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                }
-
             }
 
             @Override
             public void onFailure(Call<ServerResponce> call, Throwable t) {
-                Toast.makeText(Register_Activity_supplier.this, "Connection Failure "+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register_Activity_supplier.this, "Connection Failure " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -226,7 +222,7 @@ public class Register_Activity_supplier extends AppCompatActivity {
     }
 
     private void setUpIntent() {
-        Intent intent = new Intent(Register_Activity_supplier.this,Login_Activity_Supplier.class);
+        Intent intent = new Intent(Register_Activity_supplier.this, Login_Activity_Supplier.class);
         startActivity(intent);
         finish();
     }

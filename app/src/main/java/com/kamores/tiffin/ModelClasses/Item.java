@@ -4,7 +4,7 @@ public class Item {
     String item_name;
     String item_price;
     String item_image;
-   // String image_code;
+    String image_code;
     String day;
     String description;
     String supllier_id;
@@ -20,6 +20,10 @@ public class Item {
 
     public void setItem_image(String item_image) {
         this.item_image = item_image;
+    }
+
+    public void setImage_code(String image_code) {
+        this.image_code = image_code;
     }
 
     public void setDay(String day) {

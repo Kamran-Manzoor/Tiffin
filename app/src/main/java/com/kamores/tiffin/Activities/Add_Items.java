@@ -99,38 +99,41 @@ public class Add_Items extends AppCompatActivity {
             }
         });
 
-        showDays();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listDays);
-        adapter.setDropDownViewResource(R.layout.custom_spinner);
-        spinnerDays.setAdapter(adapter);
-        spinnerDays.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Item_days = parent.getItemAtPosition(position).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-
-        showService();
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listService);
-        adapter1.setDropDownViewResource(R.layout.custom_spinner);
-        spinnerService.setAdapter(adapter1);
-        spinnerService.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Item_service = parent.getItemAtPosition(position).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+//        showDays();
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listDays);
+//        adapter.setDropDownViewResource(R.layout.custom_spinner);
+//        spinnerDays.setAdapter(adapter);
+//        spinnerDays.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                Item_days = parent.getItemAtPosition(position).toString();
+//                Toast.makeText(Add_Items.this, Item_days, Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+//
+//        showService();
+//        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item
+//                , listService);
+//        adapter1.setDropDownViewResource(R.layout.custom_spinner);
+//        spinnerService.setAdapter(adapter1);
+//        spinnerService.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                Item_service = parent.getItemAtPosition(position).toString();
+//                Toast.makeText(Add_Items.this, Item_service, Toast.LENGTH_SHORT).show();
+//
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
     }
 
     @SuppressLint("WrongViewCast")
@@ -146,14 +149,20 @@ public class Add_Items extends AppCompatActivity {
     }
 
     private void getValues() {
-        Item_name = itemName.getText().toString();
-        Item_price = itemPrice.getText().toString();
-        Item_desc = itemDescription.getText().toString();
+//        Item_name = itemName.getText().toString();
+//        Item_price = itemPrice.getText().toString();
+//        Item_desc = itemDescription.getText().toString();
+        Item_name="new";
+        Item_price="100";
+        Item_desc="None";
         Item_image = "some";
         service_id = "2";
+        Item_days="Monday";
+
 
         final UserShared userShared = new UserShared(Add_Items.this);
         sup_id = userShared.getSupplier_id();
+        Toast.makeText(this,  sup_id, Toast.LENGTH_SHORT).show();
     }
 
     private void addItems() {
@@ -161,16 +170,16 @@ public class Add_Items extends AppCompatActivity {
 
         RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
         Item item = new Item();
-//        final String image = imageToString();
+        final String image = imageToString();
 
         item.setItem_name(Item_name);
         item.setItem_price(Item_price);
         item.setItem_image(Item_image);
-//        items.setImage_code(image);
+        //item.setImage_code(image);
         item.setDay(Item_days);
         item.setDescription(Item_desc);
-        item.setService_id(service_id);
         item.setSupllier_id(sup_id);
+        item.setService_id(service_id);
 
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.ADD_ITEMS);
