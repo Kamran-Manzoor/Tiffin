@@ -48,10 +48,19 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView_upper"
         app:layout_constraintVertical_bias="0.0">
 
-        <RelativeLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:orientation="vertical"
             >
 
 
@@ -59,8 +68,6 @@
                 android:id="@+id/tv_itemName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="287dp"
                 android:text="Item Name"
                 android:textColor="@color/colorAccent"
                 android:textSize="14sp"
@@ -70,20 +77,12 @@
                 android:id="@+id/et_item_name"
                 android:layout_width="300dp"
                 android:layout_height="45dp"
-                android:layout_below="@id/tv_itemName"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="58dp"
                 android:inputType="text" />
 
             <TextView
                 android:id="@+id/tv_itemPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/et_item_name"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="318dp"
                 android:text="Price"
                 android:textColor="@color/colorAccent"
                 android:textSize="14sp"
@@ -93,20 +92,13 @@
                 android:id="@+id/et_item_price"
                 android:layout_width="300dp"
                 android:layout_height="45dp"
-                android:layout_below="@id/tv_itemPrice"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="58dp"
                 android:inputType="text" />
 
             <TextView
                 android:id="@+id/tv_item_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/et_item_price"
-                android:layout_alignParentEnd="true"
                 android:layout_marginTop="1dp"
-                android:layout_marginEnd="323dp"
                 android:text="Day"
                 android:textColor="@color/colorAccent"
                 android:textSize="14sp"
@@ -116,20 +108,13 @@
                 android:id="@+id/spinnerDays"
                 android:layout_width="300dp"
                 android:layout_height="45dp"
-                android:layout_below="@id/tv_item_day"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="-3dp"
-                android:layout_marginEnd="59dp"
                 android:spinnerMode="dialog" />
 
             <TextView
                 android:id="@+id/tv_item_service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/spinnerDays"
-                android:layout_alignParentEnd="true"
                 android:layout_marginTop="1dp"
-                android:layout_marginEnd="303dp"
                 android:text="Service"
                 android:textColor="@color/colorAccent"
                 android:textSize="14sp"
@@ -139,10 +124,7 @@
                 android:id="@+id/spinnerService"
                 android:layout_width="300dp"
                 android:layout_height="45dp"
-                android:layout_below="@id/tv_item_service"
-                android:layout_alignParentEnd="true"
                 android:layout_marginTop="0dp"
-                android:layout_marginEnd="56dp"
                 android:spinnerMode="dialog" />
 
 
@@ -150,10 +132,7 @@
                 android:id="@+id/tv_item_dis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/spinnerService"
-                android:layout_alignParentEnd="true"
                 android:layout_marginTop="1dp"
-                android:layout_marginEnd="278dp"
                 android:text="Description"
                 android:textColor="@color/colorAccent"
                 android:textSize="14sp"
@@ -163,26 +142,22 @@
                 android:id="@+id/et_item_discription"
                 android:layout_width="300dp"
                 android:layout_height="45dp"
-                android:layout_below="@id/tv_item_dis"
-                android:layout_alignParentEnd="true"
                 android:layout_marginTop="0dp"
-                android:layout_marginEnd="56dp"
                 android:inputType="text" />
 
 
+
+
+        </LinearLayout>
             <Button
                 android:id="@+id/btn_Add_Items"
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:layout_below="@id/et_item_discription"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="58dp"
-                android:layout_marginEnd="26dp"
+                android:layout_marginTop="50dp"
                 android:background="@drawable/bg_ui"
                 android:text="Add"
                 android:textColor="#fff" />
-
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
 
