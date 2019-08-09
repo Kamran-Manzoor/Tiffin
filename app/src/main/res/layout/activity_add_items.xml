@@ -4,119 +4,161 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#dddd"
-    tools:context=".Add_Items">
+    tools:context=".activities.Add_Items">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_New_Items"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/showrma"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@id/imageView_upper"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <ImageView
+        android:id="@+id/imageView_upper"
+        android:layout_width="114dp"
+        android:layout_height="114dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:src="@mipmap/tiffin_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
-
-    <EditText
-        android:id="@+id/et_ItemName"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="60dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/shaded_view"
-        android:gravity="center"
-        android:hint="Item Name"
-        android:inputType="text"
+        android:scaleType="centerCrop"
+        android:src="@drawable/selectpic"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_New_Items"
-        app:layout_constraintVertical_bias="0.114" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/et_ItemPrice"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/shaded_view"
-        android:hint="Price"
-        android:gravity="center"
-        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_upper"
+        app:layout_constraintVertical_bias="0.0">
 
-    <!--<Spinner-->
-        <!--android:id="@+id/spinnerDays"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="0dp"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent" />-->
 
-    <EditText
-        android:id="@+id/et_ItemDescription"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/shaded_view"
-        android:gravity="center"
-        android:hint="description"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.753" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
 
-    <Button
-        android:id="@+id/btn_Add_Items"
-        android:layout_width="match_parent"
-        android:layout_height="49dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/layotu_shape"
-        android:text="Add"
-        android:textColor="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.89" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            >
 
-    <Spinner
-        android:id="@+id/spinnerDays"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:spinnerMode="dialog"
-        android:textAlignment="center"
-        android:background="@drawable/shaded_view"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.625" />
+
+            <TextView
+                android:id="@+id/tv_itemName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Item Name"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_item_name"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/tv_itemPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_item_price"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/tv_item_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Day"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <AutoCompleteTextView
+                android:id="@+id/spinnerDays"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:spinnerMode="dialog" />
+
+            <TextView
+                android:id="@+id/tv_item_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Service"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <AutoCompleteTextView
+                android:id="@+id/spinnerService"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="0dp"
+                android:spinnerMode="dialog" />
+
+
+            <TextView
+                android:id="@+id/tv_item_dis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Description"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_item_discription"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="0dp"
+                android:inputType="text" />
+
+
+
+
+        </LinearLayout>
+            <Button
+                android:id="@+id/btn_Add_Items"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/bg_ui"
+                android:text="Add"
+                android:textColor="#fff" />
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@
         <item
             android:id="@+id/nav_Supplier"
             android:icon="@drawable/supplier"
-            android:title="Become a Supplier" />
+            android:title="Become a Supplier"/>
         <item
             android:id="@+id/nav_Save_Location"
             android:icon="@drawable/save_location"
@@ -17,16 +17,14 @@
             android:icon="@drawable/mapsss"
             android:title="show In Map" />
     </group>
-    <group android:checkableBehavior="single">
 
-    </group>
-    <item android:checkableBehavior="none"
-        android:title="">
+    <item android:title="More">
         <menu>
             <item
-                android:id="@+id/log_out_button"
+                android:iconTint="@color/colorAccent"
+                android:id="@+id/nav_logout"
                 android:icon="@drawable/logout"
-                android:title="Log Out"/>
+                android:title="Visit Us" />
 
         </menu>
     </item>

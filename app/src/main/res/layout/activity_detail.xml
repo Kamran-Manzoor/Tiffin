@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity_Detail">
+    tools:context=".activities.Activity_Detail">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#577399"
+        android:background="@color/colorPrimary"
         app:tabTextColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -37,7 +37,7 @@
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="#577399"
+        android:background="@color/colorPrimaryDark"
         android:weightSum="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tabLayout">
@@ -47,7 +47,8 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_weight="1"
-            android:layout_marginTop="12dp"            android:onClick="call"
+            android:layout_marginTop="12dp"
+            android:onClick="call"
             app:srcCompat="@drawable/ic_call_black_24dp"
             tools:ignore="OnClick,VectorDrawableCompat" />
 
@@ -74,71 +75,3 @@
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<android.support.constraint.ConstraintLayout-->
-    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:orientation="vertical"-->
-    <!--tools:context=".Activity_Detail">-->
-
-    <!--<com.google.android.material.tabs.TabLayout-->
-        <!--android:id="@+id/tabLayout"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="@color/colorPrimary"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/recyclerView"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.0"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/recyclerView"-->
-        <!--app:layout_constraintVertical_bias="0.0"-->
-        <!--app:tabGravity="fill"-->
-        <!--app:tabIndicatorColor="@color/colorAccent"-->
-        <!--app:tabMode="fixed" />-->
-
-    <!--<androidx.viewpager.widget.ViewPager-->
-        <!--android:id="@+id/pageViewer"-->
-        <!--android:layout_width="409dp"-->
-        <!--android:layout_height="502dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--app:layout_constraintBottom_toTopOf="@+id/navigation"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.0"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/recyclerView"-->
-        <!--app:layout_constraintVertical_bias="0.0"-->
-        <!--tools:ignore="UnknownIdInLayout" />-->
-
-    <!--&lt;!&ndash;<android.support.v7.widget.RecyclerView&ndash;&gt;-->
-        <!--&lt;!&ndash;android:id="@+id/recyclerView"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_marginBottom="75dp"&ndash;&gt;-->
-        <!--&lt;!&ndash;app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
-        <!--&lt;!&ndash;app:layout_constraintTop_toTopOf="parent" />&ndash;&gt;-->
-
-    <!--<android.support.design.widget.BottomNavigationView-->
-        <!--android:id="@+id/navigation"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:background="@color/colorPrimary"-->
-        <!--app:itemIconTint="@android:color/background_dark"-->
-        <!--app:itemTextColor="@android:color/background_dark"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.0"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/tabLayout"-->
-        <!--app:layout_constraintVertical_bias="1.0"-->
-        <!--app:menu="@menu/bottom_navigation_menu">-->
-
-    <!--</android.support.design.widget.BottomNavigationView>-->
-
-<!--</android.support.constraint.ConstraintLayout>-->

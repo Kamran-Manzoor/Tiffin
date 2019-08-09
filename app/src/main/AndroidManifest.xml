@@ -19,17 +19,24 @@
         android:label="Tiffin"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Service_Name"
+        <activity android:name=".activities.Register_Activity" />
+        <activity android:name=".activities.Login_Activity" />
+        <activity
+            android:name=".activities.Supplier_profile"
             android:label="Item Schedule Activity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".Activity_Detail"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Activity_Detail"
             android:label="Activity Detail"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Add_Items"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Add_Items"
             android:label="Add Items"
+            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -44,24 +51,33 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".activities.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".Add_Supplier"
+            android:name=".activities.Add_Supplier"
             android:label="Add Supplier"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:label="MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Password"
-            android:label="Password"
+            android:name=".activities.Login_Activity_Supplier"
+            android:parentActivityName=".activities.BaseActivity"
+            android:label=""
             android:screenOrientation="portrait" />
         <activity
-            android:name=".BaseActivity"
+            android:name=".activities.Register_Activity_supplier"
+            android:parentActivityName=".activities.Login_Activity_Supplier"
+            android:label="MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".activities.BaseActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+            android:label="Menu"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
