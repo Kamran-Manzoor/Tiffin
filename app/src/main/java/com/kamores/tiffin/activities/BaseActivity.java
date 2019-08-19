@@ -195,7 +195,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         today = findViewById(R.id.tv_today_menu);
         available = findViewById(R.id.tv_now);
         progressBar = findViewById(R.id.progressBar);
-        currentDay = LocalDate.now().getDayOfWeek().name();
+       // currentDay = LocalDate.now().getDayOfWeek().name();
 
         Toast.makeText(this, currentDay, Toast.LENGTH_SHORT).show();
 
