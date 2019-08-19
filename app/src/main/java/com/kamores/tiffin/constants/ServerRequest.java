@@ -15,6 +15,8 @@ public class ServerRequest {
     Item items;
     UserModel userModel;
 
+
+
     public void setSupplier_model(Supplier_Model supplier_model) {
         this.supplier_model = supplier_model;
     }
