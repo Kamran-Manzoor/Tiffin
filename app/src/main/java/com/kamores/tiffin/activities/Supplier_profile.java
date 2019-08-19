@@ -27,6 +27,7 @@ import com.kamores.tiffin.models.ModelClass;
 import com.kamores.tiffin.models.ModelClass_Supplier;
 import com.kamores.tiffin.models.Supplier_Model;
 import com.kamores.tiffin.R;
+import com.kamores.tiffin.models.User;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -42,21 +43,22 @@ public class Supplier_profile extends AppCompatActivity {
 
     RecyclerView recyclerView;
     Adapter_Supplier adapter;
-    String currentDay;
+    String currentDay,supplier_id;
     ImageButton imageButton;
     ImageView img_suplier;
     TextView name1, contact1, address1;
+    Bundle bundle;
 
-//    private List<ModelClass> modelClasses;
-//    ArrayList<String> itemName;
-//    ArrayList<String> name;
-//    ArrayList<String> address;
-//    ArrayList<String> contact;
-//    ArrayList<String> supplier_image;
-//    ArrayList<String> price;
-//    ArrayList<String> item_image;
-//    ArrayList<String> supplier_id;
-//    ArrayList<String> type;
+    private List<ModelClass> modelClasses;
+    String itemName;
+    String name;
+    String address;
+    String contact;
+    String supplier_image;
+    String price;
+    String item_image;
+    String supplier__id;
+    String type;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -64,6 +66,18 @@ public class Supplier_profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supplier_profile);
+        getSupplierMenu();
+
+        bundle = getIntent().getExtras();
+        supplier_id = bundle.getString( "Supplier_id" );
+
+        currentDay = LocalDate.now().getDayOfWeek().name();
+
+
+
+
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
@@ -71,7 +85,9 @@ public class Supplier_profile extends AppCompatActivity {
 //        modelClass = new ArrayList<>();
 
         initialviews();
-        getSupplierMenu();
+
+
+
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,7 +118,13 @@ public class Supplier_profile extends AppCompatActivity {
         address1 = findViewById(R.id.tv_supplier_Address);
         recyclerView = findViewById(R.id.rv_supplier_profile);
         img_suplier = findViewById(R.id.img_supplier_profile);
-        currentDay = LocalDate.now().getDayOfWeek().name();
+
+
+
+
+
+
+
 //        Toast.makeText(this, currentDay, Toast.LENGTH_SHORT).show();
 
     }
@@ -129,33 +151,40 @@ public class Supplier_profile extends AppCompatActivity {
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.PROFILE_MENU);
         supplier_model.setSup_id("1");
-        supplier_model.setDay(currentDay);
+        supplier_model.setDay( "Monday" );
         request.setSupplier_model(supplier_model);
+
 
         RequestInterfacePart requestInterface = retrofit.create(RequestInterfacePart.class);
 
         Call<ServerResponce> response = requestInterface.operationone(request);
-
         response.enqueue(new Callback<ServerResponce>() {
             @Override
             public void onResponse(Call<ServerResponce> call, Response<ServerResponce> response) {
                 try {
 
                     ServerResponce resp = response.body();
+                    Toast.makeText( Supplier_profile.this, ""+resp.getMessage(), Toast.LENGTH_SHORT ).show();
 
-                    assert resp != null;
-                    Toast.makeText(Supplier_profile.this, resp.getMessage(), Toast.LENGTH_SHORT).show();
+                    //assert resp != null;
+                    //Toast.makeText(Supplier_profile.this, resp.getMessage(), Toast.LENGTH_SHORT).show();
 
-//                    Supplier_Model supplier_model = resp.getSupplier_model();
-//                    name = supplier_model.getName();
-//                    itemName = supplier_model.getItemName();
-//                    address = supplier_model.getAddress();
-//                    supplier_id = supplier_model.getSupplier_id();
-//                    price = supplier_model.getPrice();
-//                    item_image = supplier_model.getItem_image();
-//                    contact=supplier_model.getContact();
-//                    supplier_image=supplier_model.getSupplier_image();
-//                    type=supplier_model.getType();
+                    Supplier_Model supplier_model = resp.getSupplier_model();
+                    name = supplier_model.getName();
+
+                    //itemName = supplier_model.getItemName();
+                    address = supplier_model.getAddress();
+                    //supplier__id = supplier_model.getSupplier_id();
+                    //price = supplier_model.getPrice();
+                    //item_image = supplier_model.getItem_image();
+                    contact=supplier_model.getContact();
+                    //supplier_image=supplier_model.getSupplier_image();
+                    //type=supplier_model.getType();
+
+
+                    name1.setText( name );
+                    contact1.setText( contact );
+                    address1.setText( address );
 
 //
 //                    modelClass = new ArrayList<>();
