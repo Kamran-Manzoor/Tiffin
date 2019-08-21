@@ -24,6 +24,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.kamores.tiffin.constants.Constants;
 import com.kamores.tiffin.interfaces.RequestInterfacePart;
 import com.kamores.tiffin.constants.ServerRequest;
@@ -51,7 +52,8 @@ public class Add_Items extends AppCompatActivity {
     private Bitmap bitmap;
 
     ImageView itemImageChose;
-    EditText itemName, itemPrice, itemDescription;
+    TextInputEditText itemName;
+    EditText itemPrice, itemDescription;
     AutoCompleteTextView spinnerDays, spinnerService;
     ImageButton imageButton;
     Button btnAddItem;
@@ -134,12 +136,12 @@ public class Add_Items extends AppCompatActivity {
 
     @SuppressLint("WrongViewCast")
     public void initViewItems() {
-        itemName = findViewById(R.id.et_item_name);
+        itemName = findViewById(R.id.etItem);
         itemImageChose = findViewById(R.id.imageView_upper);
-        spinnerService = findViewById(R.id.spinnerService);
-        itemPrice = findViewById(R.id.et_item_price);
-        itemDescription = findViewById(R.id.et_item_discription);
-        spinnerDays = findViewById(R.id.spinnerDays);
+      //  spinnerService = findViewById(R.id.etService);
+        itemPrice = findViewById(R.id.etPrice);
+        itemDescription = findViewById(R.id.etDescription);
+       // spinnerDays = findViewById(R.id.etDay);
        // btnChooseImage= findViewById(R.id.btn_choose_items);
         btnAddItem = findViewById(R.id.btn_Add_Items);
     }

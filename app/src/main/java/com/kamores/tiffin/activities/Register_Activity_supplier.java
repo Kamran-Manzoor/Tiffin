@@ -130,6 +130,7 @@ public class Register_Activity_supplier extends AppCompatActivity {
         etAddress = findViewById(R.id.tv_address);
         supplier_image = findViewById(R.id.imageView_supplier);
         btn_signUp = findViewById(R.id.btn_signUp_supplier);
+        rg_bck = findViewById(R.id.previous);
 
     }
 
