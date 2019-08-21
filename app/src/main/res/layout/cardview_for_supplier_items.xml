@@ -7,30 +7,30 @@
     android:layout_gravity="center">
 
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="79dp"
-        android:layout_height="73dp"
-        android:layout_alignStart="@+id/cv"
-        android:layout_marginStart="6dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp">
+    <!--<androidx.cardview.widget.CardView-->
+        <!--android:layout_width="79dp"-->
+        <!--android:layout_height="73dp"-->
+        <!--android:layout_alignStart="@+id/cv"-->
+        <!--android:layout_marginStart="6dp"-->
+        <!--app:cardCornerRadius="10dp"-->
+        <!--app:cardElevation="10dp">-->
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="match_parent">&ndash;&gt;-->
 
-            <ImageView
-                android:id="@+id/food_img"
-                android:layout_width="75dp"
-                android:layout_height="65dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="20dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/showrma" />
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+            <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/food_img"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="75dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="65dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_alignParentStart="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_alignParentTop="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginStart="0dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_marginTop="20dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:scaleType="centerCrop"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:src="@drawable/showrma" />&ndash;&gt;-->
+        <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
+    <!--</androidx.cardview.widget.CardView>-->
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv"
@@ -50,6 +50,17 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/cv"
             android:layout_alignTop="@+id/cv">
+
+            <ImageView
+                android:id="@+id/food_img"
+                android:layout_width="76dp"
+                android:layout_height="78dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/showrma" />
 
             <TextView
                 android:id="@+id/tvNameFood"

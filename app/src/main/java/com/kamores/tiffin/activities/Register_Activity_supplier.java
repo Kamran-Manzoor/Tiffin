@@ -19,6 +19,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -53,6 +54,7 @@ public class Register_Activity_supplier extends AppCompatActivity {
     private Animation animation;
     EditText etfullName, etAddress;
     Button btn_signUp;
+    ImageButton rg_bck;
     ImageView supplier_image;
     String name, address, supplierimage, user_id;
 
@@ -67,6 +69,15 @@ public class Register_Activity_supplier extends AppCompatActivity {
         animation = AnimationUtils.loadAnimation(this, R.anim.uptodowndiagonal);
         rlayout.setAnimation(animation);
         initViewSupplier();
+
+        rg_bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Register_Activity_supplier.this,Login_Activity_Supplier.class);
+                startActivity(intent);
+
+            }
+        });
 
         supplier_image.setOnClickListener(new View.OnClickListener() {
             @Override
