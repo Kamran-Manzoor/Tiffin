@@ -57,6 +57,7 @@ public class Add_Items extends AppCompatActivity {
     Button btnAddItem;
     List<String> listDays;
     List<String> listService;
+    String image_code;
     String Item_name, sup_id, service_id, Item_price, Item_days, Item_image, Item_desc, Item_service;
     private static final int PICK_IMAGE_REQUEST = 1;
 
@@ -166,15 +167,24 @@ public class Add_Items extends AppCompatActivity {
         RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
         Item item = new Item();
         final String image = imageToString();
+    //    Toast.makeText( this, ""+file_name, Toast.LENGTH_SHORT ).show();
+//        item.setItem_name(Item_name);
+//        item.setItem_price(Item_price);
+//        item.setItem_image(Item_image);
+//        item.setImage_code(image);
+//        item.setDay(Item_days);
+//        item.setDescription(Item_desc);
+//        item.setSupllier_id(sup_id);
+//        item.setService_id(service_id);
 
-        item.setItem_name(Item_name);
-        item.setItem_price(Item_price);
-        item.setItem_image(Item_image);
-     //   item.setImage_code(image);
-        item.setDay(Item_days);
-        item.setDescription(Item_desc);
-        item.setSupllier_id(sup_id);
-        item.setService_id(service_id);
+        item.setItem_name("Some");
+        item.setItem_price("200");
+        item.setItem_image(file_name);
+        item.setImage_code(image);
+        item.setDay("Tuesday");
+        item.setDescription("desc");
+        item.setSupllier_id("1");
+        item.setService_id("1");
 
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.ADD_ITEMS);

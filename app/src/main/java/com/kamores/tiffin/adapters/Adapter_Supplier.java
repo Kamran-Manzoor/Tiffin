@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.kamores.tiffin.constants.Constants;
+import com.kamores.tiffin.models.ModelClass;
 import com.kamores.tiffin.models.ModelClass_Supplier;
 import com.kamores.tiffin.R;
 
@@ -30,7 +31,6 @@ import java.util.concurrent.ExecutionException;
 public class Adapter_Supplier extends RecyclerView.Adapter<Adapter_Supplier.ViewHolder> {
     private List<ModelClass_Supplier> modelClasses;
     private Context mContext;
-    public static String image_name;
 
     public Adapter_Supplier(List<ModelClass_Supplier> modelClasses, Context mContext) {
         this.modelClasses = modelClasses;
@@ -59,24 +59,8 @@ public class Adapter_Supplier extends RecyclerView.Adapter<Adapter_Supplier.View
         }
 
         Glide.with(mContext).load(myImage).into(holder.img);
-        //.into(holder.img_show);
-
         holder.tv_FoodName.setText(currentItem.getItemName());
-       // holder.img.setText(currentItem.getAddress());
         holder.tv_price.setText("RS:" + currentItem.getPrice());
-
-
-//        holder.cardView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                image_name = currentItem.getItem_image();
-//                Intent i = new Intent().setClass(mContext, Supplier_profile.class);
-//                i.putExtra("Supplier_id",currentItem.getSupplier_id());
-//                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-//                mContext.getApplicationContext().startActivity(i);
-//            }
-//        });
-
     }
 
     public static class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
@@ -110,51 +94,11 @@ public class Adapter_Supplier extends RecyclerView.Adapter<Adapter_Supplier.View
         android.widget.ImageView ImageView;
         TextView  tv_FoodName,tv_price;
         ImageView img;
-        CardView cardView;
         public ViewHolder(View itemView) {
             super(itemView);
-            //img_food= itemView.findViewById(R.id.img_Food_RecyclerView);
-            //imgDetail= itemView.findViewById(R.id.img_Details_RecyclerView);
-           // tv_ServiceName = itemView.findViewById(R.id.);
-           // img = itemView.findViewById(R.id.tv_supplier_name);
             tv_FoodName = itemView.findViewById(R.id.tvNameFood);
             tv_price = itemView.findViewById(R.id.tvPrice);
-            cardView = itemView.findViewById(R.id.cv);
             img = itemView.findViewById(R.id.food_img);
         }
     }
-
-//    @Override
-//    public Filter getFilter() {
-//        return exampleFilter;
-//    }
-//
-//    private Filter exampleFilter = new Filter() {
-//        @Override
-//        protected FilterResults performFiltering(CharSequence constraint) {
-//            List<ModelClass> filteredList = new ArrayList<>();
-//            if (constraint == null || constraint.length() == 0){
-//                filteredList.addAll(modelClasses);
-//            }else {
-//                String filterPattern = constraint.toString().toLowerCase().trim();
-//                for (ModelClass item : modelClasses){
-//                    if (item.getItemName().toLowerCase().contains(filterPattern) ||
-//                            item.getName().toLowerCase().contains(filterPattern) ||
-//                            item.getAddress().toLowerCase().contains(filterPattern)){
-//                        filteredList.add(item);
-//                    }
-//                }
-//            }
-//            FilterResults results= new FilterResults();
-//            results.values= filteredList;
-//            return results;
-//        }
-//
-//        @Override
-//        protected void publishResults(CharSequence constraint, FilterResults results) {
-//            modelClasses.clear();
-//            modelClasses.addAll((List) results.values);
-//            notifyDataSetChanged();
-//        }
-//    };
 }

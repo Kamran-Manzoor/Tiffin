@@ -2,20 +2,15 @@ package com.kamores.tiffin.models;
 
 public class ModelClass_Supplier {
 
-
-
    private String itemName;
    private String item_image;
    private String price;
-   private String day;
-   private String service;
 
-    public ModelClass_Supplier(String itemName, String item_image, String price, String day, String service) {
+
+    public ModelClass_Supplier(String itemName, String price, String item_image) {
         this.itemName = itemName;
-        this.item_image = item_image;
         this.price = price;
-        this.day = day;
-        this.service = service;
+        this.item_image = item_image;
     }
 
     public String getItemName() {
@@ -28,14 +23,6 @@ public class ModelClass_Supplier {
 
     public String getPrice() {
         return price;
-    }
-
-    public String getDay() {
-        return day;
-    }
-
-    public String getService() {
-        return service;
     }
 }
 
