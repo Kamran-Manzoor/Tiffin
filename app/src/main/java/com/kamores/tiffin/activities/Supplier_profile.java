@@ -53,7 +53,7 @@ public class Supplier_profile extends AppCompatActivity {
     String itemName;
     String name;
     String address;
-    
+
     String contact;
     String supplier_image;
     String price;
