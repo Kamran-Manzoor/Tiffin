@@ -12,6 +12,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +37,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
     private List<ModelClass> modelClasses;
     private List<ModelClass> modelClassList;
     public static String image_name;
+    public static String Supplier_id;
 
     public AdapterClass(List<ModelClass> modelClasses, Context context) {
         this.mContext = context;
@@ -95,9 +97,10 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                image_name = currentItem.getItem_image();
+                //Toast.makeText( mContext, ""+currentItem.getSupplier_id(), Toast.LENGTH_SHORT ).show();
+                Supplier_id = currentItem.getSupplier_id();
                 Intent i = new Intent().setClass(mContext, Supplier_profile.class);
-                i.putExtra("Supplier_id",currentItem.getSupplier_id());
+//                i.putExtra("Supplier_id",currentItem.getSupplier_id());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 mContext.getApplicationContext().startActivity(i);
             }

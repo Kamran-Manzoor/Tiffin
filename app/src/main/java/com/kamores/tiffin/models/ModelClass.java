@@ -2,16 +2,12 @@ package com.kamores.tiffin.models;
 
 public class ModelClass {
 
-
     public String name;
     public String itemName;
     public String address;
     public String supplier_id;
     public String item_image;
     public String price;
-
-
-
 
     public ModelClass(String name, String itemName, String address, String supplier_id, String item_image, String price) {
         this.name = name;
@@ -21,6 +17,12 @@ public class ModelClass {
         this.item_image = item_image;
         this.price = price;
 
+    }
+
+    public ModelClass(String itemName, String item_image, String price) {
+        this.itemName = itemName;
+        this.item_image = item_image;
+        this.price = price;
     }
 
     public String getName() {
