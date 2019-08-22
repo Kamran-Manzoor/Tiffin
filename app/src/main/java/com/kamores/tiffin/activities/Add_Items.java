@@ -145,17 +145,11 @@ public class Add_Items extends AppCompatActivity {
     }
 
     private void getValues() {
-//        Item_name = itemName.getText().toString();
-//        Item_price = itemPrice.getText().toString();
-//        Item_desc = itemDescription.getText().toString();
-        Item_name="new";
-        Item_price="100";
-        Item_desc="None";
-        Item_image = "some";
-        service_id = "2";
-        Item_days="Monday";
-
-
+        Item_name = itemName.getText().toString();
+        Item_price = itemPrice.getText().toString();
+        Item_days = spinnerDays.getText().toString();
+        Item_service = spinnerService.getText().toString();
+        Item_desc = itemDescription.getText().toString();
         final UserShared userShared = new UserShared(Add_Items.this);
         sup_id = userShared.getSupplier_id();
         Toast.makeText(this,  sup_id, Toast.LENGTH_SHORT).show();
@@ -165,30 +159,21 @@ public class Add_Items extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
         RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
-        Item item = new Item();
-        final String image = imageToString();
-    //    Toast.makeText( this, ""+file_name, Toast.LENGTH_SHORT ).show();
-//        item.setItem_name(Item_name);
-//        item.setItem_price(Item_price);
-//        item.setItem_image(Item_image);
-//        item.setImage_code(image);
-//        item.setDay(Item_days);
-//        item.setDescription(Item_desc);
-//        item.setSupllier_id(sup_id);
-//        item.setService_id(service_id);
 
-        item.setItem_name("Some");
-        item.setItem_price("200");
+        final String image = imageToString();
+        Item item = new Item();
+        item.setItem_name(Item_name);
+        item.setItem_price(Item_price);
         item.setItem_image(file_name);
         item.setImage_code(image);
-        item.setDay("Tuesday");
-        item.setDescription("desc");
+        item.setDay(Item_days);
+        item.setDescription(Item_desc);
         item.setSupllier_id("1");
-        item.setService_id("1");
+        item.setService_id(Item_service);
 
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.ADD_ITEMS);
-        request.setItems(item);
+        request.setItem(item);
 
         Call<ServerResponce> resp = requestInterfacePart.operationone(request);
 
@@ -210,7 +195,6 @@ public class Add_Items extends AppCompatActivity {
                 Toast.makeText(Add_Items.this, "Connection Failure" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     private void setUpIntent() {
@@ -218,7 +202,6 @@ public class Add_Items extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 
     private void openFileChooser() {
         Intent intent = new Intent();
@@ -296,6 +279,4 @@ public class Add_Items extends AppCompatActivity {
         listDays.add("Dinner");
 
     }
-
-
 }

@@ -58,7 +58,6 @@ public class Supplier_profile extends AppCompatActivity {
 //    private List<ModelClass> modelClasses;
     String name;
     String address;
-
     String contact;
 
     private List<ModelClass_Supplier> modelClass_suppliers;
