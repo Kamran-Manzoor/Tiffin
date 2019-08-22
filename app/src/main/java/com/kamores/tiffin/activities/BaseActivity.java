@@ -99,6 +99,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View v) {
                 Intent intent = new Intent(BaseActivity.this, Login_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -233,6 +234,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_Supplier) {
             Intent intent = new Intent(BaseActivity.this, Login_Activity_Supplier.class);
             startActivity(intent);
+            finish();
         } else if (id == R.id.nav_Save_Location) {
             Intent intent = new Intent(BaseActivity.this, Add_Items.class);
             startActivity(intent);

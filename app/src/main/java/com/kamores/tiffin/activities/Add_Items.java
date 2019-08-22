@@ -138,10 +138,10 @@ public class Add_Items extends AppCompatActivity {
     public void initViewItems() {
         itemName = findViewById(R.id.etItem);
         itemImageChose = findViewById(R.id.imageView_upper);
-      //  spinnerService = findViewById(R.id.etService);
-        itemPrice = findViewById(R.id.etPrice);
-        itemDescription = findViewById(R.id.etDescription);
-       // spinnerDays = findViewById(R.id.etDay);
+       // spinnerService = findViewById(R.id.etService_item);
+        itemPrice = findViewById(R.id.etPrice_item);
+        itemDescription = findViewById(R.id.etDescription_item);
+      //  spinnerDays = findViewById(R.id.etDay_item);
        // btnChooseImage= findViewById(R.id.btn_choose_items);
         btnAddItem = findViewById(R.id.btn_Add_Items);
     }

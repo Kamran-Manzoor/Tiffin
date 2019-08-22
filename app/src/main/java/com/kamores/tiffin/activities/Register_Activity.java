@@ -59,7 +59,7 @@ public class Register_Activity extends AppCompatActivity {
         rg_bck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Register_Activity.this,Login_Activity_Supplier.class);
+                Intent intent = new Intent(Register_Activity.this,Login_Activity.class);
                 startActivity(intent);
 
             }
@@ -83,9 +83,9 @@ public class Register_Activity extends AppCompatActivity {
     }
 
     public void initViewUser() {
-        etContact = findViewById(R.id.user_contact);
+        etContact = findViewById(R.id.et_user_contact);
         etEmail = findViewById(R.id.user_email);
-        etPassword = findViewById(R.id.user_password);
+        etPassword = findViewById(R.id.user_Sinup_password);
         etConfirmPass = findViewById(R.id.user_confirmPassword);
         btn_add = findViewById(R.id.btn_signUp_user);
         rg_bck = findViewById(R.id.previous);

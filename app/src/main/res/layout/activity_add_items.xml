@@ -98,7 +98,7 @@
                         android:id="@+id/etItem"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Item Name" />
+                        android:hint="Item Name_item" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -113,7 +113,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etPrice"
+                        android:id="@+id/etPrice_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Price" />
@@ -131,7 +131,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/stDay"
+                        android:id="@+id/etDay_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Day" />
@@ -149,7 +149,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etService"
+                        android:id="@+id/etService_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Service" />
@@ -167,7 +167,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etDescription"
+                        android:id="@+id/etDescription_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Description" />

@@ -57,8 +57,9 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         rg_bck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Login_Activity.this,Login_Activity_Supplier.class);
+                Intent intent = new Intent(Login_Activity.this,BaseActivity.class);
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -121,8 +122,8 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if (v==btRegister){
-            Intent intent   = new Intent(Login_Activity.this,Register_Activity.class);
-            Pair[] pairs    = new Pair[1];
+            Intent intent  = new Intent(Login_Activity.this,Register_Activity.class);
+            Pair[] pairs   = new Pair[1];
             pairs[0] = new Pair<View,String>(tvLogin,"tvLogin");
             ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(Login_Activity.this,pairs);
             startActivity(intent,activityOptions.toBundle());

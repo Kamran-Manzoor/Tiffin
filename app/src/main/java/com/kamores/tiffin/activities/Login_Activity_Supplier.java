@@ -42,6 +42,7 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
     private Button btn_login;
     String supplier_id;
     User userData;
+    ImageButton rg_bck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,17 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
         actionBar.hide();
 
         initViews();
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        rg_bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login_Activity_Supplier.this,BaseActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+                btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String con = contact.getText().toString().trim();
@@ -94,6 +105,7 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
         contact=findViewById(R.id.Supplier_Contact);
         password=findViewById(R.id.et_Supplier_Password);
         btn_login=findViewById(R.id.btn_Supplier_Login);
+        rg_bck = findViewById(R.id.previous);
         btRegister.setOnClickListener(this);
     }
     public static void setWindowFlag(Activity activity, final int bits, boolean on) {
