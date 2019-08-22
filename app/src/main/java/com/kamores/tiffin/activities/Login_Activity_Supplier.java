@@ -21,6 +21,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.kamores.tiffin.constants.Constants;
 import com.kamores.tiffin.interfaces.RequestInterfacePart;
 import com.kamores.tiffin.constants.ServerRequest;
@@ -85,7 +87,6 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
-
     }
 
     private void initViews() {
@@ -107,7 +108,6 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
         win.setAttributes(winParams);
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onClick(View v) {
@@ -121,7 +121,6 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
     }
 
     private void loginProcess(String contact,String password){
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -161,7 +160,7 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
             public void onFailure(Call<ServerResponce> call, Throwable t) {
 
                 Log.d(Constants.TAG,"failed");
-                Toast.makeText(Login_Activity_Supplier.this, "Invalid User or Password!" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login_Activity_Supplier.this, t.getLocalizedMessage() , Toast.LENGTH_SHORT).show();
 
                 // Snackbar.make(MainActivity.this, t.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
 

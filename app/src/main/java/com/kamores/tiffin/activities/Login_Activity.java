@@ -63,10 +63,8 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
                     contact.setError("Enter Username");
                 }
                 else if (pass.isEmpty()) {
-
                     password.setError("Enter Password");
                 }
-
                else{
                     loginProcess(con,pass,id);
                 }
@@ -84,7 +82,6 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
-
     }
 
     private void initViews() {
@@ -117,7 +114,6 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
             startActivity(intent,activityOptions.toBundle());
         }
     }
-
 
     private void loginProcess(final String contact, String password, final String Userid ){
 
@@ -166,7 +162,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
             public void onFailure(Call<ServerResponce> call, Throwable t) {
 
                 Log.d(Constants.TAG,"failed");
-                Toast.makeText(Login_Activity.this, "Invalid User or Password!" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login_Activity.this, t.getLocalizedMessage() , Toast.LENGTH_SHORT).show();
 
                 // Snackbar.make(MainActivity.this, t.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
 
