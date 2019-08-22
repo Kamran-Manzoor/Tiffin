@@ -79,7 +79,6 @@ public class Register_Activity extends AppCompatActivity {
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
-
     }
 
     public void initViewUser() {
@@ -88,8 +87,6 @@ public class Register_Activity extends AppCompatActivity {
         etPassword = findViewById(R.id.user_Sinup_password);
         etConfirmPass = findViewById(R.id.user_confirmPassword);
         btn_add = findViewById(R.id.btn_signUp_user);
-        rg_bck = findViewById(R.id.previous);
-
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,5 +160,4 @@ public class Register_Activity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 }

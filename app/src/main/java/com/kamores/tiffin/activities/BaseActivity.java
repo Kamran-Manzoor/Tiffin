@@ -199,8 +199,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         currentDay = LocalDate.now().getDayOfWeek().name();
 
         Toast.makeText(this, currentDay, Toast.LENGTH_SHORT).show();
-
-
     }
 
     @Override

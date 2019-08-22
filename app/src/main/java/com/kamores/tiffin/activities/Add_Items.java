@@ -24,7 +24,6 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.kamores.tiffin.constants.Constants;
 import com.kamores.tiffin.interfaces.RequestInterfacePart;
 import com.kamores.tiffin.constants.ServerRequest;
@@ -167,30 +166,21 @@ public class Add_Items extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
         RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
-        Item item = new Item();
-        final String image = imageToString();
-    //    Toast.makeText( this, ""+file_name, Toast.LENGTH_SHORT ).show();
-//        item.setItem_name(Item_name);
-//        item.setItem_price(Item_price);
-//        item.setItem_image(Item_image);
-//        item.setImage_code(image);
-//        item.setDay(Item_days);
-//        item.setDescription(Item_desc);
-//        item.setSupllier_id(sup_id);
-//        item.setService_id(service_id);
 
-        item.setItem_name("Some");
-        item.setItem_price("200");
+        final String image = imageToString();
+        Item item = new Item();
+        item.setItem_name(Item_name);
+        item.setItem_price(Item_price);
         item.setItem_image(file_name);
         item.setImage_code(image);
-        item.setDay("Tuesday");
-        item.setDescription("desc");
+        item.setDay(Item_days);
+        item.setDescription(Item_desc);
         item.setSupllier_id("1");
-        item.setService_id("1");
+        item.setService_id(Item_service);
 
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.ADD_ITEMS);
-        request.setItems(item);
+        request.setItem(item);
 
         Call<ServerResponce> resp = requestInterfacePart.operationone(request);
 
@@ -212,7 +202,6 @@ public class Add_Items extends AppCompatActivity {
                 Toast.makeText(Add_Items.this, "Connection Failure" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     private void setUpIntent() {
@@ -220,7 +209,6 @@ public class Add_Items extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 
     private void openFileChooser() {
         Intent intent = new Intent();
@@ -298,6 +286,4 @@ public class Add_Items extends AppCompatActivity {
         listDays.add("Dinner");
 
     }
-
-
 }

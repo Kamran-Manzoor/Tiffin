@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:orientation="vertical"
-   >
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewService"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
+        app:cardElevation="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="20dp"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout7"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             tools:layout_editor_absoluteY="8dp">
 
