@@ -96,6 +96,42 @@ public class Add_Items extends AppCompatActivity {
 //                startActivity(intent);
             }
         });
+
+//        showDays();
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listDays);
+//        adapter.setDropDownViewResource(R.layout.custom_spinner);
+//        spinnerDays.setAdapter(adapter);
+//        spinnerDays.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                Item_days = parent.getItemAtPosition(position).toString();
+//                Toast.makeText(Add_Items.this, Item_days, Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+//
+//        showService();
+//        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item
+//                , listService);
+//        adapter1.setDropDownViewResource(R.layout.custom_spinner);
+//        spinnerService.setAdapter(adapter1);
+//        spinnerService.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                Item_service = parent.getItemAtPosition(position).toString();
+//                Toast.makeText(Add_Items.this, Item_service, Toast.LENGTH_SHORT).show();
+//
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
     }
 
     @SuppressLint("WrongViewCast")
@@ -131,11 +167,20 @@ public class Add_Items extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
         RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
-
-        final String image = imageToString();
         Item item = new Item();
-        item.setItem_name(Item_name);
-        item.setItem_price(Item_price);
+        final String image = imageToString();
+    //    Toast.makeText( this, ""+file_name, Toast.LENGTH_SHORT ).show();
+//        item.setItem_name(Item_name);
+//        item.setItem_price(Item_price);
+//        item.setItem_image(Item_image);
+//        item.setImage_code(image);
+//        item.setDay(Item_days);
+//        item.setDescription(Item_desc);
+//        item.setSupllier_id(sup_id);
+//        item.setService_id(service_id);
+
+        item.setItem_name("Some");
+        item.setItem_price("200");
         item.setItem_image(file_name);
         item.setImage_code(image);
         item.setDay(Item_days);
@@ -251,4 +296,6 @@ public class Add_Items extends AppCompatActivity {
         listDays.add("Dinner");
 
     }
+
+
 }

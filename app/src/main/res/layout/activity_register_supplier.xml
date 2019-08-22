@@ -121,6 +121,24 @@
                             android:hint="Full Name" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <!--<TextView-->
+
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_margin="10dp"-->
+                        <!--android:text="Contact"-->
+                        <!--android:textColor="@color/colorAccent"-->
+                        <!--android:textSize="14sp"-->
+                        <!--android:textStyle="bold" />-->
+
+                    <!--<EditText-->
+                        <!--android:id="@+id/tv_contact"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="10dp"-->
+                        <!--android:layout_marginRight="10dp"-->
+                        <!--android:inputType="number" />-->
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/layout_supplier_contact"
                         android:layout_width="match_parent"
