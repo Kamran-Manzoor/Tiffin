@@ -84,6 +84,7 @@ public class Supplier_profile extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Supplier_profile.this, BaseActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         //make translucent statusBar on kitkat devices

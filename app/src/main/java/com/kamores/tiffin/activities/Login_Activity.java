@@ -42,6 +42,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
     private Button btn_login;
     String id;
     User userData;
+    ImageButton rg_bck;
 
 
     @Override
@@ -53,6 +54,16 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         ActionBar actionBar= getSupportActionBar();
         actionBar.hide();
         initViews();
+        rg_bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login_Activity.this,BaseActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +101,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         contact=findViewById(R.id.user_contact);
         password=findViewById(R.id.user_password);
         btn_login=findViewById(R.id.btn_login);
+        rg_bck = findViewById(R.id.previous);
         btRegister.setOnClickListener(this);
     }
     public static void setWindowFlag(Activity activity, final int bits, boolean on) {
@@ -107,8 +119,8 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if (v==btRegister){
-            Intent intent   = new Intent(Login_Activity.this,Register_Activity.class);
-            Pair[] pairs    = new Pair[1];
+            Intent intent  = new Intent(Login_Activity.this,Register_Activity.class);
+            Pair[] pairs   = new Pair[1];
             pairs[0] = new Pair<View,String>(tvLogin,"tvLogin");
             ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(Login_Activity.this,pairs);
             startActivity(intent,activityOptions.toBundle());

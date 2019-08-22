@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ public class Register_Activity extends AppCompatActivity {
     private Animation animation;
     EditText etContact, etEmail, etPassword, etConfirmPass;
     Button btn_add;
+    ImageButton rg_bck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,16 @@ public class Register_Activity extends AppCompatActivity {
         animation = AnimationUtils.loadAnimation(this, R.anim.uptodowndiagonal);
         rlayout.setAnimation(animation);
         initViewUser();
+        rg_bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Register_Activity.this,Login_Activity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
 
         //make translucent statusBar on kitkat devices
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
@@ -70,9 +82,9 @@ public class Register_Activity extends AppCompatActivity {
     }
 
     public void initViewUser() {
-        etContact = findViewById(R.id.user_contact);
+        etContact = findViewById(R.id.et_user_contact);
         etEmail = findViewById(R.id.user_email);
-        etPassword = findViewById(R.id.user_password);
+        etPassword = findViewById(R.id.user_Sinup_password);
         etConfirmPass = findViewById(R.id.user_confirmPassword);
         btn_add = findViewById(R.id.btn_signUp_user);
 
