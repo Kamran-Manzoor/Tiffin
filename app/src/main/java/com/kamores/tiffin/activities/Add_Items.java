@@ -24,6 +24,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.kamores.tiffin.constants.Constants;
 import com.kamores.tiffin.interfaces.RequestInterfacePart;
 import com.kamores.tiffin.constants.ServerRequest;
@@ -51,12 +52,14 @@ public class Add_Items extends AppCompatActivity {
     private Bitmap bitmap;
 
     ImageView itemImageChose;
-    EditText itemName, itemPrice, itemDescription;
+    TextInputEditText itemName;
+    EditText itemPrice, itemDescription;
     AutoCompleteTextView spinnerDays, spinnerService;
     ImageButton imageButton;
     Button btnAddItem;
     List<String> listDays;
     List<String> listService;
+    String image_code;
     String Item_name, sup_id, service_id, Item_price, Item_days, Item_image, Item_desc, Item_service;
     private static final int PICK_IMAGE_REQUEST = 1;
 
@@ -133,12 +136,12 @@ public class Add_Items extends AppCompatActivity {
 
     @SuppressLint("WrongViewCast")
     public void initViewItems() {
-        itemName = findViewById(R.id.et_item_name);
+        itemName = findViewById(R.id.etItem);
         itemImageChose = findViewById(R.id.imageView_upper);
-        spinnerService = findViewById(R.id.spinnerService);
-        itemPrice = findViewById(R.id.et_item_price);
-        itemDescription = findViewById(R.id.et_item_discription);
-        spinnerDays = findViewById(R.id.spinnerDays);
+       // spinnerService = findViewById(R.id.etService_item);
+        itemPrice = findViewById(R.id.etPrice_item);
+        itemDescription = findViewById(R.id.etDescription_item);
+      //  spinnerDays = findViewById(R.id.etDay_item);
        // btnChooseImage= findViewById(R.id.btn_choose_items);
         btnAddItem = findViewById(R.id.btn_Add_Items);
     }
@@ -164,21 +167,21 @@ public class Add_Items extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
         RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
-        Item item = new Item();
-        final String image = imageToString();
 
+        final String image = imageToString();
+        Item item = new Item();
         item.setItem_name(Item_name);
         item.setItem_price(Item_price);
-        item.setItem_image(Item_image);
-     //   item.setImage_code(image);
+        item.setItem_image(file_name);
+        item.setImage_code(image);
         item.setDay(Item_days);
         item.setDescription(Item_desc);
-        item.setSupllier_id(sup_id);
-        item.setService_id(service_id);
+        item.setSupllier_id("1");
+        item.setService_id(Item_service);
 
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.ADD_ITEMS);
-        request.setItems(item);
+        request.setItem(item);
 
         Call<ServerResponce> resp = requestInterfacePart.operationone(request);
 
@@ -200,7 +203,6 @@ public class Add_Items extends AppCompatActivity {
                 Toast.makeText(Add_Items.this, "Connection Failure" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     private void setUpIntent() {
@@ -208,7 +210,6 @@ public class Add_Items extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 
     private void openFileChooser() {
         Intent intent = new Intent();
@@ -286,6 +287,4 @@ public class Add_Items extends AppCompatActivity {
         listDays.add("Dinner");
 
     }
-
-
 }

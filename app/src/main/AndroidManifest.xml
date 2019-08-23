@@ -10,8 +10,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -22,13 +22,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activities.Supplier_Account"></activity>
         <activity android:name=".activities.Register_Activity" />
         <activity android:name=".activities.Login_Activity" />
         <activity
             android:name=".activities.Supplier_profile"
             android:label="Item Schedule Activity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.Activity_Detail"
             android:label="Activity Detail"
@@ -36,8 +37,8 @@
         <activity
             android:name=".activities.Add_Items"
             android:label="Add Items"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -56,28 +57,26 @@
         <activity
             android:name=".activities.Add_Supplier"
             android:label="Add Supplier"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.MainActivity"
             android:label="MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.Login_Activity_Supplier"
-            android:parentActivityName=".activities.BaseActivity"
             android:label=""
+            android:parentActivityName=".activities.BaseActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.Register_Activity_supplier"
-            android:parentActivityName=".activities.Login_Activity_Supplier"
             android:label="MainActivity"
+            android:parentActivityName=".activities.Login_Activity_Supplier"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.BaseActivity"
-            android:theme="@style/AppTheme.NoActionBar"
             android:label="Menu"
-            >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -21,6 +21,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.kamores.tiffin.constants.Constants;
 import com.kamores.tiffin.interfaces.RequestInterfacePart;
 import com.kamores.tiffin.constants.ServerRequest;
@@ -42,6 +44,7 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
     private Button btn_login;
     String supplier_id;
     User userData;
+    ImageButton rg_bck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +56,17 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
         actionBar.hide();
 
         initViews();
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        rg_bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login_Activity_Supplier.this,BaseActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+                btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String con = contact.getText().toString().trim();
@@ -85,7 +98,6 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
-
     }
 
     private void initViews() {
@@ -94,6 +106,7 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
         contact=findViewById(R.id.Supplier_Contact);
         password=findViewById(R.id.et_Supplier_Password);
         btn_login=findViewById(R.id.btn_Supplier_Login);
+        rg_bck = findViewById(R.id.previous);
         btRegister.setOnClickListener(this);
     }
     public static void setWindowFlag(Activity activity, final int bits, boolean on) {
@@ -106,7 +119,6 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
         }
         win.setAttributes(winParams);
     }
-
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -121,7 +133,6 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
     }
 
     private void loginProcess(String contact,String password){
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -133,7 +144,7 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
         user.setContact(contact);
         user.setPassword(password);
         ServerRequest request = new ServerRequest();
-        request.setOperation(Constants.LOG_IN_SUPPLIER);
+        request.setOperation(Constants.LOG_IN);
         request.setUser(user);
         Call<ServerResponce> response = requestInterface.operationone(request);
 
@@ -147,7 +158,7 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
 
                 Toast.makeText(Login_Activity_Supplier.this, "" + resp.getMessage() + supplier_id, Toast.LENGTH_SHORT).show();
 
-                if(resp.getResult().equals(Constants.SUCCESS)){
+                if(resp.getResult().equals(Constants.SUCCESS_SUPPLIER)){
                     UserShared user1 =new UserShared(Login_Activity_Supplier.this);
                     user1.setSupplier_id(supplier_id);
                     Intent intent=new Intent(Login_Activity_Supplier.this,Add_Items.class);
@@ -161,7 +172,7 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
             public void onFailure(Call<ServerResponce> call, Throwable t) {
 
                 Log.d(Constants.TAG,"failed");
-                Toast.makeText(Login_Activity_Supplier.this, "Invalid User or Password!" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login_Activity_Supplier.this, t.getLocalizedMessage() , Toast.LENGTH_SHORT).show();
 
                 // Snackbar.make(MainActivity.this, t.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
 

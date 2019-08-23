@@ -22,5 +22,13 @@
     <color name="gradEndbtn">#FFB93D</color>
     <color name="red">#D13C0F</color>
 
+    <!--colors for profile-->
+    <color name="profilePrimaryDark">#FF3B30</color>
+    <color name="profileAccentColor">#F7F7F7</color>
+    <color name="whiteTextColor">#fff</color>
+    <color name="profileBackground">#fff</color>
+    <color name="blackTextColor">#000</color>
+    <color name="profileEditTextColor">#707070</color>
+
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#B54E363A</color>
 </resources>

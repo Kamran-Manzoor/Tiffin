@@ -101,6 +101,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View v) {
                 Intent intent = new Intent(BaseActivity.this, Login_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -200,8 +201,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         currentDay = LocalDate.now().getDayOfWeek().name();
 
         Toast.makeText(this, currentDay, Toast.LENGTH_SHORT).show();
-
-
     }
 
     @Override
@@ -235,11 +234,12 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_Supplier) {
             Intent intent = new Intent(BaseActivity.this, Login_Activity_Supplier.class);
             startActivity(intent);
+            finish();
         } else if (id == R.id.nav_Save_Location) {
             Intent intent = new Intent(BaseActivity.this, Add_Items.class);
             startActivity(intent);
         } else if (id == R.id.nav_show_In_Map) {
-            Intent i = new Intent(BaseActivity.this, MapsActivity.class);
+            Intent i = new Intent(BaseActivity.this, Supplier_Account.class);
             startActivity(i);
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

@@ -12,8 +12,10 @@ public class ServerRequest {
     private User user;
     Supplier supplier;
     Supplier_Model supplier_model;
-    Item items;
+    Item item;
     UserModel userModel;
+
+
 
     public void setSupplier_model(Supplier_Model supplier_model) {
         this.supplier_model = supplier_model;
@@ -23,8 +25,8 @@ public class ServerRequest {
         this.userModel = userModel;
     }
 
-    public void setItems(Item items) {
-        this.items = items;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     public void setSupplier(Supplier supplier) {

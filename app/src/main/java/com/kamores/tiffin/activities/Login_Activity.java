@@ -41,7 +41,9 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
     private EditText contact,password;
     private Button btn_login;
     String id;
+    String supplier_id;
     User userData;
+    ImageButton rg_bck;
 
 
     @Override
@@ -53,20 +55,29 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         ActionBar actionBar= getSupportActionBar();
         actionBar.hide();
         initViews();
+        rg_bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login_Activity.this,BaseActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String con = contact.getText().toString().trim();
+                String con = contact.getText().toString();
                 String pass = password.getText().toString().trim();
+               // Toast.makeText( Login_Activity.this, con + " " + pass, Toast.LENGTH_LONG ).show();
 
                 if (con.isEmpty()) {
                     contact.setError("Enter Username");
                 }
                 else if (pass.isEmpty()) {
-
                     password.setError("Enter Password");
                 }
-
                else{
                     loginProcess(con,pass,id);
                 }
@@ -84,7 +95,6 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
-
     }
 
     private void initViews() {
@@ -93,6 +103,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         contact=findViewById(R.id.user_contact);
         password=findViewById(R.id.user_password);
         btn_login=findViewById(R.id.btn_login);
+        rg_bck = findViewById(R.id.previous);
         btRegister.setOnClickListener(this);
     }
     public static void setWindowFlag(Activity activity, final int bits, boolean on) {
@@ -110,14 +121,13 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if (v==btRegister){
-            Intent intent   = new Intent(Login_Activity.this,Register_Activity.class);
-            Pair[] pairs    = new Pair[1];
+            Intent intent  = new Intent(Login_Activity.this,Register_Activity.class);
+            Pair[] pairs   = new Pair[1];
             pairs[0] = new Pair<View,String>(tvLogin,"tvLogin");
             ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(Login_Activity.this,pairs);
             startActivity(intent,activityOptions.toBundle());
         }
     }
-
 
     private void loginProcess(final String contact, String password, final String Userid ){
 
@@ -132,8 +142,6 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         final User user = new User();
         user.setContact(contact);
         user.setPassword(password);
-
-
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.LOG_IN);
         request.setUser(user);
@@ -143,14 +151,23 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onResponse(Call<ServerResponce> call, retrofit2.Response<ServerResponce> response) {
 
+
                 ServerResponce resp = response.body();
-                userData = resp.getUser();
-                id = userData.getId();
+                assert resp != null;
+                if(resp.getResult().equals(Constants.SUCCESS_SUPPLIER)){
+                    UserShared user1 =new UserShared(Login_Activity.this);
+                    user1.setSupplier_id(supplier_id);
+                    Intent intent=new Intent(Login_Activity.this,Add_Items.class);
+                    intent.putExtra("supplier_id",supplier_id);
+                    Toast.makeText(Login_Activity.this, supplier_id, Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
+                Toast.makeText(Login_Activity.this, "" + resp.getMessage() , Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(Login_Activity.this, "" + resp.getMessage() + id, Toast.LENGTH_SHORT).show();
 
-
-                if(resp.getResult().equals(Constants.SUCCESS)){
+                if(resp.getResult().equals(Constants.SUCCESS_USER)){
+                    userData = resp.getUser();
+                    id = userData.getId();
                     UserShared user1 =new UserShared(Login_Activity.this);
                     user1.setUser_id(id);
                     Intent intent=new Intent(Login_Activity.this,BaseActivity.class);
@@ -166,7 +183,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
             public void onFailure(Call<ServerResponce> call, Throwable t) {
 
                 Log.d(Constants.TAG,"failed");
-                Toast.makeText(Login_Activity.this, "Invalid User or Password!" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login_Activity.this, t.getLocalizedMessage() , Toast.LENGTH_SHORT).show();
 
                 // Snackbar.make(MainActivity.this, t.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
 
