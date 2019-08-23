@@ -122,7 +122,7 @@
                             android:id="@+id/Supplier_Contact"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Item Name_item" />
+                            android:hint="Contact" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -140,7 +140,7 @@
                             android:id="@+id/et_Supplier_Password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Item Name_item" />
+                            android:hint="Password" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

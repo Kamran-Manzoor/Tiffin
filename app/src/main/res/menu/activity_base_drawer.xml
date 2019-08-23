@@ -11,11 +11,11 @@
         <item
             android:id="@+id/nav_Save_Location"
             android:icon="@drawable/save_location"
-            android:title="Save Location"/>
+            android:title="Add Item"/>
         <item
             android:id="@+id/nav_show-In_Map"
             android:icon="@drawable/mapsss"
-            android:title="show In Map" />
+            android:title="Supplier Account" />
     </group>
 
     <item android:title="More">

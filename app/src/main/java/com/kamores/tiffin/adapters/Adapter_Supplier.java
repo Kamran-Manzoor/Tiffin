@@ -60,7 +60,7 @@ public class Adapter_Supplier extends RecyclerView.Adapter<Adapter_Supplier.View
 
         Glide.with(mContext).load(myImage).into(holder.img);
         holder.tv_FoodName.setText(currentItem.getItemName());
-        holder.tv_price.setText("RS:" + currentItem.getPrice());
+        holder.tv_price.setText("" + currentItem.getPrice());
     }
 
     public static class ImageDownloader extends AsyncTask<String, Void, Bitmap> {

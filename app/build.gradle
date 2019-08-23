@@ -57,4 +57,4 @@ dependencies {
 
     implementation 'androidx.cardview:cardview:1.0.0'
 }
-    apply plugin: 'com.android.application'
+apply plugin: 'com.android.application'
