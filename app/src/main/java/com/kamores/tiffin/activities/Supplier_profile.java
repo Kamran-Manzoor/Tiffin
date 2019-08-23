@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +23,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.kamores.tiffin.adapters.AdapterClass;
 import com.kamores.tiffin.adapters.AdapterServiceType;
 import com.kamores.tiffin.adapters.Adapter_Supplier;
@@ -34,9 +38,15 @@ import com.kamores.tiffin.models.Supplier_Model;
 import com.kamores.tiffin.R;
 import com.kamores.tiffin.models.User;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,12 +63,14 @@ public class Supplier_profile extends AppCompatActivity {
     ImageView img_suplier;
     TextView name1, contact1, address1;
     Bundle bundle;
+    Context mContext;
 //    ModelClass_Supplier modelClass_supplier;
 
 //    private List<ModelClass> modelClasses;
     String name;
     String address;
     String contact;
+    String supplier_image;
 
     private List<ModelClass_Supplier> modelClass_suppliers;
     ArrayList<String> itemName;
@@ -171,6 +183,27 @@ public class Supplier_profile extends AppCompatActivity {
         }
         win.setAttributes(winParams);
     }
+    public static class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
+
+        @Override
+        protected Bitmap doInBackground(String... urls) {
+            try {
+                URL url = new URL(urls[0]);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.connect();
+                InputStream in = connection.getInputStream();
+                Bitmap myBitmap = BitmapFactory.decodeStream(in);
+                return myBitmap;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                //Toast.makeText(getApplicationContext(), "3", Toast.LENGTH_SHORT).show();
+                return null;
+            } catch (IOException e) {
+                //Toast.makeText(getApplicationContext(), "4", Toast.LENGTH_SHORT).show();
+                return null;
+            }
+        }
+    }
 
     //Get all Data of Supplier Profile Card View
     private void getSupplierMenu() {
@@ -197,6 +230,7 @@ public class Supplier_profile extends AppCompatActivity {
                     Toast.makeText( Supplier_profile.this, ""+resp.getMessage(), Toast.LENGTH_SHORT ).show();
 
                     Supplier_Model supplier_model = resp.getSupplier_model();
+                    supplier_image=supplier_model.getSupplier_image();
                     name = supplier_model.getName();
                     address = supplier_model.getAddress();
                     contact=supplier_model.getContact();
@@ -204,6 +238,20 @@ public class Supplier_profile extends AppCompatActivity {
                     name1.setText( name );
                     contact1.setText( contact );
                     address1.setText( address );
+
+                    ImageDownloader task = new ImageDownloader();
+                    Bitmap myImage = null;
+                    try {
+                        myImage = task.execute(Constants.BASE_URL+"/Tiffin/uploads/"+supplier_model.getSupplier_image() +".jpg").get();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    Glide.with(Supplier_profile.this).load(myImage).into(img_suplier);
+                    img_suplier.setImageBitmap( myImage );
+                    //.into(holder.img_show);
 
                 } catch (Exception e) {
                     Toast.makeText(Supplier_profile.this, "Exception : " + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();

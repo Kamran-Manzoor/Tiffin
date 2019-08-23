@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textStyle="bold"
+
             android:textSize="14sp"
             android:onClick="LogOut"
             android:textColor="@color/colorBlack"

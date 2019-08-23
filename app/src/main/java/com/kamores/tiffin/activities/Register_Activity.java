@@ -20,6 +20,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.kamores.tiffin.constants.Constants;
 import com.kamores.tiffin.interfaces.RequestInterfacePart;
 import com.kamores.tiffin.constants.ServerRequest;
@@ -37,7 +38,7 @@ public class Register_Activity extends AppCompatActivity {
 
     private RelativeLayout rlayout;
     private Animation animation;
-    EditText etContact, etEmail, etPassword, etConfirmPass;
+    TextInputEditText etContact, etEmail, etPassword, etConfirmPass;
     Button btn_add;
     ImageButton rg_bck;
 
@@ -79,7 +80,6 @@ public class Register_Activity extends AppCompatActivity {
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
-
     }
 
     public void initViewUser() {
@@ -97,7 +97,7 @@ public class Register_Activity extends AppCompatActivity {
                 String pass = etPassword.getText().toString().trim();
                 String confPass = etConfirmPass.getText().toString().trim();
                 if (pass.equals(confPass)) {
-                    addUser(etContact.getText().toString(), etEmail.getText().toString(), etPassword.getText().toString());
+                    addUser(etContact.getText().toString(), etEmail.getText().toString().trim(), etPassword.getText().toString());
                 } else {
                     Toast.makeText(Register_Activity.this, "Password didn't Match!", Toast.LENGTH_SHORT).show();
                 }

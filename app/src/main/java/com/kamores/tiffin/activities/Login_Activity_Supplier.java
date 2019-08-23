@@ -144,7 +144,7 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
         user.setContact(contact);
         user.setPassword(password);
         ServerRequest request = new ServerRequest();
-        request.setOperation(Constants.LOG_IN_SUPPLIER);
+        request.setOperation(Constants.LOG_IN);
         request.setUser(user);
         Call<ServerResponce> response = requestInterface.operationone(request);
 
@@ -158,7 +158,7 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
 
                 Toast.makeText(Login_Activity_Supplier.this, "" + resp.getMessage() + supplier_id, Toast.LENGTH_SHORT).show();
 
-                if(resp.getResult().equals(Constants.SUCCESS)){
+                if(resp.getResult().equals(Constants.SUCCESS_SUPPLIER)){
                     UserShared user1 =new UserShared(Login_Activity_Supplier.this);
                     user1.setSupplier_id(supplier_id);
                     Intent intent=new Intent(Login_Activity_Supplier.this,Add_Items.class);
