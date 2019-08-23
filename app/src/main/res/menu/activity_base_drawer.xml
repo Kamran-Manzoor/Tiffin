@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_Supplier"
+            android:icon="@drawable/supplier"
+            android:title="Become a Supplier"/>
+        <item
+            android:id="@+id/nav_Save_Location"
+            android:icon="@drawable/save_location"
+            android:title="Save Location"/>
+        <item
+            android:id="@+id/nav_show-In_Map"
+            android:icon="@drawable/mapsss"
+            android:title="show In Map" />
+    </group>
+
+    <item android:title="More">
+        <menu>
+            <item
+                android:iconTint="@color/colorAccent"
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/logout"
+                android:title="Visit Us" />
+
+        </menu>
+    </item>
+
+</menu>
