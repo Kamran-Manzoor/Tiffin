@@ -237,7 +237,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(BaseActivity.this, Add_Items.class);
             startActivity(intent);
         } else if (id == R.id.nav_show_In_Map) {
-            Intent i = new Intent(BaseActivity.this, MapsActivity.class);
+            Intent i = new Intent(BaseActivity.this, Supplier_Account.class);
             startActivity(i);
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

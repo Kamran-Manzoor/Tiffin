@@ -90,14 +90,13 @@ public class Register_Activity extends AppCompatActivity {
         btn_add = findViewById(R.id.btn_signUp_user);
         rg_bck = findViewById(R.id.previous);
 
-
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String pass = etPassword.getText().toString().trim();
                 String confPass = etConfirmPass.getText().toString().trim();
                 if (pass.equals(confPass)) {
-                    addUser(etContact.getText().toString(), etEmail.getText().toString().trim(), etPassword.getText().toString());
+                    addUser(etContact.getText().toString(), etEmail.getText().toString(), etPassword.getText().toString());
                 } else {
                     Toast.makeText(Register_Activity.this, "Password didn't Match!", Toast.LENGTH_SHORT).show();
                 }
@@ -163,5 +162,4 @@ public class Register_Activity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 }
