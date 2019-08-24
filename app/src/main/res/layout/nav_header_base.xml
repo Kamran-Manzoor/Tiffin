@@ -15,6 +15,7 @@
         android:id="@+id/imageView"
         android:layout_width="130dp"
         android:layout_height="100dp"
+        android:layout_gravity="center"
         app:srcCompat="@drawable/supplier_logo" />
 
     <TextView
@@ -22,7 +23,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:textStyle="bold"
+        android:gravity="center"
         android:text="Supplier Name"/>
 
     <TextView
@@ -31,7 +32,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_gravity="center"
         android:text="0300-1234567" />
 
 </LinearLayout>

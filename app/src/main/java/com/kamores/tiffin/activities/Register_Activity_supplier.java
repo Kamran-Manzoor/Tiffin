@@ -134,8 +134,8 @@ public class Register_Activity_supplier extends AppCompatActivity {
     }
 
     private void getValues() {
-        name = etfullName.getText().toString();
-        address = etAddress.getText().toString();
+        name = etfullName.getText().toString().trim();
+        address = etAddress.getText().toString().trim();
         UserShared user1 = new UserShared(Register_Activity_supplier.this);
         user_id = user1.getUser_id();
 

@@ -236,6 +236,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_Save_Location) {
             Intent intent = new Intent(BaseActivity.this, Add_Items.class);
             startActivity(intent);
+            finish();
         } else if (id == R.id.nav_show_In_Map) {
             Intent i = new Intent(BaseActivity.this, Supplier_Account.class);
             startActivity(i);

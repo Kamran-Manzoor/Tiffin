@@ -61,6 +61,7 @@ public class Register_Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Register_Activity.this,Login_Activity.class);
                 startActivity(intent);
+                finish();
 
             }
         });

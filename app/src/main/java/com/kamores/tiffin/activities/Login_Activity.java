@@ -164,6 +164,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
                     Intent intent=new Intent(Login_Activity.this,BaseActivity.class);
                     intent.putExtra("user_id",id);
                     startActivity(intent);
+                    finish();
 
 //                    startActivity(new Intent(getApplicationContext(), TeacherPanel.class));
 

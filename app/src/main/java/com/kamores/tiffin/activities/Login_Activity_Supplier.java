@@ -165,6 +165,7 @@ public class Login_Activity_Supplier extends AppCompatActivity implements View.O
                     intent.putExtra("supplier_id",supplier_id);
                     Toast.makeText(Login_Activity_Supplier.this, supplier_id, Toast.LENGTH_SHORT).show();
                     startActivity(intent);
+                    finish();
                 }
             }
 

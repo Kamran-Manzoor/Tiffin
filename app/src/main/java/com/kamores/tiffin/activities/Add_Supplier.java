@@ -64,8 +64,8 @@ public class Add_Supplier extends AppCompatActivity {
         addSupplier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                name = etName.getText().toString();
-                address = etService.getText().toString();
+                name = etName.getText().toString().trim();
+                address = etService.getText().toString().trim();
                // supplier_image = supplier_image1.getText().toString();
                 if (name.equals("")) {
                     etName.setError("Add Name!");
@@ -82,8 +82,8 @@ public class Add_Supplier extends AppCompatActivity {
     }
 
     private void getValues() {
-        name = etName.getText().toString();
-        address = etService.getText().toString();
+        name = etName.getText().toString().trim();
+        address = etService.getText().toString().trim();
        // supplier_image = etContact.getText().toString();
         user_id = "2";
         //Sup_detail = "Some Detail";
