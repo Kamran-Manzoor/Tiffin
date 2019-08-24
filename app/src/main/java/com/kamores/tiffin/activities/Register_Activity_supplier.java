@@ -34,6 +34,8 @@ import com.kamores.tiffin.constants.ServerResponce;
 import com.kamores.tiffin.models.Supplier;
 import com.kamores.tiffin.models.UserShared;
 import com.kamores.tiffin.R;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -86,6 +88,7 @@ public class Register_Activity_supplier extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openFileChooser();
+
             }
         });
 
@@ -131,7 +134,7 @@ public class Register_Activity_supplier extends AppCompatActivity {
     private void initViewSupplier() {
         etfullName = findViewById(R.id.tv_full_name);
         etAddress = findViewById(R.id.tv_address);
-        supplier_image = findViewById(R.id.imageView_supplier);
+        supplier_image = findViewById(R.id.imageview_supplier);
         btn_signUp = findViewById(R.id.btn_signUp_supplier);
         rg_bck = findViewById(R.id.previous);
 
@@ -157,32 +160,42 @@ public class Register_Activity_supplier extends AppCompatActivity {
     }
 
     private void openFileChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, IMG_REQUEST);
+        CropImage.activity().setGuidelines(CropImageView.Guidelines.ON)
+                .start(this);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == IMG_REQUEST && resultCode == RESULT_OK && data != null) {
-            Uri path = data.getData();
-            file_name = getFileName(path);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                supplier_image.setImageURI(resultUri);
+                file_name = getFileName(resultUri);
 
-            int pos = file_name.lastIndexOf(".");
-            if (pos >= 0) {
-                file_name = file_name.substring(0, pos);
-            }
+                int pos = file_name.lastIndexOf(".");
+                if (pos >= 0) {
+                    file_name = file_name.substring(0, pos);
+                }
 
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
-                supplier_image.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), resultUri);
+                    supplier_image.setImageBitmap(bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
             }
         }
-    }
+
+
+        }
+    
+
+
+
 
     private String getFileName(Uri uri) {
 

@@ -75,7 +75,7 @@
             android:layout_height="match_parent">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imageView_supplier"
+                android:id="@+id/imageview_supplier"
                 android:layout_width="114dp"
                 android:layout_height="114dp"
                 android:layout_above="@id/cv"
