@@ -41,6 +41,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
     private EditText contact,password;
     private Button btn_login;
     String id;
+    String supplier_id;
     User userData;
     ImageButton rg_bck;
 
@@ -67,8 +68,9 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String con = contact.getText().toString().trim();
+                String con = contact.getText().toString();
                 String pass = password.getText().toString().trim();
+               // Toast.makeText( Login_Activity.this, con + " " + pass, Toast.LENGTH_LONG ).show();
 
                 if (con.isEmpty()) {
                     contact.setError("Enter Username");
@@ -140,8 +142,6 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         final User user = new User();
         user.setContact(contact);
         user.setPassword(password);
-
-
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.LOG_IN);
         request.setUser(user);
@@ -151,14 +151,23 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onResponse(Call<ServerResponce> call, retrofit2.Response<ServerResponce> response) {
 
+
                 ServerResponce resp = response.body();
-                userData = resp.getUser();
-                id = userData.getId();
+                assert resp != null;
+                if(resp.getResult().equals(Constants.SUCCESS_SUPPLIER)){
+                    UserShared user1 =new UserShared(Login_Activity.this);
+                    user1.setSupplier_id(supplier_id);
+                    Intent intent=new Intent(Login_Activity.this,Add_Items.class);
+                    intent.putExtra("supplier_id",supplier_id);
+                    Toast.makeText(Login_Activity.this, supplier_id, Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
+                Toast.makeText(Login_Activity.this, "" + resp.getMessage() , Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(Login_Activity.this, "" + resp.getMessage() + id, Toast.LENGTH_SHORT).show();
 
-
-                if(resp.getResult().equals(Constants.SUCCESS)){
+                if(resp.getResult().equals(Constants.SUCCESS_USER)){
+                    userData = resp.getUser();
+                    id = userData.getId();
                     UserShared user1 =new UserShared(Login_Activity.this);
                     user1.setUser_id(id);
                     Intent intent=new Intent(Login_Activity.this,BaseActivity.class);
