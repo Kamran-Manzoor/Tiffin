@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_supplier__account">
+    tools:showIn="@layout/">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -100,7 +100,7 @@
 
         </RelativeLayout>
 
-       <!--// <View style="@style/profileDetailsView" />-->
+        <View style="@style/proifleDetailsView" />
 
     </LinearLayout>
 

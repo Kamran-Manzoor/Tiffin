@@ -53,7 +53,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class  BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout mDrawerLayout;
     TextView signIn;
     User user;
@@ -63,9 +63,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     NavigationView navigationView;
     LinearLayout logoutLayout;
-    TextView today, available;
+    TextView today, available,tv_contact,tv_name;
     ProgressBar progressBar;
-    String sup_id, currentDay;
+    String sup_id, currentDay,con;
 
     private List<ModelClass> modelClasses;
     ArrayList<String> itemName;
@@ -88,7 +88,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         //views Initialise
         initialviews();
         getToDaymenu();
-
+//        tv_name.setText("");
+//        tv_contact.setText("");
         modelClasses = new ArrayList<>();
 
         setSupportActionBar(toolbar);
@@ -99,7 +100,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View v) {
                 Intent intent = new Intent(BaseActivity.this, Login_Activity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -131,7 +131,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         final UserShared userShared = new UserShared(BaseActivity.this);
 
         sup_id = userShared.getSupplier_id();
-
+        con = userShared.getContact();
 
         if (!sup_id.equals("")) {
             Toast.makeText(this, sup_id, Toast.LENGTH_SHORT).show();
@@ -144,6 +144,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(this, userShared.getUser_id(), Toast.LENGTH_SHORT).show();
             signIn.setVisibility(View.GONE);
             logoutLayout.setVisibility(View.VISIBLE);
+            Toast.makeText(this, con, Toast.LENGTH_SHORT).show();
+            tv_contact.setText(con);
+
             ShowItem();
         }
 
@@ -195,6 +198,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         logoutLayout = findViewById(R.id.logout_layout);
         today = findViewById(R.id.tv_today_menu);
         available = findViewById(R.id.tv_now);
+        tv_name=findViewById(R.id.tv_nav_name);
+        tv_contact=findViewById(R.id.tv_nav_contact);
         progressBar = findViewById(R.id.progressBar);
         currentDay = LocalDate.now().getDayOfWeek().name();
 
@@ -230,13 +235,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_Supplier) {
-            Intent intent = new Intent(BaseActivity.this, Login_Activity_Supplier.class);
+            Intent intent = new Intent(BaseActivity.this, Register_Activity_supplier.class);
             startActivity(intent);
-            finish();
+
         } else if (id == R.id.nav_Save_Location) {
             Intent intent = new Intent(BaseActivity.this, Add_Items.class);
             startActivity(intent);
-            finish();
+
         } else if (id == R.id.nav_show_In_Map) {
             Intent i = new Intent(BaseActivity.this, Supplier_Account.class);
             startActivity(i);

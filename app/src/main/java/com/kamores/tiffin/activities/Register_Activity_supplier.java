@@ -19,6 +19,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -54,6 +55,8 @@ public class Register_Activity_supplier extends AppCompatActivity {
     EditText etfullName, etAddress;
     Button btn_signUp;
     ImageView supplier_image;
+    ImageButton rg_bck;
+
     String name, address, supplierimage, user_id;
 
     @Override
@@ -67,6 +70,17 @@ public class Register_Activity_supplier extends AppCompatActivity {
         animation = AnimationUtils.loadAnimation(this, R.anim.uptodowndiagonal);
         rlayout.setAnimation(animation);
         initViewSupplier();
+
+        rg_bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Register_Activity_supplier.this,BaseActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
 
         supplier_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +133,7 @@ public class Register_Activity_supplier extends AppCompatActivity {
         etAddress = findViewById(R.id.tv_address);
         supplier_image = findViewById(R.id.imageView_supplier);
         btn_signUp = findViewById(R.id.btn_signUp_supplier);
+        rg_bck = findViewById(R.id.previous);
 
     }
 
@@ -245,7 +260,7 @@ public class Register_Activity_supplier extends AppCompatActivity {
     }
 
     private void setUpIntent() {
-        Intent intent = new Intent(Register_Activity_supplier.this, Login_Activity_Supplier.class);
+        Intent intent = new Intent(Register_Activity_supplier.this, Add_Items.class);
         startActivity(intent);
         finish();
     }

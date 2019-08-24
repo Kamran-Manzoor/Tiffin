@@ -161,6 +161,6 @@ public class Register_Activity extends AppCompatActivity {
     private void setUpIntent() {
         Intent intent = new Intent(Register_Activity.this, Login_Activity.class);
         startActivity(intent);
-        finish();
+
     }
 }

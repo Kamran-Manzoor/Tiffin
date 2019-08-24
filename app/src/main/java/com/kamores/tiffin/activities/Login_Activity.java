@@ -40,7 +40,8 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
     private TextView tvLogin;
     private EditText contact,password;
     private Button btn_login;
-    String id;
+    String id,con;
+
     String supplier_id;
     User userData;
     ImageButton rg_bck;
@@ -60,7 +61,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
             public void onClick(View view) {
                 Intent intent = new Intent(Login_Activity.this,BaseActivity.class);
                 startActivity(intent);
-                finish();
+
 
             }
         });
@@ -167,13 +168,17 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
 
                 if(resp.getResult().equals(Constants.SUCCESS_USER)){
                     userData = resp.getUser();
+
                     id = userData.getId();
+                    con = userData.getContact();
                     UserShared user1 =new UserShared(Login_Activity.this);
                     user1.setUser_id(id);
+                    user1.setContact(con);
                     Intent intent=new Intent(Login_Activity.this,BaseActivity.class);
                     intent.putExtra("user_id",id);
+                    intent.putExtra("con_id",con);
                     startActivity(intent);
-                    finish();
+
 
 //                    startActivity(new Intent(getApplicationContext(), TeacherPanel.class));
 
