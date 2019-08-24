@@ -138,7 +138,6 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
 
         RequestInterfacePart requestInterface = retrofit.create(RequestInterfacePart.class);
 
-
         final User user = new User();
         user.setContact(contact);
         user.setPassword(password);
@@ -150,7 +149,6 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         response.enqueue(new Callback<ServerResponce>() {
             @Override
             public void onResponse(Call<ServerResponce> call, retrofit2.Response<ServerResponce> response) {
-
 
                 ServerResponce resp = response.body();
                 assert resp != null;

@@ -5,25 +5,29 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_Supplier"
+            android:id="@+id/nav_Supplier_SignUp"
             android:icon="@drawable/supplier"
-            android:title="Become a Supplier"/>
+            android:title="Become a Supplier" />
         <item
-            android:id="@+id/nav_Save_Location"
+            android:id="@+id/nav_Add_Item"
             android:icon="@drawable/save_location"
-            android:title="Add Item"/>
+            android:title="Add Item" />
         <item
-            android:id="@+id/nav_show-In_Map"
+            android:id="@+id/nav_Supplier_Profile"
             android:icon="@drawable/mapsss"
             android:title="Supplier Account" />
+        <item
+            android:id="@+id/nav_User_Profile"
+            android:icon="@drawable/mapsss"
+            android:title="User Account" />
     </group>
 
     <item android:title="More">
         <menu>
             <item
-                android:iconTint="@color/colorAccent"
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/logout"
+                android:iconTint="@color/colorAccent"
                 android:title="Visit Us" />
 
         </menu>
