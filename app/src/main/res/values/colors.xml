@@ -22,6 +22,11 @@
     <color name="gradEndbtn">#FFB93D</color>
     <color name="red">#D13C0F</color>
 
+
+    <color name="df_transparent_black_background">#80000000</color>
+    <color name="whiteCardColor">#fff</color>
+
+
     <!--colors for profile-->
     <color name="profilePrimaryDark">#FF3B30</color>
     <color name="profileAccentColor">#F7F7F7</color>

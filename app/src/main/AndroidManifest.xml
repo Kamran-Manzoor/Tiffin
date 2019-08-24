@@ -21,8 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.Supplier_Account"></activity>
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="m">
+        <activity android:name=".activities.Supplier_Account"/>
         <activity android:name=".activities.Register_Activity" />
         <activity android:name=".activities.Login_Activity" />
         <activity
