@@ -91,7 +91,7 @@ public class Add_Items extends AppCompatActivity {
             public void onClick(View v) {
                 //addSuppliers();
                 getValues();
-                addItems();
+               // addItems();
 //                Intent intent = new Intent(Add_Items.this,BaseActivity.class);
 //                startActivity(intent);
             }
@@ -147,15 +147,26 @@ public class Add_Items extends AppCompatActivity {
     }
 
     private void getValues() {
-//        Item_name = itemName.getText().toString();
-//        Item_price = itemPrice.getText().toString();
-//        Item_desc = itemDescription.getText().toString();
-        Item_name="new";
-        Item_price="100";
-        Item_desc="None";
-        Item_image = "some";
-        service_id = "2";
-        Item_days="Monday";
+        Item_name = itemName.getText().toString().trim();
+        if (Item_name.isEmpty()){
+            itemName.setError("Please Enter ItemName");
+        }
+
+        Item_price = itemPrice.getText().toString().trim();
+        if (Item_price.isEmpty()){
+            itemPrice.setError("Please Enter Price");
+        }
+        Item_desc = itemDescription.getText().toString().trim();
+        if (Item_desc.isEmpty()){
+            itemDescription.setError("Please Enter Price");
+        }
+
+//        Item_name="new";
+//        Item_price="100";
+//        Item_desc="None";
+//        Item_image = "some";
+//        service_id = "2";
+//        Item_days="Monday";
 
 
         final UserShared userShared = new UserShared(Add_Items.this);
@@ -208,7 +219,6 @@ public class Add_Items extends AppCompatActivity {
     private void setUpIntent() {
         Intent intent = new Intent(Add_Items.this, BaseActivity.class);
         startActivity(intent);
-        finish();
     }
 
     private void openFileChooser() {
