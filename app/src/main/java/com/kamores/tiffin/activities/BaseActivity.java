@@ -317,7 +317,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                     ServerResponce resp = response.body();
 
                     Toast.makeText(BaseActivity.this, resp.getMessage(), Toast.LENGTH_SHORT).show();
-                    if (resp.getResult().equals(Constants.SUCCESS)) {
+                    if (resp.getResult().equals(Constants.SUCCESS_USER)) {
                         User user = resp.getUser();
                         name = user.getName();
                         itemName = user.getItemName();

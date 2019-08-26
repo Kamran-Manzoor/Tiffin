@@ -25,7 +25,4 @@ public class Constants {
     public static final String TODAY_MENU_ITEMS ="today_menu_items";
     public static final String PROFILE_MENU ="retrieveProfile";
     public static final String ADD_ITEMS ="addItems";
-
-
-
 }
