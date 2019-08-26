@@ -275,7 +275,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_Supplier_SignUp) {
-            Intent intent = new Intent(BaseActivity.this, Login_Activity_Supplier.class);
+            Intent intent = new Intent(BaseActivity.this, Register_Activity_supplier.class);
             startActivity(intent);
             finish();
         } else if (id == R.id.nav_Add_Item) {
