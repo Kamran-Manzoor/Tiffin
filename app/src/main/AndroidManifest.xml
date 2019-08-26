@@ -70,13 +70,13 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activities.BaseActivity"
+            android:name=".activities.Register_Activity_supplier"
             android:label="MainActivity"
             android:parentActivityName=".activities.Login_Activity_Supplier"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.Register_Activity_supplier"
+            android:name=".activities.BaseActivity"
             android:label="Tiffin"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

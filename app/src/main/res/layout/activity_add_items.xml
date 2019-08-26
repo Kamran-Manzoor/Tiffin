@@ -24,9 +24,10 @@
         android:id="@+id/imageView_upper"
         android:layout_width="114dp"
         android:layout_height="114dp"
-        android:layout_marginStart="148dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="150dp"
         android:layout_marginTop="72dp"
-        android:layout_marginEnd="148dp"
+        android:layout_marginEnd="150dp"
         android:layout_marginBottom="72dp"
         android:scaleType="centerCrop"
         android:src="@drawable/selectpic"
@@ -58,7 +59,7 @@
 
             <LinearLayout
                 android:layout_width="388dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
@@ -130,12 +131,37 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etDay_item"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Day" />
+                        android:layout_marginTop="20dp"
+                        >
+
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etDay_item"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Day" />
+
+                        <ImageView
+                            android:id="@+id/img_help_day"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_alignStart="@+id/etDay_item"
+                            android:layout_alignEnd="@+id/etDay_item"
+                            android:layout_alignBottom="@+id/etDay_item"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="344dp"
+                            android:layout_marginTop="-2dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="22dp"
+                            android:background="@drawable/ic_help_black_24dp" />
+
+                    </RelativeLayout>
+
                 </com.google.android.material.textfield.TextInputLayout>
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/layoutService"
@@ -147,13 +173,35 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                       >
+
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etService_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Service" />
+
+                        <ImageView
+                            android:id="@+id/img_help_service"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_alignStart="@+id/etService_item"
+                            android:layout_alignTop="@+id/etService_item"
+                            android:layout_alignEnd="@+id/etService_item"
+                            android:layout_alignBottom="@+id/etService_item"
+                            android:layout_marginStart="344dp"
+                            android:layout_marginTop="-2dp"
+                            android:layout_marginEnd="3dp"
+                            android:layout_marginBottom="22dp"
+                            android:background="@drawable/ic_help_black_24dp" />
+                    </RelativeLayout>
                 </com.google.android.material.textfield.TextInputLayout>
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/layoutDescription"
@@ -171,7 +219,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Description" />
+
                 </com.google.android.material.textfield.TextInputLayout>
+
 
 
             </LinearLayout>
@@ -180,7 +230,7 @@
                 android:id="@+id/btn_Add_Items"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/bg_ui"
                 android:text="Add"
                 android:textColor="#fff" />

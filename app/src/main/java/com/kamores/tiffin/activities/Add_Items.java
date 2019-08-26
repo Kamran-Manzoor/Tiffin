@@ -51,10 +51,10 @@ public class Add_Items extends AppCompatActivity {
     String file_name;
     private Bitmap bitmap;
 
-    ImageView itemImageChose;
-    TextInputEditText itemName;
-    EditText itemPrice, itemDescription;
-    AutoCompleteTextView spinnerDays, spinnerService;
+    ImageView itemImageChose,help_day,help_service;
+    TextInputEditText itemName,itemPrice, itemDescription, spinnerDays, spinnerService;;
+
+
     ImageButton imageButton;
     Button btnAddItem;
     List<String> listDays;
@@ -144,6 +144,8 @@ public class Add_Items extends AppCompatActivity {
       //  spinnerDays = findViewById(R.id.etDay_item);
        // btnChooseImage= findViewById(R.id.btn_choose_items);
         btnAddItem = findViewById(R.id.btn_Add_Items);
+        help_day = findViewById(R.id.img_help_day);
+        help_service = findViewById(R.id.img_help_service);
     }
 
     private void getValues() {
