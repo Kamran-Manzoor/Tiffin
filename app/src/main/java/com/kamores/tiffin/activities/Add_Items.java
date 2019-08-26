@@ -149,8 +149,8 @@ public class Add_Items extends AppCompatActivity {
     private void getValues() {
         Item_name = itemName.getText().toString();
         Item_price = itemPrice.getText().toString();
-        //Item_days = et_Item_Days.getText().toString();
-        //Item_service = et_Item_Service.getText().toString();
+        Item_days = et_Item_Days.getText().toString();
+        Item_service = et_Item_Service.getText().toString();
         Item_desc = itemDescription.getText().toString();
         final UserShared userShared = new UserShared(Add_Items.this);
         sup_id = userShared.getSupplier_id();
