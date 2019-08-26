@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activities.Supplier_Account"
+    tools:context=".MainActivity"
     android:background="@color/profileBackground">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -16,17 +16,17 @@
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:contentScrim="@color/profilePrimaryDark"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/toolbar"
-            app:expandedTitleMarginEnd="64dp"
-            app:expandedTitleMarginStart="48dp"
-            app:expandedTitleTextAppearance="@style/TransparentText">
+        <!--<com.google.android.material.appbar.CollapsingToolbarLayout-->
+            <!--android:id="@+id/toolbar_layout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:fitsSystemWindows="true"-->
+            <!--app:contentScrim="@color/profilePrimaryDark"-->
+            <!--app:layout_scrollFlags="scroll|exitUntilCollapsed"-->
+            <!--app:toolbarId="@+id/toolbar"-->
+            <!--app:expandedTitleMarginEnd="64dp"-->
+            <!--app:expandedTitleMarginStart="48dp"-->
+            <!--app:expandedTitleTextAppearance="@style/TransparentText">-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,9 +38,10 @@
                 android:background="@drawable/profile_bk">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/profile_round" />
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/user" />
 
                 <!--<TextView-->
                 <!--android:layout_width="wrap_content"-->
@@ -84,7 +85,7 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
+        <!--</com.google.android.material.appbar.CollapsingToolbarLayout>-->
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_profile" />

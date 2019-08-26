@@ -54,7 +54,7 @@ public class Add_Items extends AppCompatActivity {
     ImageView itemImageChose;
     TextInputEditText itemName, et_Item_Days, et_Item_Service;
     EditText itemPrice, itemDescription;
-    //AutoCompleteTextView spinnerDays, spinnerService;
+    AutoCompleteTextView spinnerDays, spinnerService;
     ImageButton imageButton;
     Button btnAddItem;
     List<String> listDays;

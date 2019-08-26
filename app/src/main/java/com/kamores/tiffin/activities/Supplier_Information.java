@@ -25,9 +25,9 @@ public class Supplier_Information extends AppCompatActivity {
         addSupplier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                supplierName= etName.getText().toString();
-                serviceName= etService.getText().toString();
-                supplierContact= etContact.getText().toString();
+                supplierName= etName.getText().toString().trim();
+                serviceName= etService.getText().toString().trim();
+                supplierContact= etContact.getText().toString().trim();
                 if (supplierName.isEmpty()){
                     etName.setError("Enter Supplier Name");
                 }

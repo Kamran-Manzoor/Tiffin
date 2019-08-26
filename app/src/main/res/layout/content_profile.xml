@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
     tools:showIn="@layout/activity_supplier__account">
 
     <LinearLayout
@@ -24,24 +25,23 @@
             <ImageView
                 android:id="@+id/nameImageView"
                 android:src="@drawable/ic_name"
-                style="@style/profileDetailsImage" />
+                style="@style/profileDetailsImage"/>
 
             <EditText
                 android:id="@+id/nameTextView"
                 android:text="Name"
                 android:layout_toRightOf="@id/nameImageView"
-                style="@style/profileDetailsTextMain" />
-
+                style="@style/profileDetailsTextMain"/>
 
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/proifleDetailsView"/>
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/mobileImageView"
                 android:src="@drawable/ic_mobile"
-                style="@style/profileDetailsImage" />
+                style="@style/profileDetailsImage"/>
 
             <EditText
                 android:text="Mobile"
@@ -51,56 +51,53 @@
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/proifleDetailsView"/>
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/emailImageView"
                 android:src="@drawable/ic_email"
-                style="@style/profileDetailsImage" />
+                style="@style/profileDetailsImage"/>
 
             <EditText
                 android:text="Email"
                 android:layout_toRightOf="@id/emailImageView"
-                style="@style/profileDetailsTextMain" />
-
+                style="@style/profileDetailsTextMain"/>
 
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/proifleDetailsView"/>
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/addressImageView"
                 android:src="@drawable/ic_address"
-                style="@style/profileDetailsImage" />
+                style="@style/profileDetailsImage"/>
 
             <EditText
                 android:text="Address"
                 android:layout_toRightOf="@id/addressImageView"
-                style="@style/profileDetailsTextMain" />
-
+                style="@style/profileDetailsTextMain"/>
 
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/proifleDetailsView"/>
 
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/dobImageView"
                 android:src="@drawable/ic_dob"
-                style="@style/profileDetailsImage" />
+                style="@style/profileDetailsImage"/>
 
             <EditText
                 android:text="Deactivate Account"
                 android:layout_toRightOf="@id/dobImageView"
-                style="@style/profileDetailsTextMain" />
-
+                style="@style/profileDetailsTextMain"/>
 
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/proifleDetailsView"/>
 
     </LinearLayout>
 

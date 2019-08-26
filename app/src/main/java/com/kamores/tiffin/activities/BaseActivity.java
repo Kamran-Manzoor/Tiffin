@@ -10,15 +10,18 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -32,20 +35,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.kamores.tiffin.R;
 import com.kamores.tiffin.adapters.AdapterClass;
 import com.kamores.tiffin.adapters.AdapterServiceType;
 import com.kamores.tiffin.constants.Constants;
-import com.kamores.tiffin.interfaces.RequestInterfacePart;
 import com.kamores.tiffin.constants.ServerRequest;
 import com.kamores.tiffin.constants.ServerResponce;
+import com.kamores.tiffin.etc.InternetDialog;
+import com.kamores.tiffin.interfaces.RequestInterfacePart;
 import com.kamores.tiffin.models.ModelClass;
 import com.kamores.tiffin.models.User;
 import com.kamores.tiffin.models.UserShared;
-import com.kamores.tiffin.R;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,7 +60,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout mDrawerLayout;
-    TextView signIn;
+    ImageView signIn;
     User user;
     RecyclerView recyclerView, recyclerView_all;
     private AdapterClass adapter;
@@ -63,9 +68,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     NavigationView navigationView;
     LinearLayout logoutLayout;
-    TextView today, available;
+    TextView today, available, tv_warning, nav_name, nav_contact, nav_login;
     ProgressBar progressBar;
     String sup_id, currentDay;
+    ImageView img_warning;
+    ImageView nav_img, img_login;
 
     private List<ModelClass> modelClasses;
     ArrayList<String> itemName;
@@ -85,24 +92,33 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
 
-        //views Initialise
+        if (new InternetDialog(this).getInternetStatus()) {
+            //  Toast.makeText(this, "INTERNET VALIDATION PASSED", Toast.LENGTH_SHORT).show();
+        }
         initialviews();
         getToDaymenu();
 
         modelClasses = new ArrayList<>();
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("");
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(BaseActivity.this, Login_Activity.class);
                 startActivity(intent);
-                finish();
+
             }
         });
+        nav_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BaseActivity.this, Login_Activity.class);
+                startActivity(intent);
 
+            }
+        });
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawerLayout, toolbar, R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close);
@@ -125,6 +141,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         logoutLayout.setVisibility(View.GONE);
         today.setText("");
         available.setText("");
+        tv_warning.setText("");
+        nav_name.setText("");
+        nav_contact.setText("");
+        nav_img.setVisibility(View.GONE);
+        img_warning.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
         hideItem();
 
@@ -132,19 +153,24 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         sup_id = userShared.getSupplier_id();
 
-
         if (!sup_id.equals("")) {
             Toast.makeText(this, sup_id, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(BaseActivity.this, Add_Items.class);
             startActivity(intent);
             finish();
-
+            ShowItemSupplier();
         }
         if (!userShared.getUser_id().equals("")) {
             Toast.makeText(this, userShared.getUser_id(), Toast.LENGTH_SHORT).show();
-            signIn.setVisibility(View.GONE);
+            signIn.setImageResource(R.drawable.avatar);
+            signIn.setEnabled(false);
             logoutLayout.setVisibility(View.VISIBLE);
-            ShowItem();
+            nav_name.setText("Wellcome User");
+            nav_contact.setText("0300");
+            nav_img.setVisibility(View.VISIBLE);
+            img_login.setVisibility(View.GONE);
+            nav_login.setText("");
+            ShowItemUser();
         }
 
         if (!isConnectedToInternet(BaseActivity.this)) {
@@ -195,10 +221,18 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         logoutLayout = findViewById(R.id.logout_layout);
         today = findViewById(R.id.tv_today_menu);
         available = findViewById(R.id.tv_now);
+        tv_warning = findViewById(R.id.tv_warning);
+        img_warning = findViewById(R.id.img_warning);
         progressBar = findViewById(R.id.progressBar);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        nav_name = headerView.findViewById(R.id.nav_name);
+        nav_contact = headerView.findViewById(R.id.nav_contact);
+        nav_img = headerView.findViewById(R.id.nav_img);
+        nav_login = headerView.findViewById(R.id.nav_tv_login);
+        img_login = headerView.findViewById(R.id.nav_login);
         currentDay = LocalDate.now().getDayOfWeek().name();
 
-        Toast.makeText(this, currentDay, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -214,13 +248,24 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     private void hideItem() {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         Menu nav_Menu = navigationView.getMenu();
-        nav_Menu.findItem(R.id.nav_Supplier).setVisible(false);
+        nav_Menu.findItem(R.id.nav_Supplier_Profile).setVisible(false);
+        nav_Menu.findItem(R.id.nav_Supplier_SignUp).setVisible(false);
+        nav_Menu.findItem(R.id.nav_Add_Item).setVisible(false);
+        nav_Menu.findItem(R.id.nav_User_Profile).setVisible(false);
     }
 
-    private void ShowItem() {
+    private void ShowItemSupplier() {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         Menu nav_Menu = navigationView.getMenu();
-        nav_Menu.findItem(R.id.nav_Supplier).setVisible(true);
+        nav_Menu.findItem(R.id.nav_Supplier_SignUp).setVisible(true);
+        nav_Menu.findItem(R.id.nav_Supplier_Profile).setVisible(true);
+        nav_Menu.findItem(R.id.nav_Add_Item).setVisible(true);
+    }
+    private void ShowItemUser() {
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        Menu nav_Menu = navigationView.getMenu();
+        nav_Menu.findItem(R.id.nav_User_Profile).setVisible(true);
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -229,20 +274,22 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_Supplier) {
-            Intent intent = new Intent(BaseActivity.this, Login_Activity_Supplier.class);
+        if (id == R.id.nav_Supplier_SignUp) {
+            Intent intent = new Intent(BaseActivity.this, Register_Activity_supplier.class);
             startActivity(intent);
             finish();
-        } else if (id == R.id.nav_Save_Location) {
+        } else if (id == R.id.nav_Add_Item) {
             Intent intent = new Intent(BaseActivity.this, Add_Items.class);
             startActivity(intent);
-        } else if (id == R.id.nav_show_In_Map) {
+        } else if (id == R.id.nav_Supplier_Profile) {
+            Intent i = new Intent(BaseActivity.this, Supplier_Account.class);
+            startActivity(i);
+        }else if (id == R.id.nav_User_Profile) {
             Intent i = new Intent(BaseActivity.this, Supplier_Account.class);
             startActivity(i);
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-
         return true;
     }
 
@@ -270,24 +317,37 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                     ServerResponce resp = response.body();
 
                     Toast.makeText(BaseActivity.this, resp.getMessage(), Toast.LENGTH_SHORT).show();
+                    if (resp.getResult().equals(Constants.SUCCESS)) {
+                        User user = resp.getUser();
+                        name = user.getName();
+                        itemName = user.getItemName();
+                        address = user.getAddress();
+                        supplier_id = user.getSupplier_id();
+                        price = user.getPrice();
+                        item_image = user.getItem_image();
 
-                    User user = resp.getUser();
-                    name = user.getName();
-                    itemName = user.getItemName();
-                    address = user.getAddress();
-                    supplier_id = user.getSupplier_id();
-                    price = user.getPrice();
-                    item_image = user.getItem_image();
+                        Toast.makeText(BaseActivity.this, (CharSequence) name + "name", Toast.LENGTH_SHORT).show();
+//                    if(name.size()==0) {
+//                        today.setText("Sorry We are closed....!!!!");
+//                        progressBar.setVisibility(View.GONE);
+//                    }
 
-                    modelClasses = new ArrayList<>();
-                    for (int i = 0; i < address.size(); i++) {
-                        modelClasses.add(new ModelClass(name.get(i), itemName.get(i), address.get(i), supplier_id.get(i), item_image.get(i), price.get(i)));
+                        modelClasses = new ArrayList<>();
+                        for (int i = 0; i < address.size(); i++) {
+                            modelClasses.add(new ModelClass(name.get(i), itemName.get(i), address.get(i), supplier_id.get(i), item_image.get(i), price.get(i)));
+                        }
+
+                        setUpRecyclerViewToday();
+                        today.setText("Today's Menu");
+                        available.setText("Available Now");
+                        setUpRecyclerViewAll();
+                        progressBar.setVisibility(View.GONE);
                     }
-                    setUpRecyclerViewToday();
-                    today.setText("Today's Menu");
-                    available.setText("Available Now");
-                    setUpRecyclerViewAll();
-                    progressBar.setVisibility(View.GONE);
+                    if (resp.getResult().equals(Constants.EMPTY)) {
+                        tv_warning.setText("Sorry no Item Found..!!!");
+                        img_warning.setVisibility(View.VISIBLE);
+                        progressBar.setVisibility(View.GONE);
+                    }
 
                 } catch (Exception e) {
                     Toast.makeText(BaseActivity.this, "Exception : " + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
@@ -296,6 +356,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onFailure(Call<ServerResponce> call, Throwable t) {
+
                 Toast.makeText(BaseActivity.this, "Connection Failure " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });

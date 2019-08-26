@@ -21,3 +21,4 @@
 #-renamesourcefileattribute SourceFile
 
 #For design support library
+-keep class androidx.appcompat.widget.** { *; }
