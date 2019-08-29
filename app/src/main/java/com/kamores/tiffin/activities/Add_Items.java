@@ -52,7 +52,7 @@ public class Add_Items extends AppCompatActivity {
     private Bitmap bitmap;
 
     ImageView itemImageChose;
-    TextInputEditText itemName;
+    TextInputEditText itemName, et_Item_Days, et_Item_Service;
     EditText itemPrice, itemDescription;
     AutoCompleteTextView spinnerDays, spinnerService;
     ImageButton imageButton;
@@ -72,10 +72,7 @@ public class Add_Items extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         initViewItems();
-
-
         String currentDay=LocalDate.now().getDayOfWeek().name();
         Toast.makeText(this, currentDay, Toast.LENGTH_SHORT).show();
 
@@ -91,7 +88,7 @@ public class Add_Items extends AppCompatActivity {
             public void onClick(View v) {
                 //addSuppliers();
                 getValues();
-               // addItems();
+                addItems();
 //                Intent intent = new Intent(Add_Items.this,BaseActivity.class);
 //                startActivity(intent);
             }
@@ -138,37 +135,20 @@ public class Add_Items extends AppCompatActivity {
     public void initViewItems() {
         itemName = findViewById(R.id.etItem);
         itemImageChose = findViewById(R.id.imageView_upper);
-       // spinnerService = findViewById(R.id.etService_item);
+        et_Item_Service = findViewById(R.id.etService_item);
         itemPrice = findViewById(R.id.etPrice_item);
         itemDescription = findViewById(R.id.etDescription_item);
-      //  spinnerDays = findViewById(R.id.etDay_item);
-       // btnChooseImage= findViewById(R.id.btn_choose_items);
+        et_Item_Days = findViewById(R.id.etDay_item);
+        // btnChooseImage= findViewById(R.id.btn_choose_items);
         btnAddItem = findViewById(R.id.btn_Add_Items);
     }
 
     private void getValues() {
-        Item_name = itemName.getText().toString().trim();
-        if (Item_name.isEmpty()){
-            itemName.setError("Please Enter ItemName");
-        }
-
-        Item_price = itemPrice.getText().toString().trim();
-        if (Item_price.isEmpty()){
-            itemPrice.setError("Please Enter Price");
-        }
-        Item_desc = itemDescription.getText().toString().trim();
-        if (Item_desc.isEmpty()){
-            itemDescription.setError("Please Enter Price");
-        }
-
-//        Item_name="new";
-//        Item_price="100";
-//        Item_desc="None";
-//        Item_image = "some";
-//        service_id = "2";
-//        Item_days="Monday";
-
-
+        Item_name = itemName.getText().toString();
+        Item_price = itemPrice.getText().toString();
+        Item_days = et_Item_Days.getText().toString();
+        Item_service = et_Item_Service.getText().toString();
+        Item_desc = itemDescription.getText().toString();
         final UserShared userShared = new UserShared(Add_Items.this);
         sup_id = userShared.getSupplier_id();
         Toast.makeText(this,  sup_id, Toast.LENGTH_SHORT).show();
@@ -219,6 +199,7 @@ public class Add_Items extends AppCompatActivity {
     private void setUpIntent() {
         Intent intent = new Intent(Add_Items.this, BaseActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private void openFileChooser() {

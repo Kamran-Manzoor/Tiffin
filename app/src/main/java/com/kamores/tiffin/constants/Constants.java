@@ -19,9 +19,11 @@ public class Constants {
     public static final String LOG_IN ="login";
     public static final String REGISTER_SUPPLIER ="register_Supplier";
     public static final String TODAY_MENU ="todayMenu";
-    public static final String TODAY_MENU_ITEMS ="today_menu_items";
-    public static final String PROFILE_MENU ="retrieveProfile";
-    public static final String ADD_ITEMS ="addItems";
+    public static final String TODAY_MENU_ITEMS ="retrieveProfile";
+    public static final String PROFILE_MENU ="retrieveProfileInfo";
+    public static final String GET_USER ="getUser";
+    public static final String DEACTIVATE_ACCOUNT ="deleteUser";
+    public static final String ADD_ITEMS ="addMenu";
 
     public static final String TAG = "TIFFIN APP";
 
