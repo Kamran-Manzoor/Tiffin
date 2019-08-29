@@ -13,11 +13,13 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,14 +49,17 @@ public class Supplier_Account extends AppCompatActivity {
     String contact,email,user_id;
     EditText etContact,etEmail;
     RelativeLayout Rname,Raddress;
-    TextView dell,tv_Back ;
+    TextView deactivate,tv_Back ;
     Context mContext;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_supplier__account);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
@@ -78,8 +83,8 @@ public class Supplier_Account extends AppCompatActivity {
             getWindow().setStatusBarColor( Color.TRANSPARENT);
         }
         initViewUser();
-        Rname.setVisibility( View.GONE );
-        Raddress.setVisibility( View.GONE );
+        Rname.setVisibility(View.GONE);
+        Raddress.setVisibility(View.GONE);
 
         tv_Back.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -89,9 +94,10 @@ public class Supplier_Account extends AppCompatActivity {
                 finish();
              }
         } );
-//        dell.setOnClickListener( new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
+        deactivate.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
 //                AlertDialog.Builder dg = new AlertDialog.Builder(mContext);
 //                View view1 = LayoutInflater.from(mContext).inflate(R.layout.deactivate_dialogue, null);
 //                dg.setTitle("Enter Password");
@@ -99,13 +105,13 @@ public class Supplier_Account extends AppCompatActivity {
 //                dg.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
 //                    @Override
 //                    public void onClick(DialogInterface dialogInterface, int i) {
+//                    dellUserAccount();
 //
 //                        Toast.makeText(mContext, "Deleted...", Toast.LENGTH_SHORT).show();
 //                    }
 //                });
-//            }
-//        } );
-
+            }
+        });
 
         getUserAccount();
     }
@@ -115,12 +121,11 @@ public class Supplier_Account extends AppCompatActivity {
         etEmail=findViewById( R.id.EmEditText);
         Rname=findViewById( R.id.nameLayout );
         Raddress=findViewById( R.id.addressLayout );
-        dell=findViewById( R.id.tvDeactivate );
+        deactivate=findViewById( R.id.tvDeactivate );
         tv_Back= findViewById(R.id.tv_Back_to_home );
 
         UserShared user1 = new UserShared(Supplier_Account.this);
         user_id = user1.getUser_id();
-
     }
 
     public static void setWindowFlag(Activity activity, final int bits, boolean on) {

@@ -111,7 +111,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
-        nav_login.setOnClickListener(new View.OnClickListener() {
+        img_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(BaseActivity.this, Login_Activity.class);
@@ -414,6 +414,4 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         });
         return true;
     }
-
-
 }

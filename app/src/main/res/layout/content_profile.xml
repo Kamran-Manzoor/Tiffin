@@ -86,7 +86,6 @@
                 android:layout_toRightOf="@id/addressImageView"
                 style="@style/profileDetailsTextMain"/>
 
-
         </RelativeLayout>
 
         <View style="@style/proifleDetailsView"/>
@@ -95,12 +94,12 @@
            android:id="@+id/tvDeactivate"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:textSize="18sp"
+           android:textSize="15sp"
            android:layout_marginTop="20dp"
            android:textColor="@color/blackTextColor"
            android:gravity="center"
-           android:text="Deactivate Profile"
-           />
+           android:textStyle="bold"
+           android:text="Deactivate Profile" />
 
     </LinearLayout>
 

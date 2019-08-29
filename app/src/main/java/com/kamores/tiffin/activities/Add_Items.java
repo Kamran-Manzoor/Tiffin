@@ -72,10 +72,7 @@ public class Add_Items extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         initViewItems();
-
-
         String currentDay=LocalDate.now().getDayOfWeek().name();
         Toast.makeText(this, currentDay, Toast.LENGTH_SHORT).show();
 
