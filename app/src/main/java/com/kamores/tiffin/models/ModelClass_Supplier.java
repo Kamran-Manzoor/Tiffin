@@ -1,11 +1,9 @@
 package com.kamores.tiffin.models;
 
 public class ModelClass_Supplier {
-
    private String itemName;
    private String item_image;
    private String price;
-
 
     public ModelClass_Supplier(String itemName, String price, String item_image) {
         this.itemName = itemName;
@@ -25,8 +23,3 @@ public class ModelClass_Supplier {
         return price;
     }
 }
-
-
-
-
-

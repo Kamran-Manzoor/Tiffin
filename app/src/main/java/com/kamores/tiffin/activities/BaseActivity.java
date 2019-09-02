@@ -111,7 +111,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
-        nav_login.setOnClickListener(new View.OnClickListener() {
+        img_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(BaseActivity.this, Login_Activity.class);
@@ -326,11 +326,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                         price = user.getPrice();
                         item_image = user.getItem_image();
 
-                        Toast.makeText(BaseActivity.this, (CharSequence) name + "name", Toast.LENGTH_SHORT).show();
-//                    if(name.size()==0) {
-//                        today.setText("Sorry We are closed....!!!!");
-//                        progressBar.setVisibility(View.GONE);
-//                    }
+
 
                         modelClasses = new ArrayList<>();
                         for (int i = 0; i < address.size(); i++) {
@@ -418,6 +414,4 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         });
         return true;
     }
-
-
 }

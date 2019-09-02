@@ -17,6 +17,10 @@ public class User {
     String sup_id;
     String day;
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setSup_id(String sup_id) {
         this.sup_id = sup_id;
     }

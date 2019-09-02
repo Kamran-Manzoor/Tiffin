@@ -33,15 +33,10 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#B6B5B5"
-            />
-
+            android:background="#B6B5B5" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
     <include layout="@layout/content_base" />
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

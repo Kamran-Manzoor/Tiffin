@@ -58,7 +58,6 @@ public class Add_Items extends AppCompatActivity {
     ImageButton imageButton;
     Button btnAddItem;
     List<String> listDays;
-    ImageView help_day,help_service;
     List<String> listService;
     String image_code;
     String Item_name, sup_id, service_id, Item_price, Item_days, Item_image, Item_desc, Item_service;
@@ -73,10 +72,7 @@ public class Add_Items extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         initViewItems();
-
-
         String currentDay=LocalDate.now().getDayOfWeek().name();
         Toast.makeText(this, currentDay, Toast.LENGTH_SHORT).show();
 
@@ -145,8 +141,8 @@ public class Add_Items extends AppCompatActivity {
         et_Item_Days = findViewById(R.id.etDay_item);
         // btnChooseImage= findViewById(R.id.btn_choose_items);
         btnAddItem = findViewById(R.id.btn_Add_Items);
-        help_day = findViewById(R.id.img_help_day);
-        help_service = findViewById(R.id.img_help_service);
+        et_Item_Days = findViewById(R.id.etDay_item);
+        et_Item_Service = findViewById(R.id.etService_item);
     }
 
     private void getValues() {

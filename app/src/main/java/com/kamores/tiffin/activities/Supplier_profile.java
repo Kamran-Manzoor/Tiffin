@@ -82,7 +82,7 @@ public class Supplier_profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supplier_profile);
-        initialviews();
+        initialViews();
         currentDay = LocalDate.now().getDayOfWeek().name();
         getSupplierMenu();
         getSupplierItems();
@@ -164,7 +164,7 @@ public class Supplier_profile extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private void initialviews() {
+    private void initialViews() {
         imageButton = findViewById(R.id.previous);
         name1 = findViewById(R.id.tv_supplier_name);
         contact1 = findViewById(R.id.tv_supplier_contact);
@@ -243,9 +243,7 @@ public class Supplier_profile extends AppCompatActivity {
                     Bitmap myImage = null;
                     try {
                         myImage = task.execute(Constants.BASE_URL+"/Tiffin/uploads/"+supplier_model.getSupplier_image() +".jpg").get();
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
+                    } catch (ExecutionException | InterruptedException e) {
                         e.printStackTrace();
                     }
 
@@ -277,5 +275,5 @@ private void setUpRecyclerViewToday() {
         adapter = new Adapter_Supplier(modelClass_suppliers, getApplicationContext());
         recyclerView.setAdapter(adapter);
     }
-}
+  }
 }
