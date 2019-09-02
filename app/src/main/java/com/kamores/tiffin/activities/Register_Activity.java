@@ -63,11 +63,8 @@ public class Register_Activity extends AppCompatActivity {
                 Intent intent = new Intent(Register_Activity.this,Login_Activity.class);
                 startActivity(intent);
                 finish();
-
             }
         });
-
-
 
         //make translucent statusBar on kitkat devices
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
@@ -97,7 +94,7 @@ public class Register_Activity extends AppCompatActivity {
                 String pass = etPassword.getText().toString().trim();
                 String confPass = etConfirmPass.getText().toString().trim();
                 if (pass.equals(confPass)) {
-                    addUser(etContact.getText().toString(), etEmail.getText().toString(), etPassword.getText().toString());
+                    addUser(etContact.getText().toString(), etEmail.getText().toString().trim(), etPassword.getText().toString());
                 } else {
                     Toast.makeText(Register_Activity.this, "Password didn't Match!", Toast.LENGTH_SHORT).show();
                 }
@@ -147,7 +144,6 @@ public class Register_Activity extends AppCompatActivity {
                 ServerResponce resp = response.body();
                 Toast.makeText(Register_Activity.this, resp.getMessage(), Toast.LENGTH_SHORT).show();
                 setUpIntent();
-
             }
 
             @Override
@@ -155,9 +151,7 @@ public class Register_Activity extends AppCompatActivity {
                 Toast.makeText(Register_Activity.this, "Connection Failure " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
     }
-
     private void setUpIntent() {
         Intent intent = new Intent(Register_Activity.this, Login_Activity.class);
         startActivity(intent);

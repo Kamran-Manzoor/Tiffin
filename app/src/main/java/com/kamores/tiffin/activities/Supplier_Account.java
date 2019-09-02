@@ -56,19 +56,14 @@ public class Supplier_Account extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_supplier__account);
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_supplier__account);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
 
-        ActionBar actionBar = getSupportActionBar();
-        assert actionBar != null;
-        actionBar.hide();
-        getSupportActionBar().setTitle("");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         //make translucent statusBar on kitkat devices
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
@@ -97,19 +92,7 @@ public class Supplier_Account extends AppCompatActivity {
         deactivate.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                AlertDialog.Builder dg = new AlertDialog.Builder(mContext);
-//                View view1 = LayoutInflater.from(mContext).inflate(R.layout.deactivate_dialogue, null);
-//                dg.setTitle("Enter Password");
-//                final EditText pass = view1.findViewById(R.id.et_dg_pass);
-//                dg.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                    dellUserAccount();
-//
-//                        Toast.makeText(mContext, "Deleted...", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
+                    dellUserAccount();
             }
         });
 
@@ -214,5 +197,41 @@ public class Supplier_Account extends AppCompatActivity {
                 Toast.makeText(Supplier_Account.this, "Connection Failure " + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void updateUser(String contact, String email, String password, String id) {
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
+
+        RequestInterfacePart requestInterfacePart = retrofit.create(RequestInterfacePart.class);
+        final User user = new User();
+
+        user.setContact(contact);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setId(id);
+
+        ServerRequest request = new ServerRequest();
+        request.setOperation(Constants.UPDATE_USER);
+        request.setUser(user);
+
+        final Call<ServerResponce> resp = requestInterfacePart.operationone(request);
+
+        resp.enqueue(new Callback<ServerResponce>() {
+            @Override
+            public void onResponse(Call<ServerResponce> call, Response<ServerResponce> response) {
+                ServerResponce resp = response.body();
+                Toast.makeText(Supplier_Account.this, resp.getMessage(), Toast.LENGTH_SHORT).show();
+                setUpIntent();
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponce> call, Throwable t) {
+                Toast.makeText(Supplier_Account.this, "Connection Failure " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void setUpIntent() {
+        Intent intent = new Intent(Supplier_Account.this, Login_Activity.class);
+        startActivity(intent);
     }
 }

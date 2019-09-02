@@ -32,6 +32,7 @@
             <EditText
                 android:id="@+id/nameEditTet"
                 android:text="Name"
+                android:background="@null"
                 android:layout_toRightOf="@id/nameImageView"
                 style="@style/profileDetailsTextMain"/>
 
@@ -49,6 +50,7 @@
             <EditText
                 android:id="@+id/ConEditText"
                 android:text="Mobile"
+                android:background="@null"
                 android:layout_toRightOf="@id/mobileImageView"
                 style="@style/profileDetailsTextMain"/>
 
@@ -65,6 +67,7 @@
             <EditText
                 android:id="@+id/EmEditText"
                 android:text="Email"
+                android:background="@null"
                 android:layout_toRightOf="@id/emailImageView"
                 style="@style/profileDetailsTextMain"/>
 
@@ -83,6 +86,7 @@
             <EditText
                 android:id="@+id/AddressEditText"
                 android:text="Address"
+                android:background="@null"
                 android:layout_toRightOf="@id/addressImageView"
                 style="@style/profileDetailsTextMain"/>
 

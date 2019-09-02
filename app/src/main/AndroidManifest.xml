@@ -23,7 +23,9 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
-        <activity android:name=".activities.Supplier_Account"/>
+        <activity android:name=".activities.Supplier_Account"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity android:name=".activities.Register_Activity" />
         <activity android:name=".activities.Login_Activity" />
         <activity
