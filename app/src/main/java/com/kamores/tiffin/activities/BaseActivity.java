@@ -316,7 +316,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                     ServerResponce resp = response.body();
 
                     Toast.makeText(BaseActivity.this, resp.getMessage(), Toast.LENGTH_SHORT).show();
-                    if (resp.getResult().equals(Constants.SUCCESS)) {
+                    if (resp.getResult().equals(Constants.SUCCESS_USER)) {
                         User user = resp.getUser();
                         name = user.getName();
                         itemName = user.getItemName();
@@ -338,11 +338,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                         setUpRecyclerViewAll();
                         progressBar.setVisibility(View.GONE);
                     }
-                    if (resp.getResult().equals(Constants.EMPTY)) {
-                        tv_warning.setText("Sorry no Item Found..!!!");
-                        img_warning.setVisibility(View.VISIBLE);
-                        progressBar.setVisibility(View.GONE);
-                    }
+//                    if (resp.getResult().equals(Constants.EMPTY)) {
+//                        tv_warning.setText("Sorry no Item Found..!!!");
+//                        img_warning.setVisibility(View.VISIBLE);
+//                        progressBar.setVisibility(View.GONE);
+//                    }
 
                 } catch (Exception e) {
                     Toast.makeText(BaseActivity.this, "Exception : " + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();

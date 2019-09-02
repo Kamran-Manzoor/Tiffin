@@ -10,7 +10,6 @@ public class Constants {
     public static final String SUCCESS_USER ="success user";
     public static final String SUCCESS_SUPPLIER ="success supplier";
     public static final String EMPTY ="empty";
-    public static final String FAILURE ="failure";
     public static final String IS_LOGED_IN ="isLoggedIn";
     public static final String NAME ="name";
     public static final String EMAIL ="email";
