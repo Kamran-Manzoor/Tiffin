@@ -246,7 +246,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void hideItem() {
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         Menu nav_Menu = navigationView.getMenu();
         nav_Menu.findItem(R.id.nav_Supplier_Profile).setVisible(false);
         nav_Menu.findItem(R.id.nav_Supplier_SignUp).setVisible(false);
@@ -255,14 +255,14 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void ShowItemSupplier() {
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         Menu nav_Menu = navigationView.getMenu();
         nav_Menu.findItem(R.id.nav_Supplier_SignUp).setVisible(true);
         nav_Menu.findItem(R.id.nav_Supplier_Profile).setVisible(true);
         nav_Menu.findItem(R.id.nav_Add_Item).setVisible(true);
     }
     private void ShowItemUser() {
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         Menu nav_Menu = navigationView.getMenu();
         nav_Menu.findItem(R.id.nav_User_Profile).setVisible(true);
 
@@ -299,7 +299,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
         User user = new User();
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.TODAY_MENU);
