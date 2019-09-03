@@ -3,19 +3,12 @@ package com.kamores.tiffin.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,25 +16,18 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.kamores.tiffin.R;
-import com.kamores.tiffin.adapters.AdapterClass;
 import com.kamores.tiffin.constants.Constants;
 import com.kamores.tiffin.constants.ServerRequest;
 import com.kamores.tiffin.constants.ServerResponce;
 import com.kamores.tiffin.interfaces.RequestInterfacePart;
-import com.kamores.tiffin.models.Supplier_Model;
 import com.kamores.tiffin.models.User;
 import com.kamores.tiffin.models.UserShared;
 
-import java.util.Objects;
-import java.util.concurrent.ExecutionException;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,8 +38,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Supplier_Account extends AppCompatActivity {
 
     String contact,email,user_id;
-    EditText etContact,etEmail;
-    RelativeLayout Rname,Raddress;
+    TextView etEmail,etContact,etLocation,etPassword;
+   // RelativeLayout Rname,Raddress;
     TextView deactivate,tv_Back ;
     Context mContext;
     private Menu action;
@@ -89,8 +75,8 @@ public class Supplier_Account extends AppCompatActivity {
             getWindow().setStatusBarColor( Color.TRANSPARENT);
         }
         initViewUser();
-        Rname.setVisibility(View.GONE);
-        Raddress.setVisibility(View.GONE);
+//        Rname.setVisibility(View.GONE);
+//        Raddress.setVisibility(View.GONE);
 
 //        tv_Back.setOnClickListener( new View.OnClickListener() {
 //            @Override
@@ -100,34 +86,37 @@ public class Supplier_Account extends AppCompatActivity {
 //                finish();
 //             }
 //        } );
-        deactivate.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-//                AlertDialog.Builder dg = new AlertDialog.Builder(mContext);
-//                View view1 = LayoutInflater.from(mContext).inflate(R.layout.deactivate_dialogue, null);
-//                dg.setTitle("Enter Password");
-//                final EditText pass = view1.findViewById(R.id.et_dg_pass);
-//                dg.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                    dellUserAccount();
+//        deactivate.setOnClickListener( new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
 //
-//                        Toast.makeText(mContext, "Deleted...", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-            }
-        });
+////                AlertDialog.Builder dg = new AlertDialog.Builder(mContext);
+////                View view1 = LayoutInflater.from(mContext).inflate(R.layout.deactivate_dialogue, null);
+////                dg.setTitle("Enter Password");
+////                final EditText pass = view1.findViewById(R.id.et_dg_pass);
+////                dg.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+////                    @Override
+////                    public void onClick(DialogInterface dialogInterface, int i) {
+////                    dellUserAccount();
+////
+////                        Toast.makeText(mContext, "Deleted...", Toast.LENGTH_SHORT).show();
+////                    }
+////                });
+//            }
+//        });
 
         getUserAccount();
     }
 
     private void initViewUser() {
-        etContact=findViewById( R.id.ConEditText);
-        etEmail=findViewById( R.id.EmEditText);
-        Rname=findViewById( R.id.nameLayout );
-        Raddress=findViewById( R.id.addressLayout );
-        deactivate=findViewById( R.id.tvDeactivate );
+        etEmail=findViewById( R.id.tv_email_userprofile);
+
+        etContact=findViewById( R.id.tv_contact_no__userprofile);
+        etLocation = findViewById(R.id.tv_location_userprofile);
+        etPassword=findViewById(R.id.tv_password_userprofile);
+//        Rname=findViewById( R.id.nameLayout );
+//        Raddress=findViewById( R.id.addressLayout );
+//        deactivate=findViewById( R.id.tvDeactivate );
 //        tv_Back = findViewById(R.id.tv_Back_to_home);
 
         UserShared user1 = new UserShared(Supplier_Account.this);
@@ -232,13 +221,15 @@ public class Supplier_Account extends AppCompatActivity {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-         switch (item.getItemId()){
+
+        switch (item.getItemId()){
              case R.id.menu_edit:
 
-                 etContact.setFocusableInTouchMode(true);
                  etEmail.setFocusableInTouchMode(true);
+                 etContact.setFocusableInTouchMode(true);
 
                  InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                  imm.showSoftInput(etContact, InputMethodManager.SHOW_IMPLICIT);
@@ -250,7 +241,7 @@ public class Supplier_Account extends AppCompatActivity {
 
              case R.id.menu_save:
 
-                 action.findItem(R.id.menu_edit).setVisible(true);
+                  action.findItem(R.id.menu_edit).setVisible(true);
                  action.findItem(R.id.menu_save).setVisible(false);
 
                  etContact.setFocusableInTouchMode(false);
