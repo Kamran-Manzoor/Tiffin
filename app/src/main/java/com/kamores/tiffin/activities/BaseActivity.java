@@ -165,7 +165,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             signIn.setImageResource(R.drawable.avatar);
             signIn.setEnabled(false);
             logoutLayout.setVisibility(View.VISIBLE);
-            nav_name.setText("Wellcome User");
+            nav_name.setText("Welcome User");
             nav_contact.setText("0300");
             nav_img.setVisibility(View.VISIBLE);
             img_login.setVisibility(View.GONE);
@@ -325,8 +325,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                         supplier_id = user.getSupplier_id();
                         price = user.getPrice();
                         item_image = user.getItem_image();
-
-
 
                         modelClasses = new ArrayList<>();
                         for (int i = 0; i < address.size(); i++) {

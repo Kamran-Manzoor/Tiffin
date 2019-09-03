@@ -167,7 +167,7 @@ public class Add_Items extends AppCompatActivity {
         item.setImage_code(image);
         item.setDay(Item_days);
         item.setDescription(Item_desc);
-        item.setSupllier_id("1");
+        item.setSupllier_id(sup_id);
         item.setService_id(Item_service);
 
         ServerRequest request = new ServerRequest();
@@ -186,7 +186,6 @@ public class Add_Items extends AppCompatActivity {
                 } catch (Exception e) {
                     Toast.makeText(Add_Items.this, "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override

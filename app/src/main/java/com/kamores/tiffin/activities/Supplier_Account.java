@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -51,6 +52,7 @@ public class Supplier_Account extends AppCompatActivity {
     RelativeLayout Rname,Raddress;
     TextView deactivate,tv_Back ;
     Context mContext;
+    private Menu action;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,13 +90,13 @@ public class Supplier_Account extends AppCompatActivity {
                 startActivity(intent);
                 finish();
              }
-        } );
-        deactivate.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                    dellUserAccount();
-            }
         });
+//        deactivate.setOnClickListener( new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                    dellUserAccount();
+//            }
+//        });
 
         getUserAccount();
     }
@@ -105,7 +107,7 @@ public class Supplier_Account extends AppCompatActivity {
         Rname=findViewById( R.id.nameLayout );
         Raddress=findViewById( R.id.addressLayout );
         deactivate=findViewById( R.id.tvDeactivate );
-        tv_Back= findViewById(R.id.tv_Back_to_home );
+        tv_Back = findViewById(R.id.tv_Back_to_home);
 
         UserShared user1 = new UserShared(Supplier_Account.this);
         user_id = user1.getUser_id();
@@ -234,4 +236,47 @@ public class Supplier_Account extends AppCompatActivity {
         Intent intent = new Intent(Supplier_Account.this, Login_Activity.class);
         startActivity(intent);
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater menuInflater = getMenuInflater();
+//        menuInflater.inflate(R.menu.menu_action, menu);
+//        action = menu;
+//        action.findItem(R.id.menu_save).setVisible(false);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//         switch (item.getItemId()){
+//             case R.id.menu_edit:
+//
+//                 etContact.setFocusableInTouchMode(true);
+//                 etEmail.setFocusableInTouchMode(true);
+//
+//                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//                 imm.showSoftInput(etContact, InputMethodManager.SHOW_IMPLICIT);
+//
+//                 action.findItem(R.id.menu_edit).setVisible(false);
+//                 action.findItem(R.id.menu_save).setVisible(true);
+//
+//                 return true;
+//
+//             case R.id.menu_save:
+//
+//                 action.findItem(R.id.menu_edit).setVisible(true);
+//                 action.findItem(R.id.menu_save).setVisible(false);
+//
+//                 etContact.setFocusableInTouchMode(false);
+//                 etEmail.setFocusableInTouchMode(false);
+//                 etContact.setFocusable(false);
+//                 etEmail.setFocusable(false);
+//
+//                 return true;
+//
+//                 default:
+//
+//                     return super.onOptionsItemSelected(item);
+//         }
+//    }
 }
